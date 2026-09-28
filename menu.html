@@ -197,10 +197,14 @@
   --card-rgb: 255, 254, 251;
   --script: #7a4526;
   --film-filter: none;
-  --frost: .8;
-  --frost-m: .86;
-  --veil: .5;
+  --frost: .9;
+  --frost-m: .95;
+  /* the film is either crisp (the first screen) or behind paper — never half-veiled and milky */
+  --veil: .93;
+  /* paper only where the type sits — never over the cup, or it turns milky */
+  --hero-scrim: linear-gradient(to right, rgba(var(--bg-rgb),.74) 0%, rgba(var(--bg-rgb),.46) 28%, transparent 44%);
 }
+:root[data-theme="light"] .bg-seq::after { background: none; }
 html { color-scheme: dark; }
 html[data-theme="light"] { color-scheme: light; }
 html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
@@ -495,6 +499,8 @@ main, .site-footer { position: relative; z-index: 1; }
 .mp-intro-scrim { pointer-events: none; position: absolute; inset: 0; background: linear-gradient(to right, rgba(var(--bg-rgb),.82) 0%, rgba(var(--bg-rgb),.45) 45%, transparent 70%); }
 @media (max-width: 1023.98px) { .mp-intro-scrim { background: linear-gradient(to bottom, rgba(var(--bg-rgb),.85), rgba(var(--bg-rgb),.55) 70%, rgba(var(--bg-rgb),.3)); } }
 .mp-intro > :not(.mp-intro-scrim) { position: relative; }
+/* on paper the menu is paper: the film behind the type would only turn milky */
+:root[data-theme="light"] .mp-intro-scrim, :root[data-theme="light"] .mp-nav { background: rgba(var(--bg-rgb), .96); }
 .mp-title-col { display: flex; flex-direction: column; gap: 1.25rem; }
 .mp-h1 { font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-display-hero-phone); line-height: var(--leading-display); letter-spacing: var(--tracking-tight); text-transform: uppercase; }
 @media (min-width: 640px) { .mp-h1 { font-size: var(--font-size-display-hero-tablet); } }
@@ -1289,9 +1295,10 @@ function header() {
   const secs = $$("[data-header-theme]");
   const footer = $("[data-footer]");
   Ticker.add(() => {
-    let theme = "dark";
-    for (const s of secs) { const r = s.getBoundingClientRect(); if (r.top <= 35 && r.bottom > 35) { theme = s.dataset.headerTheme; break; } }
+    let theme = "dark", film = false;
+    for (const s of secs) { const r = s.getBoundingClientRect(); if (r.top <= 35 && r.bottom > 35) { theme = s.dataset.headerTheme; film = "headerFilm" in s.dataset; break; } }
     hdr.classList.toggle("is-light", theme === "light" && !menuOpen);
+    hdr.classList.toggle("on-film", film && !menuOpen);
     hdr.classList.toggle("is-hidden", innerWidth < 640 && footer.getBoundingClientRect().top <= 35 && !menuOpen);
   }, 100);
   const burger = $("[data-burger]"), panel = $("[data-menu-panel]");
@@ -1409,30 +1416,33 @@ const seq = (() => {
      the frame itself always keeps its own, natural colours */
   const light = () => document.documentElement.dataset.theme === "light";
   const ink = (a) => (light() ? `rgba(243, 242, 239, ${a})` : `rgba(7, 7, 7, ${a})`);
+  /* in the dark theme the frame melts into espresso over wide margins; on paper a wide margin
+     would wash the cup out, so there the edges stay narrow and stop short of the cup and the steam */
   const feather = () => {
     const x = rect.x * dpr, y = rect.y * dpr, w = rect.w * dpr, h = rect.h * dpr;
+    const lt = light();
     if (innerWidth < 768 || innerWidth / innerHeight < 0.9) {
       let g = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.3);
-      g.addColorStop(0, ink(0.6)); g.addColorStop(1, ink(0));
+      g.addColorStop(0, ink(lt ? 0.5 : 0.6)); g.addColorStop(1, ink(0));
       ctx.fillStyle = g; ctx.fillRect(0, 0, canvas.width, canvas.height * 0.3);
       /* the frame's own foot, softened into the page where it stops above the screen's edge */
-      const foot = y + h;
-      g = ctx.createLinearGradient(0, foot - h * 0.14, 0, foot);
+      const foot = y + h, from = lt ? y + h * 0.93 : foot - h * 0.14;
+      g = ctx.createLinearGradient(0, from, 0, foot);
       g.addColorStop(0, ink(0)); g.addColorStop(1, ink(1));
-      ctx.fillStyle = g; ctx.fillRect(0, foot - h * 0.14, canvas.width, h * 0.14 + 2);
+      ctx.fillStyle = g; ctx.fillRect(0, from, canvas.width, foot - from + 2);
       return;
     }
-    const f = w * 0.34;
-    let g = ctx.createLinearGradient(x, 0, x + f, 0);
+    const fl = w * (lt ? 0.17 : 0.34), fr = w * (lt ? 0.13 : 0.34), ft = h * (lt ? 0.14 : 0.22);
+    let g = ctx.createLinearGradient(x, 0, x + fl, 0);
     g.addColorStop(0, ink(1)); g.addColorStop(1, ink(0));
-    ctx.fillStyle = g; ctx.fillRect(x - 2, 0, f + 2, canvas.height);
-    g = ctx.createLinearGradient(x + w - f, 0, x + w, 0);
+    ctx.fillStyle = g; ctx.fillRect(x - 2, 0, fl + 2, canvas.height);
+    g = ctx.createLinearGradient(x + w - fr, 0, x + w, 0);
     g.addColorStop(0, ink(0)); g.addColorStop(1, ink(1));
-    ctx.fillStyle = g; ctx.fillRect(x + w - f, 0, f + 2, canvas.height);
+    ctx.fillStyle = g; ctx.fillRect(x + w - fr, 0, fr + 2, canvas.height);
     const top = Math.max(0, y);
-    g = ctx.createLinearGradient(0, top, 0, top + h * 0.22);
+    g = ctx.createLinearGradient(0, top, 0, top + ft);
     g.addColorStop(0, ink(1)); g.addColorStop(1, ink(0));
-    ctx.fillStyle = g; ctx.fillRect(0, top, canvas.width, h * 0.22);
+    ctx.fillStyle = g; ctx.fillRect(0, top, canvas.width, ft);
   };
   new MutationObserver(() => { drawn = -1; paint(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   function paint() {
