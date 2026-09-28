@@ -1123,10 +1123,22 @@ function scrub(el, { trigger, start = "top bottom", end = "center center", from,
 
 /* TextEngine — lines for headlines, words for ledes. */
 const fontsSettled = (async () => {
-  const loads = ['700 100px "Geist"', '600 64px "Geist"', '90px "Great Vibes"', '16px "IBM Plex Mono"', '16px "Onest"'].map((f) => document.fonts.load(f, "Кофе со смыслом 0123").catch(() => []));
-  await Promise.race([Promise.all(loads), new Promise((r) => setTimeout(r, 3500))]);
-  await document.fonts.ready;
+  /* the fonts' stylesheet loads without holding the first paint; the type waits for it, briefly */
+  const link = document.querySelector("link[data-fonts]");
+  const sheet = new Promise((r) => {
+    if (!link || link.media !== "print") return r();
+    link.addEventListener("load", () => setTimeout(r), { once: true });
+    link.addEventListener("error", r, { once: true });
+  });
+  const settle = (async () => {
+    await sheet;
+    const loads = ['700 100px "Geist"', '600 64px "Geist"', '90px "Great Vibes"', '16px "IBM Plex Mono"', '16px "Onest"'].map((f) => document.fonts.load(f, "Кофе со смыслом 0123").catch(() => []));
+    await Promise.all(loads);
+    await document.fonts.ready;
+  })();
+  await Promise.race([settle, new Promise((r) => setTimeout(r, 2500))]);
 })();
+const typeReady = () => document.fonts.check('700 16px "Geist"', "Кофе");
 function textEngine(el) {
   const mode = el.dataset.text;
   const text = el.textContent.replace(/\s+/g, " ").trim();
@@ -1147,9 +1159,12 @@ function textEngine(el) {
     ? { duration: 900, easing: EASE.outCubic }
     : { duration: hero ? 650 : 620, easing: EASE.outQuart };
   const stagger = mode === "lines" ? 90 : hero ? 18 : 14;
-  /* an optional script word that closes the last line (the hero's "смыслом") */
+  /* an optional script word that closes the last line (the hero's "смыслом"); with data-script-block
+     it takes a line of its own below, set large, and its flourishes get more room to be written in */
   const script = el.dataset.script || "";
-  const S_FROM = { clip: "inset(-20% 100% -40% -4%)" }, S_TO = { clip: "inset(-20% -8% -40% -4%)" };
+  const blockScript = !!script && el.hasAttribute("data-script-block");
+  const S_FROM = { clip: blockScript ? "inset(-30% 100% -45% -12%)" : "inset(-20% 100% -40% -4%)" };
+  const S_TO = { clip: blockScript ? "inset(-30% -12% -45% -12%)" : "inset(-20% -8% -40% -4%)" };
   let scriptM = null;
   let revealed = REDUCED, motions = [], width = -1;
   const build = () => {
@@ -1160,11 +1175,14 @@ function textEngine(el) {
       motions = units.map((u) => new Motion(u, revealed ? TO : FROM));
     } else {
       vis.className = "te-vis te-measure";
-      /* the last word and the script word wrap as one unit: "со смыслом" never splits */
-      const head = script ? words.slice(0, -1) : words;
-      const tail = script ? words[words.length - 1] : null;
+      /* the last word and the script word wrap as one unit: "со смыслом" never splits. When the
+         script has a line of its own, the last two words hold together instead — «завтраки со» —
+         so the little «со» never hangs alone above it */
+      const cut = blockScript ? -2 : -1;
+      const head = script ? words.slice(0, cut) : words;
+      const tail = script ? words.slice(cut).join(" ") : null;
       vis.innerHTML = head.map((w) => `<span class="te-w">${esc(w)}</span>`).join(" ")
-        + (script ? `${head.length ? " " : ""}<span class="te-w" data-s style="white-space:nowrap">${esc(tail)} <span class="te-w-script">${esc(script)}</span></span>` : "");
+        + (script ? `${head.length ? " " : ""}<span class="te-w" data-s style="white-space:nowrap">${esc(tail)}${blockScript ? "" : ` <span class="te-w-script">${esc(script)}</span>`}</span>` : "");
       const lines = [];
       const tol = parseFloat(getComputedStyle(el).fontSize) * 0.5;
       let top = null;
@@ -1177,9 +1195,9 @@ function textEngine(el) {
       vis.className = "te-vis te-lines";
       vis.innerHTML = lines.map((l) => {
         const txt = l.filter((x) => x !== null).join(" ");
-        return `<span class="te-line"><span>${esc(txt)}</span>${l.includes(null) ? `<span class="te-script">${esc(script)}</span>` : ""}</span>`;
-      }).join("");
-      motions = [...vis.querySelectorAll(".te-line > span:first-child")].map((u) => new Motion(u, revealed ? TO : FROM));
+        return `<span class="te-line"><span>${esc(txt)}</span>${l.includes(null) && !blockScript ? `<span class="te-script">${esc(script)}</span>` : ""}</span>`;
+      }).join("") + (blockScript ? `<span class="te-line te-line-script"><span class="te-script">${esc(script)}</span></span>` : "");
+      motions = [...vis.querySelectorAll(".te-line:not(.te-line-script) > span:first-child")].map((u) => new Motion(u, revealed ? TO : FROM));
       const sEl = vis.querySelector(".te-script");
       scriptM = sEl ? new Motion(sEl, revealed ? S_TO : S_FROM) : null;
       if (sEl && revealed) el.classList.add("te-open");
@@ -1194,6 +1212,11 @@ function textEngine(el) {
       width = el.clientWidth;
       build();
     }).observe(el);
+    /* the fonts came after the wait: set the lines again, in the real type */
+    if (mode === "lines" && !typeReady()) {
+      const again = () => { if (!typeReady()) return; document.fonts.removeEventListener("loadingdone", again); build(); };
+      document.fonts.addEventListener("loadingdone", again);
+    }
     if (!REDUCED) onceVisible(el, () => {
       revealed = true;
       motions.forEach((m, i) => m.to(TO, { config: cfg, delay: delay + i * stagger }));
@@ -1289,9 +1312,9 @@ function wireCommon(root = document) {
 let menuOpen = false;
 function header() {
   const hdr = $("[data-header]");
-  inview(hdr, { from: { opacity: 0, y: -12 }, to: { opacity: 1, y: 0 }, delay: 120, gate: "ready" });
+  inview(hdr, { from: { opacity: 0, y: -12 }, to: { opacity: 1, y: 0 }, delay: 120, gate: "revealing" });
   const cfgFor = (el) => (el.classList.contains("header-mark") ? C.c42 : C.c46);
-  $$("[data-print-in]", hdr).forEach((el) => inview(el, { from: { clip: "inset(0 100% 0 0)" }, to: { clip: "inset(0 0% 0 0)" }, config: cfgFor(el), delay: +el.dataset.printIn, gate: "ready" }));
+  $$("[data-print-in]", hdr).forEach((el) => inview(el, { from: { clip: "inset(0 100% 0 0)" }, to: { clip: "inset(0 0% 0 0)" }, config: cfgFor(el), delay: +el.dataset.printIn, gate: "revealing" }));
   const secs = $$("[data-header-theme]");
   const footer = $("[data-footer]");
   Ticker.add(() => {
@@ -1455,7 +1478,9 @@ const seq = (() => {
     feather();
   }
   const pump = () => {
-    while (active < 6 && cursor < order.length) {
+    /* the first screen's frame travels alone, so on a slow line it is not queued behind the rest */
+    const lanes = loaded[order[0]] || broken ? 6 : 1;
+    while (active < lanes && cursor < order.length) {
       const i = order[cursor++];
       active++;
       const im = new Image();
@@ -1489,6 +1514,8 @@ const seq = (() => {
   return {
     rect,
     firstPassProgress: () => 1 - firstLeft / firstPass.length,
+    /** Something is on the canvas — the first screen has its picture. */
+    hasFrame: () => drawn >= 0 || broken > 0,
     onProgress: (f) => listeners.add(f),
     /** A region of the frame (fractions) on screen, in viewport px. */
     region: (r) => ({ x: rect.x + rect.w * r.x0, y: rect.y + rect.h * r.y0, w: rect.w * (r.x1 - r.x0), h: rect.h * (r.y1 - r.y0) }),
