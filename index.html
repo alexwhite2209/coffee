@@ -1,0 +1,2757 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Смысл — кофейня на Рождественской, Нижний Новгород</title>
+<meta name="description" content="Кофейня «Смысл» на Рождественской, 13 в Нижнем Новгороде: завтраки весь день, кофе от бариста и панорамные окна с видом на Кремль. Ежедневно 08:00–22:00. Рейтинг 4,8 на Яндекс Картах, «Хорошее место 2026».">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070707'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23f1ece2' stroke-width='4'/%3E%3Cpath d='M32 15a17 17 0 0 1 0 34z' fill='%23d58c3d'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Смысл — кофе и завтраки со смыслом">
+<meta property="og:description" content="Рождественская, 13. Завтраки весь день, кофе от бариста, вид на Кремль. Ежедневно 08:00–22:00.">
+<meta property="og:image" content="assets/img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700&family=Great+Vibes&family=IBM+Plex+Mono:wght@400;500;700&family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  document.documentElement.classList.add("js");
+  /* The chosen theme, before the first paint. */
+  try { if (localStorage.getItem("smysl-theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}
+  /* Failsafe: if the module never boots (offline CDN, old browser), the page still opens. */
+  window.setTimeout(function () {
+    if (window.__smyslBooted) return;
+    document.documentElement.classList.remove("js");
+    var p = document.querySelector("[data-preloader]");
+    if (p) p.remove();
+  }, 7000);
+</script>
+<script type="importmap">
+{
+  "imports": {
+    "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs"
+  }
+}
+</script>
+<style>
+/* ═══════════════ tokens — the 1440×800 board, one rem = one board px at 1440 ═══════════════ */
+:root {
+  --raw-color-white: #ffffff;
+  --raw-color-espresso-950: #070707;
+  --raw-color-amber-500: #d58c3d;
+  --raw-color-espresso-900: #171715;
+  --raw-color-espresso-900-half: rgba(23, 23, 21, 0.5);
+  --raw-color-roast-900: #2a1a0f;
+  --raw-color-roast-500: #b07a45;
+  --raw-color-bone-50: #f1f1ef;
+  --raw-color-bone-100: #e7e5e3;
+
+  /* the theme: dark by default, light on demand — every surface reads these */
+  --bg: #070707;
+  --fg: #ffffff;
+  --bg-rgb: 7, 7, 7;
+  --fg-rgb: 255, 255, 255;
+  --card-rgb: 16, 14, 12;
+  --script: #f5e6d3;
+  --film-filter: none;
+  --frost: .38;
+  --frost-m: .5;
+  --veil: 0;
+  --background: var(--bg);
+  --foreground: var(--fg);
+  --accent: var(--raw-color-amber-500);
+  --surface-backdrop: var(--raw-color-espresso-900);
+  --surface-backdrop-soft: var(--raw-color-espresso-900-half);
+  --surface-inverse: var(--raw-color-bone-50);
+  --surface-inverse-backdrop: var(--raw-color-bone-100);
+  --foreground-inverse: var(--raw-color-espresso-950);
+
+  --hero-scrim: linear-gradient(to right, rgba(var(--bg-rgb),.78) 0%, rgba(var(--bg-rgb),.4) 36%, transparent 60%);
+  --philosophy-scrim: linear-gradient(to bottom, rgba(var(--bg-rgb),.86) 0%, rgba(var(--bg-rgb),.6) 26%, rgba(var(--bg-rgb),.38) 46%, rgba(var(--bg-rgb),.62) 72%, rgba(var(--bg-rgb),.88) 100%);
+  --gradient-opalesce-fallback: linear-gradient(120deg, #070707 0%, #110b07 35%, #2c1a11 65%, #6e3e22 100%);
+
+  --font-geist: "Geist", system-ui, sans-serif;
+  --font-sans: "Onest", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-script: "Great Vibes", cursive;
+
+  --ease-entrance: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+
+  --font-size-label: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-fine: 0.75rem;
+  --font-size-script: 5.625rem;
+  --font-size-headline: 4rem;
+  --font-size-display: 6.25rem;
+  --font-size-display-phone: 2.375rem;
+  --font-size-display-hero-phone: 3.25rem;
+  --font-size-display-tablet: 4rem;
+  --font-size-display-hero-tablet: 6rem;
+  --font-size-headline-phone: 2rem;
+  --font-size-headline-tablet: 3rem;
+  --font-size-script-phone: 3.85rem;
+  --font-size-script-tablet: 7rem;
+  --font-size-count-phone: 5rem;
+  --font-size-count-tablet: 8rem;
+  --font-size-count: 11rem;
+  --font-size-lede-tablet: 1.125rem;
+
+  --leading-flush: 0.8;
+  --leading-headline: 0.9;
+  --leading-display: 1.1;
+  --leading-copy: 1.2;
+  --tracking-tight: -0.03em;
+  --tracking-label: 0.1em;
+  --tracking-slash: -0.23em;
+  --tracking-slash-space: -0.115em;
+
+  --size-logo-height: 1.25rem;
+  --size-logo-width: 7.2427rem;       /* the СМЫСЛ mark is 5.794 : 1 */
+  --size-dot: 0.3125rem;
+  --size-footer-dot: 0.25rem;
+  --size-hero-copy: 36rem;
+  --size-hero-copy-tablet: 42rem;
+  --size-hero-rule: 2.375rem;
+  --size-hours: 7.625rem;
+  --size-hero-address: 11.5rem;
+  --size-hero-social: 8.5rem;
+  --size-hero-copy-rise: 1.75rem;
+  --size-hero-script-x: 10.25rem;
+  --size-hero-script-y: 13.6rem;
+  --size-hero-script-x-tablet: 9.9rem;
+  --size-hero-script-y-tablet: 13.1rem;
+  --size-hero-script-x-phone: 5.6rem;
+  --size-hero-script-y-phone: 7.05rem;
+  --size-underline: 0.1125rem;
+  --size-cap-16: 0.6875rem;
+  --size-cta-block: 1.1875rem;
+  --size-cap-12: 0.5rem;
+  --size-arrow-width: 0.763356rem;
+  --size-arrow-height: 0.828444rem;
+
+  --size-board-height: 50rem;
+  --size-board-drop: max(0px, min(calc(100lvh - var(--size-board-height)), 6.5rem));
+
+  --size-menu-intro: 32.4375rem;
+  --size-menu-intro-y: 6.625rem;
+  --size-menu-lede: 12.5rem;
+  --size-menu-lede-x: 21.625rem;
+  --size-menu-lede-y: 14.125rem;
+  --size-menu-cta-y: 24.625rem;
+  --size-menu-cards-y: 28.3125rem;
+  --size-menu-card-height: 19.1875rem;
+  --size-menu-receipt-width: 17.41125rem;
+  --size-menu-receipt-height: 39.553125rem;
+  --size-menu-receipt-x: 86.44375rem;
+  --size-menu-receipt-y: 10.0725rem;
+  --angle-menu-receipt: -31.2678deg;
+
+  --size-swirl-width: 139.6875rem;
+  --size-swirl-height: 46.5625rem;
+  --size-swirl-x: 8.25rem;
+  --size-swirl-y: -1.5rem;
+
+  --size-locations-dial: 40.875rem;
+  --size-locations-dial-y: 6.625rem;
+  --size-locations-cup: 17.5rem;
+  --size-locations-list: 19rem;
+  --size-locations-list-y: 35.25rem;
+  --size-locations-hours-y: 42.75rem;
+
+  --size-philosophy-headline: 52rem;
+  --size-philosophy-headline-y: 6.625rem;
+  --size-philosophy-cup-x: 14.625rem;
+  --size-philosophy-cup-y: 19.5625rem;
+  --size-philosophy-cup-width: 20.125rem;
+  --size-philosophy-cup-height: 30.125rem;
+  --size-philosophy-lede: 22rem;
+  --size-philosophy-lede-x: 38.3125rem;
+  --size-philosophy-lede-y: 38.6rem;
+  --size-philosophy-claims: 13rem;
+  --size-philosophy-claims-y: 42.9rem;
+  --size-philosophy-eyebrow-y: 46.4375rem;
+
+  --size-order-frame: 53.375rem;
+  --size-order-headline: 27rem;
+  --size-order-headline-y: 7.875rem;
+  --size-order-note: 11.5rem;
+  --size-order-aside: 22rem;
+  --size-order-aside-gap: 3.125rem;
+
+  --size-footer-height: 24.0625rem;
+  --size-footer-tagline: 9rem;
+  --size-footer-tagline-y: 6.375rem;
+  --size-footer-nav-x: 23.9375rem;
+  --size-footer-right-block: 16.0625rem;
+  --size-footer-contact-x: calc(100% - var(--size-footer-right-block));
+  --size-footer-col: 9rem;
+  --size-footer-rule-top: 12.8125rem;
+  --size-footer-row-y: 15.3125rem;
+  --size-footer-rule-bottom: 20.1875rem;
+  --size-footer-legal-y: 21.6875rem;
+  --size-footer-address: 12rem;
+  --size-footer-address-b: 39.5rem;
+  --size-footer-address-c: 55.5rem;
+  --size-footer-divider-a: 37.5rem;
+  --size-footer-divider-b: 53.5rem;
+
+  --swirl-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2235 745'%3E%3Cg fill='none' stroke='%23fff' stroke-linecap='round'%3E%3Cpath stroke-width='124' d='M-80 575C215 262 468 706 788 478S1262 96 1566 362 2046 724 2320 246'/%3E%3Cpath stroke-width='46' d='M96 706C372 486 604 772 902 612S1402 308 1702 530 2086 624 2268 474'/%3E%3Cpath stroke-width='22' d='M300 180C520 90 700 260 930 180S1340 40 1560 150'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* the light theme: bone surfaces, espresso type; the film keeps its own colours and the page
+   around it turns light, so the frames read as a photograph laid on paper */
+:root[data-theme="light"] {
+  --bg: #f3f2ef;
+  --fg: #0b0908;
+  --bg-rgb: 243, 242, 239;
+  --fg-rgb: 11, 9, 8;
+  --card-rgb: 255, 254, 251;
+  --script: #7a4526;
+  --film-filter: none;
+  --frost: .8;
+  --frost-m: .86;
+  --veil: .5;
+}
+html { color-scheme: dark; }
+html[data-theme="light"] { color-scheme: light; }
+html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .45s ease, color .45s ease, border-color .45s ease, fill .45s ease, stroke .45s ease !important;
+}
+
+/* ═══════════════ root grid: damped both ways around 1440 ═══════════════ */
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+@media (max-width: 1439.98px) { html { font-size: calc(16px - (1440px - 100vw) / 128.57); } }
+@media (max-width: 1023.98px) { html { font-size: 16px; } }
+@media (max-width: 639.98px) { html { font-size: 4.444444vw; } }
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+html.is-stopped { position: relative; overflow: hidden; height: 100%; }
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--background); color: var(--foreground);
+  min-height: 100lvh; width: 100%; overflow-x: hidden;
+  font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, p, ul, ol, figure, address, blockquote { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+address { font-style: normal; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img, video, svg, canvas { display: block; max-width: none; }
+.block { display: block; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: #070707; }
+
+/* ═══════════════ type vocabulary ═══════════════ */
+.mono { font-family: var(--font-mono); }
+.display { font-family: var(--font-geist); font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-tight); line-height: var(--leading-headline); }
+.eyebrow {
+  font-family: var(--font-mono); font-size: var(--font-size-fine); line-height: var(--leading-copy);
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+}
+@media (min-width: 640px) { .eyebrow { font-size: var(--font-size-label); } }
+.slash { letter-spacing: var(--tracking-slash); }
+.slash-sp { letter-spacing: var(--tracking-slash-space); }
+.lede {
+  width: 100%; font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-base);
+  line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase;
+}
+@media (min-width: 640px) and (max-width: 1023.98px) { .lede { font-size: var(--font-size-lede-tablet); } }
+.headline {
+  font-family: var(--font-geist); font-weight: 600; font-size: var(--font-size-headline-phone);
+  line-height: var(--leading-headline); letter-spacing: var(--tracking-tight); text-transform: uppercase;
+}
+@media (min-width: 640px) { .headline { font-size: var(--font-size-headline-tablet); } }
+@media (min-width: 1024px) { .headline { font-size: var(--font-size-headline); } }
+
+/* text engine */
+.te-vis { display: flex; flex-wrap: wrap; justify-content: flex-start; }
+.te-vis.te-words { column-gap: 0.2em; }
+.te-vis.te-lines { flex-direction: column; flex-wrap: nowrap; }
+.te-line { display: block; white-space: nowrap; }
+.te-line > span, .te-word { display: inline-block; will-change: transform, opacity; }
+.te-clip .te-line { overflow: hidden; line-height: var(--leading-display); margin: -0.1em 0; }
+.te-center .te-vis { justify-content: center; }
+.te-center .te-vis.te-lines { align-items: center; }
+
+/* digit roll */
+.roll { position: relative; display: inline-block; white-space: pre; }
+.roll-ghost { color: transparent; }
+.roll-cells { position: absolute; left: 0; right: 0; top: -0.35em; bottom: -0.35em; display: flex; }
+.roll-ch { flex: none; align-self: center; white-space: pre; }
+.roll-col { position: relative; height: 100%; clip-path: inset(0); flex: none; }
+.roll-stack { display: flex; flex-direction: column; height: 1000%; will-change: transform; }
+.roll-stack > span { display: flex; height: 10%; align-items: center; justify-content: center; }
+
+/* underline links */
+.ul-wrap { position: relative; display: inline-block; }
+.ul-clip { position: relative; display: block; clip-path: inset(0); }
+.ul-a { display: block; will-change: transform; }
+.ul-b { position: absolute; inset: 0; display: block; transform: translateY(100%); will-change: transform; }
+.ul-rule { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: currentColor; transform-origin: left center; transform: scaleX(0); opacity: 0; }
+
+/* the text CTA */
+.cta { display: flex; height: var(--size-cta-block); flex-direction: column; justify-content: space-between; width: max-content; }
+.cta-row { display: flex; height: var(--size-cap-16); align-items: center; gap: 1rem; }
+.cta-label { white-space: nowrap; font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-label); line-height: var(--leading-flush); text-transform: uppercase; letter-spacing: 0; }
+@media (min-width: 640px) { .cta-label { font-size: var(--font-size-base); } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .cta-label { font-size: var(--font-size-lede-tablet); } }
+.cta-arrows { position: relative; display: flex; width: 0.5rem; height: 0.5rem; flex: none; align-items: center; justify-content: center; }
+.cta-arrow { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.cta-arrow .rot { display: flex; transform: rotate(-45deg); align-items: center; justify-content: center; }
+.cta-arrow svg { width: var(--size-arrow-width); height: var(--size-arrow-height); }
+.cta-arrow.b { opacity: 0; transform: translateX(-190%); }
+.cta-rules { position: relative; display: block; height: var(--size-underline); width: 100%; }
+.cta-rule { position: absolute; inset: 0; display: block; background: currentColor; }
+.cta-rule.base { transform-origin: right center; }
+.cta-rule.over { transform-origin: left center; transform: scaleX(0); }
+
+/* pulse dot */
+.pulse-dot { display: inline-block; flex: none; width: var(--size-dot); height: var(--size-dot); border-radius: 9999px; background: var(--accent); }
+
+/* rule draw */
+.rule-x { transform-origin: left center; transform: scaleX(0); }
+.rule-y { transform-origin: center top; transform: scaleY(0); }
+
+/* rise (footer lines) */
+.rise { display: block; clip-path: inset(0 0 -4px 0); }
+.rise > .rise-in { display: block; transform: translateY(150%); will-change: transform; }
+
+/* pointer lean */
+.lean { display: flex; flex: 1; perspective: 900px; }
+.lean-inner { display: flex; flex: 1; transform-style: preserve-3d; will-change: transform; }
+
+/* ═══════════════ header ═══════════════ */
+.site-header {
+  position: fixed; left: 1.25rem; right: 1.25rem; top: 1rem; z-index: 50;
+  display: flex; height: var(--size-logo-height); align-items: center; justify-content: space-between;
+  font-family: var(--font-mono); font-size: var(--font-size-fine); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight);
+  color: var(--foreground); transition: color var(--duration-normal) var(--ease-entrance);
+  opacity: 0;
+}
+.site-header.is-light { color: var(--foreground-inverse); }
+.site-header.is-open { color: var(--foreground) !important; }
+.site-header.is-hidden { visibility: hidden; pointer-events: none; }
+@media (min-width: 640px) { .site-header { left: 2.5rem; right: 2.5rem; top: 1.5rem; } }
+@media (min-width: 640px) { .site-header { font-size: var(--font-size-base); } }
+.burger { position: relative; margin: -0.5rem; display: flex; width: 2.25rem; height: 2.25rem; align-items: center; justify-content: center; padding: 0.5rem; order: 9; }
+.burger span { position: absolute; right: 0.5rem; height: 1px; background: currentColor; transition: all var(--duration-normal) var(--ease-entrance); }
+.burger .l1 { width: 1.5rem; transform: translateY(-0.25rem); }
+.burger .l2 { width: 1rem; transform: translateY(0.25rem); }
+.burger[aria-expanded="true"] .l1 { width: 1.5rem; transform: rotate(45deg); }
+.burger[aria-expanded="true"] .l2 { width: 1.5rem; transform: rotate(-45deg); }
+@media (min-width: 640px) and (max-width: 1023.98px) {
+  .burger { width: 2.75rem; height: 2.75rem; }
+  .burger span { height: 2px; }
+  .burger .l1 { width: 2rem; transform: translateY(-0.375rem); }
+  .burger .l2 { width: 1.5rem; transform: translateY(0.375rem); }
+  .burger[aria-expanded="true"] .l1, .burger[aria-expanded="true"] .l2 { width: 2rem; }
+}
+@media (min-width: 1024px) { .burger { display: none; } }
+.header-nav { display: none; }
+@media (min-width: 1024px) { .header-nav { display: block; } }
+.header-nav ul { display: flex; align-items: center; gap: 3rem; text-transform: uppercase; }
+.header-mark { position: absolute; left: 50%; height: 100%; width: var(--size-logo-width); transform: translateX(-50%); }
+.header-mark a, .header-mark svg { display: block; width: 100%; height: 100%; }
+.header-mark svg { fill: currentColor; transition: fill var(--duration-normal) var(--ease-entrance); }
+@media (max-width: 639.98px) { .header-mark { position: static; order: -1; transform: none; } }
+.header-right { display: flex; align-items: center; gap: 2rem; }
+@media (max-width: 1023.98px) { .header-right { display: contents; } }
+.theme-toggle { display: inline-flex; align-items: center; gap: 0.5rem; height: 2rem; margin: -0.375rem 0; padding: 0 0.125rem; color: inherit; font: inherit; letter-spacing: inherit; text-transform: uppercase; cursor: pointer; transition: opacity var(--duration-fast) var(--ease-entrance); }
+.theme-toggle:hover { opacity: .65; }
+.theme-toggle svg { width: 1.125rem; height: 1.125rem; flex: none; will-change: transform; }
+@media (max-width: 1023.98px) {
+  .theme-toggle { order: 8; margin-left: auto; margin-right: 1.25rem; }
+  .theme-toggle-label { display: none; }
+  .theme-toggle svg { width: 1.375rem; height: 1.375rem; }
+}
+.header-call { display: flex; align-items: center; gap: 0.375rem; white-space: nowrap; text-transform: uppercase; transition: opacity var(--duration-fast) var(--ease-entrance); }
+.header-call:hover { opacity: 0.6; }
+@media (max-width: 639.98px) { .header-call { display: none; } }
+@media (max-width: 1023.98px) { .header-call { order: -1; } .header-call .pulse-dot { order: -1; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .header-call .pulse-dot { width: 0.5rem; height: 0.5rem; } }
+.print-in { clip-path: inset(0 100% 0 0); }
+
+.menu-panel {
+  position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column;
+  background: var(--background); color: var(--foreground); padding: 6rem 1.25rem 2.5rem;
+}
+.menu-panel[hidden] { display: none; }
+@media (min-width: 640px) { .menu-panel { padding: 8rem 2.5rem 3.5rem; } }
+@media (min-width: 1024px) { .menu-panel { display: none !important; } }
+.menu-panel .eyebrow { color: rgba(var(--fg-rgb),.45); }
+.menu-panel-nav { margin-top: 1.75rem; display: flex; flex-direction: column; border-top: 1px solid rgba(var(--fg-rgb),.15); }
+@media (min-width: 640px) { .menu-panel-nav { margin-top: 2.25rem; } }
+.menu-panel-nav a {
+  display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid rgba(var(--fg-rgb),.15); padding: 0.875rem 0;
+  font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-headline-phone); line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-tight); text-transform: uppercase; transition: opacity var(--duration-fast) var(--ease-entrance);
+}
+.menu-panel-nav a:active { opacity: .6; }
+@media (min-width: 640px) { .menu-panel-nav a { gap: 1.5rem; padding: 1.25rem 0; font-size: var(--font-size-headline-tablet); } }
+.menu-panel-nav .idx { font-family: var(--font-mono); font-weight: 400; font-size: var(--font-size-fine); line-height: var(--leading-flush); letter-spacing: var(--tracking-label); color: rgba(var(--fg-rgb),.35); }
+@media (min-width: 640px) { .menu-panel-nav .idx { font-size: var(--font-size-label); } }
+.menu-panel-call { margin-top: auto; display: flex; align-items: center; gap: 0.375rem; padding-top: 2.5rem; font-family: var(--font-mono); font-size: var(--font-size-fine); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+@media (min-width: 640px) { .menu-panel-call { font-size: var(--font-size-base); } }
+.menu-panel-phone { margin-top: 0.75rem; font-family: var(--font-mono); font-size: var(--font-size-label); color: rgba(var(--fg-rgb),.5); letter-spacing: var(--tracking-tight); }
+
+/* ═══════════════ preloader — a cup filling ═══════════════ */
+.preloader {
+  position: fixed; inset: 0; z-index: 100; overflow: hidden; background: var(--background); color: var(--foreground);
+  padding: 1.25rem; clip-path: inset(0% 0 0 0);
+}
+@media (min-width: 640px) { .preloader { padding: 2.5rem; } }
+.preloader .eyebrow { color: rgba(var(--fg-rgb),.45); }
+.pre-count {
+  margin-top: 0.5rem; font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-count-phone);
+  line-height: var(--leading-display); letter-spacing: var(--tracking-tight); font-variant-numeric: tabular-nums;
+}
+@media (min-width: 640px) { .pre-count { margin-top: 0.75rem; font-size: var(--font-size-count-tablet); } }
+@media (min-width: 1024px) { .pre-count { font-size: var(--font-size-count); } }
+.pre-mark { position: absolute; left: 1.25rem; bottom: 1.25rem; display: block; height: var(--size-logo-height); width: var(--size-logo-width); }
+.pre-mark svg { width: 100%; height: 100%; fill: currentColor; }
+@media (min-width: 640px) { .pre-mark { left: 2.5rem; bottom: 2.5rem; } }
+.pre-cup { pointer-events: none; position: absolute; right: 1.25rem; bottom: 1.25rem; height: 34vh; max-height: 30rem; width: auto; }
+@media (min-width: 640px) { .pre-cup { right: 2.5rem; bottom: 2.5rem; height: 52vh; } }
+.pre-steam path { opacity: 0; }
+
+/* ═══════════════ the background: the film, scrubbed by the scroll ═══════════════ */
+.bg-seq { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: var(--background); }
+.bg-seq canvas { display: block; width: 100%; height: 100%; filter: var(--film-filter); transition: filter .6s ease; }
+.bg-seq::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 120% 90% at 60% 55%, transparent 40%, rgba(var(--bg-rgb),.55) 100%); }
+main, .site-footer { position: relative; z-index: 1; }
+
+/* ═══════════════ 1 — hero ═══════════════ */
+.hero { position: relative; height: 100lvh; width: 100%; overflow: hidden; background: transparent; }
+.hero-scrim { pointer-events: none; position: absolute; inset: 0; z-index: 1; background-image: var(--hero-scrim); }
+.hero-content {
+  position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column;
+  padding: 6rem 1.25rem 1.25rem;
+}
+@media (min-width: 640px) { .hero-content { padding: 8rem 2.5rem 2.5rem; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .hero-content { padding-top: 6rem; } }
+@media (min-width: 1024px) { .hero-content { display: block; padding: 0; } }
+.hero-content { pointer-events: none; }
+.hero-copy, .hero-bar { pointer-events: auto; }
+
+.hero-copy { order: 1; position: relative; z-index: 2; display: flex; width: 100%; flex-shrink: 0; flex-direction: column; gap: 1rem; }
+@media (min-width: 640px) { .hero-copy { width: var(--size-hero-copy-tablet); gap: 1.25rem; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .hero-copy { gap: 0.6875rem; } }
+@media (min-width: 1024px) {
+  .hero-copy { position: absolute; left: 2.5rem; top: calc(50% - var(--size-hero-copy-rise)); width: var(--size-hero-copy); transform: translateY(-50%); gap: 1.5rem; }
+}
+.hero-title-grid { display: grid; justify-items: start; }
+.hero-title-col { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; gap: 1.25rem; text-transform: uppercase; }
+@media (min-width: 640px) { .hero-title-col { gap: 1rem; } }
+@media (min-width: 1024px) { .hero-title-col { gap: 1.25rem; } }
+.hero-h1 {
+  font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-display-hero-phone);
+  line-height: var(--leading-display); letter-spacing: var(--tracking-tight); text-transform: uppercase; text-align: left;
+}
+@media (min-width: 640px) { .hero-h1 { font-size: var(--font-size-display-hero-tablet); } }
+@media (min-width: 1024px) { .hero-h1 { font-size: var(--font-size-display); } }
+/* "смыслом" — the script word lives in the headline's last line, so it can never be left behind */
+.te-script, .te-w-script { font-family: var(--font-script); font-weight: 400; font-size: 1.12em; letter-spacing: 0; text-transform: none; }
+@media (min-width: 1024px) { .te-script, .te-w-script { font-size: 0.95em; } }
+.te-script { display: inline-block; margin-left: 0.16em; line-height: 1; color: var(--script); text-shadow: 0 0.06em 0.4em rgba(var(--bg-rgb), .45); clip-path: inset(-20% 100% -40% -4%); }
+.te-open .te-line { overflow: visible; }
+.hero-lede-wrap { display: flex; width: 100%; flex-direction: column; gap: 1.5rem; }
+@media (max-width: 639.98px) { .hero-lede-wrap { width: 17rem; gap: 2.25rem; } }
+@media (min-width: 640px) { .hero-lede-wrap { width: 20rem; gap: 2rem; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .hero-lede-wrap { gap: 2.375rem; } }
+@media (min-width: 1024px) { .hero-lede-wrap { width: 17.5rem; gap: 2.5rem; } }
+
+.hero-bar {
+  order: 3; position: relative; z-index: 10; display: flex; flex-shrink: 0; align-items: center; gap: 1rem; padding-top: 1rem; margin-top: auto;
+  font-family: var(--font-mono); font-size: var(--font-size-label); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase;
+}
+@media (min-width: 640px) { .hero-bar { gap: 1.5rem; padding-top: 1.5rem; font-size: var(--font-size-base); } }
+@media (min-width: 1024px) { .hero-bar { position: absolute; bottom: 2.5rem; left: 2.5rem; padding-top: 0; margin-top: 0; gap: 2rem; } }
+.hero-bar-scrim { pointer-events: none; position: absolute; left: -2.5rem; right: -2.5rem; bottom: -2.5rem; top: -4rem; z-index: -1; display: block; background: linear-gradient(to top, rgba(var(--bg-rgb),.95), rgba(var(--bg-rgb),.75) 55%, transparent); }
+@media (min-width: 1024px) { .hero-bar-scrim { display: none; } }
+.hero-bar > p, .hero-bar > address, .hero-bar > ul { width: max-content; }
+@media (min-width: 1024px) { .hero-hours { width: var(--size-hours) !important; } .hero-address { width: var(--size-hero-address) !important; } .hero-social { width: var(--size-hero-social) !important; } }
+.hero-bar .vrule { display: block; height: var(--size-hero-rule); width: 1px; flex-shrink: 0; background: rgba(var(--fg-rgb),.35); }
+.hero-social { display: none; flex-direction: column; }
+@media (min-width: 640px) { .hero-social { display: flex; } .hero-bar .vrule.v2 { display: block; } }
+@media (max-width: 639.98px) { .hero-bar .vrule.v2 { display: none; } }
+
+/* the handles: the cup and the steam of the film behind, placed by the engine */
+.hero-handle { position: absolute; z-index: 3; display: none; pointer-events: auto; cursor: help; }
+@media (min-width: 1024px) { .hero-handle { display: block; } }
+.hero-mobile-scrim { pointer-events: none; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(var(--bg-rgb),.78) 0%, rgba(var(--bg-rgb),.5) 42%, rgba(var(--bg-rgb),.2) 66%, rgba(var(--bg-rgb),.62) 100%); }
+@media (min-width: 768px) { .hero-mobile-scrim { background: linear-gradient(to right, rgba(var(--bg-rgb),.85) 0%, rgba(var(--bg-rgb),.5) 45%, transparent 70%); } }
+@media (min-width: 1024px) { .hero-mobile-scrim { display: none; } }
+
+.hero-card { pointer-events: none; position: absolute; right: 2.5rem; top: 13%; z-index: 12; display: none; width: max-content; opacity: 0; }
+@media (min-width: 1024px) { .hero-card { display: block; } }
+.hero-card-box { border: 1px solid rgba(var(--fg-rgb),.2); background: rgba(var(--bg-rgb),.7); padding: 1rem 1.25rem; color: var(--foreground); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.hero-card-box .eyebrow { font-size: var(--font-size-fine); color: rgba(var(--fg-rgb),.45); }
+.hero-card-row { margin-top: 0.75rem; display: flex; align-items: baseline; justify-content: space-between; gap: 2.5rem; }
+.hero-card-title { font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-headline-phone); line-height: var(--leading-headline); letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+.hero-card-price { font-family: var(--font-mono); font-size: var(--font-size-base); line-height: var(--leading-flush); font-variant-numeric: tabular-nums; }
+.hero-card-meta { margin-top: 0.75rem; display: flex; align-items: center; gap: 0.625rem; border-top: 1px solid rgba(var(--fg-rgb),.15); padding-top: 0.75rem; font-family: var(--font-mono); font-size: var(--font-size-fine); line-height: var(--leading-flush); letter-spacing: var(--tracking-label); text-transform: uppercase; color: rgba(var(--fg-rgb),.55); }
+.hero-card-meta li { display: flex; align-items: center; gap: 0.625rem; }
+.hero-card-meta .d { display: block; width: 3px; height: 3px; border-radius: 9999px; background: rgba(var(--fg-rgb),.3); }
+
+/* the award seal */
+.seal { position: relative; display: block; width: 8.5rem; height: 8.5rem; flex: none; }
+.seal svg { position: absolute; inset: 0; width: 100%; height: 100%; will-change: transform; }
+.seal text { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.26em; text-transform: uppercase; fill: currentColor; }
+.seal-center { position: absolute; inset: 22%; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid currentColor; text-align: center; }
+.seal-center b { font-family: var(--font-geist); font-weight: 700; font-size: 1.75rem; line-height: 0.9; letter-spacing: var(--tracking-tight); }
+.seal-center small { margin-top: 0.3rem; font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: .7; }
+.hero-seal { position: absolute; right: 2.5rem; bottom: 2.5rem; z-index: 12; display: none; color: rgba(var(--fg-rgb),.85); opacity: 0; }
+@media (min-width: 1024px) { .hero-seal { display: block; } }
+
+/* ═══════════════ swirl fill — behind the light blocks ═══════════════ */
+.swirl { pointer-events: none; position: absolute; inset: 0; overflow: hidden; }
+.swirl[data-fade-top] { -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%); mask-image: linear-gradient(to bottom, transparent, #000 22%); }
+.swirl-par { position: absolute; left: var(--size-swirl-x); top: var(--size-swirl-y); width: var(--size-swirl-width); height: var(--size-swirl-height); will-change: transform; }
+@media (max-width: 1023.98px) { .swirl-par { left: -40rem; top: 8rem; } }
+.swirl-shape { position: absolute; inset: 0; display: block; -webkit-mask: var(--swirl-mask) center / 100% 100% no-repeat; mask: var(--swirl-mask) center / 100% 100% no-repeat; }
+.swirl-fill { position: absolute; inset: 0; display: block; background: rgba(var(--fg-rgb), .06); --fill: 0; }
+
+/* the former light blocks are frosted glass over the film */
+.frost { background: rgba(var(--bg-rgb), var(--frost-m)); color: var(--foreground); }
+@media (min-width: 1024px) { .frost { background: rgba(var(--bg-rgb), var(--frost)); -webkit-backdrop-filter: blur(18px) saturate(1.08); backdrop-filter: blur(18px) saturate(1.08); } }
+
+/* ═══════════════ 3 — menu ═══════════════ */
+.menu { position: relative; display: flex; flex-direction: column; width: 100%; overflow: hidden; }
+@media (min-width: 1024px) { .menu { min-height: 100lvh; height: max(100lvh, var(--size-board-height)); } }
+@media (min-width: 1024px) and (max-width: 1279.98px) { .menu { height: calc(var(--size-board-height) + 2.5rem); min-height: 0; } }
+.menu-content {
+  position: relative; z-index: 10; display: flex; flex: 1; flex-direction: column; justify-content: center; gap: 2.25rem;
+  padding: 5rem 1.25rem 3.5rem;
+}
+@media (min-width: 640px) { .menu-content { gap: 2.5rem; padding: 6rem 2.5rem 4rem; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .menu-content { display: grid; grid-template-columns: 1fr 1fr; align-items: end; column-gap: 2.5rem; row-gap: 1.25rem; } }
+@media (min-width: 1024px) { .menu-content { display: block; padding: 0; } }
+@media (min-width: 1440px) { .menu-content { top: var(--size-board-drop); } }
+.menu-intro { display: flex; width: 100%; flex-direction: column; gap: 1.25rem; text-transform: uppercase; }
+@media (min-width: 640px) and (max-width: 1023.98px) { .menu-intro { display: contents; } .menu-intro .eyebrow, .menu-h2 { grid-column: span 2; } }
+@media (min-width: 1024px) { .menu-intro { position: absolute; left: 2.5rem; top: var(--size-menu-intro-y); width: var(--size-menu-intro); } }
+.menu-h2 { font-size: var(--font-size-display-phone); max-width: 18rem; }
+@media (min-width: 640px) { .menu-h2 { font-size: var(--font-size-display-tablet); max-width: 30rem; } }
+@media (min-width: 1024px) { .menu-h2 { font-size: var(--font-size-display); max-width: none; } }
+.menu-lede-wrap { width: 100%; max-width: 18.5rem; }
+@media (min-width: 640px) { .menu-lede-wrap { max-width: 20rem; } }
+@media (min-width: 1024px) { .menu-lede-wrap { position: absolute; left: var(--size-menu-lede-x); top: var(--size-menu-lede-y); width: var(--size-menu-lede); } }
+.menu-cta-wrap { display: block; }
+@media (min-width: 640px) and (max-width: 1023.98px) { .menu-cta-wrap { justify-self: end; } }
+@media (min-width: 1024px) { .menu-cta-wrap { position: absolute; right: 2.5rem; top: var(--size-menu-cta-y); } }
+
+.menu-receipt { pointer-events: none; position: absolute; left: var(--size-menu-receipt-x); top: var(--size-menu-receipt-y); display: none; width: var(--size-menu-receipt-width); height: var(--size-menu-receipt-height); opacity: 0; transform: translate(150px, 150px); z-index: 1; }
+@media (min-width: 1024px) { .menu-receipt { display: block; } }
+.menu-receipt-rot { display: block; width: 100%; height: 100%; rotate: var(--angle-menu-receipt); filter: drop-shadow(0 18px 24px rgba(0,0,0,.18)); }
+.mr-paper { width: 100%; height: 100%; display: flex; flex-direction: column; color: #111; font-family: var(--font-mono); }
+.mr-body { flex: 1; background: #f7f5ef; padding: 1.6rem 1.15rem 0.8rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.mr-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-align: center; }
+.mr-sub { font-size: 0.5rem; letter-spacing: 0.1em; text-align: center; color: #5b5b58; }
+.mr-rule { height: 1px; background-image: repeating-linear-gradient(90deg, #111 0 5px, transparent 5px 10px); }
+.mr-cat { margin-top: 0.3rem; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; }
+.mr-line { display: flex; align-items: baseline; gap: 0.3rem; font-size: 0.56rem; line-height: 1.5; letter-spacing: 0.02em; text-transform: uppercase; }
+.mr-line .dots { flex: 1; border-bottom: 1px dotted rgba(17,17,17,.45); transform: translateY(-0.18rem); }
+.mr-total { display: flex; justify-content: space-between; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; }
+.mr-bars { height: 1.7rem; background: repeating-linear-gradient(90deg, #111 0 1px, transparent 1px 3px, #111 3px 5px, transparent 5px 6px, #111 6px 7px, transparent 7px 10px); }
+.mr-edge { display: block; width: 100%; height: 9px; }
+
+.menu-cards { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+@media (min-width: 640px) { .menu-cards { grid-template-columns: 1fr 1fr; gap: 1rem; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .menu-cards { grid-column: span 2; margin-top: 2.75rem; } }
+@media (min-width: 1024px) { .menu-cards { position: absolute; left: 2.5rem; right: 2.5rem; bottom: 2.5rem; display: flex; gap: 0.75rem; } }
+@media (min-width: 1440px) { .menu-cards { bottom: auto; top: var(--size-menu-cards-y); } }
+.menu-cards > li { display: flex; flex: 1; }
+.card {
+  position: relative; display: flex; flex: 1; flex-direction: column; align-items: center; gap: 0.75rem; height: 22.5rem;
+  border: 1px solid rgba(var(--fg-rgb),.7); padding: 0.75rem; color: var(--foreground); background: rgba(var(--card-rgb), .55);
+}
+@media (min-width: 640px) { .card { height: 18rem; gap: 1rem; padding: 1rem; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .card { height: 24rem; } }
+@media (min-width: 1024px) { .card { height: var(--size-menu-card-height); } }
+.card-idx { height: var(--size-cap-12); width: 100%; font-family: var(--font-mono); font-size: 0.75rem; line-height: var(--leading-flush); text-transform: uppercase; color: rgba(var(--fg-rgb),.4); transition: color var(--duration-normal) var(--ease-entrance); }
+.card:hover .card-idx { color: var(--foreground); }
+.card-media { position: relative; min-height: 1px; width: 100%; flex: 1; overflow: hidden; background: #1a1714; }
+.card-still { position: absolute; inset: -11px 0 0 0; display: block; will-change: transform; }
+.card-still img { position: absolute; inset: 0; width: 100%; height: calc(100% + 11px); object-fit: cover; transition: transform 700ms var(--ease-entrance), filter 700ms var(--ease-entrance); filter: saturate(0.92); }
+.card:hover .card-still img { transform: scale(1.045); filter: saturate(1.05); }
+.card-row { display: flex; min-height: var(--size-cap-16); width: 100%; align-items: flex-start; justify-content: space-between; gap: 0.5rem; font-family: var(--font-mono); font-size: var(--font-size-label); line-height: var(--leading-flush); text-transform: uppercase; }
+@media (max-width: 639.98px) { .card-row { align-items: baseline; } }
+@media (min-width: 1024px) { .card-row { font-size: var(--font-size-base); } }
+.card-name { clip-path: inset(0 100% -30% 0); }
+
+/* ═══════════════ gallery — a 35 mm strip (after 21st.dev · n1m4mz/filmstrip-gallery) ═══════════════ */
+.gallery {
+  position: relative; display: flex; width: 100%; flex-direction: column; justify-content: center; gap: 2.5rem; overflow: hidden;
+  background: linear-gradient(to bottom, rgba(var(--bg-rgb),.35), rgba(var(--bg-rgb),.55) 50%, rgba(var(--bg-rgb),.35)); color: var(--foreground); padding: 5rem 0 3.5rem;
+  background-color: rgba(var(--bg-rgb), var(--veil));
+}
+@media (min-width: 640px) { .gallery { padding: 6rem 0 4rem; gap: 3rem; } }
+@media (min-width: 1024px) { .gallery { min-height: 100lvh; padding: calc(6.625rem + var(--size-board-drop) * 0.5) 0 3rem; gap: 3.25rem; } }
+.gallery-head { position: relative; display: grid; grid-template-columns: 1fr; align-items: end; gap: 1.25rem; padding: 0 1.25rem; }
+@media (min-width: 640px) { .gallery-head { padding: 0 2.5rem; } }
+@media (min-width: 1024px) { .gallery-head { grid-template-columns: 1fr var(--size-philosophy-lede); column-gap: 2.5rem; } }
+.gallery-head .eyebrow { color: rgba(var(--fg-rgb),.55); }
+@media (min-width: 1024px) { .gallery-head .eyebrow { grid-column: 1 / -1; } }
+.gallery-head h2 { max-width: 46rem; }
+.gallery-sub { font-family: var(--font-mono); font-size: var(--font-size-label); line-height: 1.35; letter-spacing: var(--tracking-tight); text-transform: uppercase; color: rgba(var(--fg-rgb),.55); max-width: 22rem; }
+@media (min-width: 1024px) { .gallery-sub { justify-self: end; text-align: right; } }
+
+.fs { --fs-strip: #2f2a25; --fs-ink: #e8d9a6; --fs-w: min(24rem, 74vw); position: relative; width: 100%; }
+.fs-strip { position: relative; width: 100%; overflow: hidden; background: var(--fs-strip); }
+.fs-perf { display: block; width: 100%; height: 16px; }
+.fs-hole { fill: var(--bg); }
+.fs-perf.t { margin-top: 4px; }
+.fs-perf.b { margin-bottom: 4px; }
+.fs-track {
+  display: flex; gap: 8px; overflow-x: auto; overscroll-behavior-x: contain; padding: 4px 50%; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch; outline: none;
+}
+.fs-track::-webkit-scrollbar { display: none; }
+.fs-track.is-drag { scroll-snap-type: none; cursor: grabbing; }
+.fs-track.is-drag * { pointer-events: none; }
+.fs-frame { position: relative; flex: none; width: var(--fs-w); scroll-snap-align: center; }
+.fs-edge { display: flex; height: 12px; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0 2px; font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fs-ink); opacity: .7; }
+.fs-edge span:nth-child(2) { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.fs-btn { position: relative; display: block; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 3px; cursor: pointer; background: #1d1a17; opacity: .85; transition: opacity 200ms ease-out; }
+.fs-btn:hover, .fs-frame.is-gate .fs-btn { opacity: 1; }
+.fs-btn img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(.97); transition: filter 520ms cubic-bezier(.22,1,.36,1), transform 520ms cubic-bezier(.22,1,.36,1); user-select: none; -webkit-user-drag: none; }
+.fs-frame.is-gate .fs-btn img { transform: scale(1); }
+.fs-gate { pointer-events: none; position: absolute; inset: 0; border-radius: 3px; box-shadow: inset 0 0 0 2px var(--fs-ink); opacity: 0; transition: opacity 300ms ease-out; }
+.fs-frame.is-gate .fs-gate { opacity: .7; }
+.fs-tail { display: block; height: 12px; }
+.fs-mark { pointer-events: none; position: absolute; left: 50%; width: 1px; height: 6px; background: var(--fs-ink); transform: translateX(-50%); }
+.fs-mark.t { top: 0; } .fs-mark.b { bottom: 0; }
+.fs-bar { margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 1.25rem; }
+@media (min-width: 640px) { .fs-bar { padding: 0 2.5rem; margin-top: 1.25rem; } }
+.fs-caption { min-width: 0; font-family: var(--font-mono); font-size: var(--font-size-label); line-height: 1.35; letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+@media (min-width: 640px) { .fs-caption { font-size: var(--font-size-base); } }
+.fs-caption .n { margin-left: 0.75rem; color: rgba(var(--fg-rgb),.45); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fs-ctrls { display: flex; flex: none; align-items: center; gap: 0.375rem; }
+.fs-ctrl { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid rgba(var(--fg-rgb),.22); border-radius: 0.375rem; color: var(--foreground); transition: background var(--duration-fast) var(--ease-entrance), opacity var(--duration-fast); }
+.fs-ctrl:hover { background: rgba(var(--fg-rgb),.1); }
+.fs-ctrl[disabled] { opacity: .35; pointer-events: none; }
+.fs-ctrl svg { width: 1rem; height: 1rem; }
+.fs-print { margin: auto; max-height: 100dvh; max-width: 100vw; border: 0; background: transparent; padding: 1rem; color: var(--foreground); overflow: visible; }
+@media (min-width: 640px) { .fs-print { padding: 2rem; } }
+.fs-print::backdrop { background: rgba(var(--bg-rgb),.92); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.fs-print-in { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.fs-print-pic { position: relative; }
+.fs-print-pic img { display: block; max-height: 78dvh; max-width: min(100%, 92vw); border-radius: 2px; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,.6); background: #1d1a17; }
+.fs-print-paper { pointer-events: none; position: absolute; inset: 0; border-radius: 2px; background: #F2F0EA; opacity: 0; }
+.fs-print-bar { display: flex; width: 100%; max-width: 48rem; align-items: center; justify-content: space-between; gap: 1rem; }
+
+/* ═══════════════ 4 — locations (the clock face) ═══════════════ */
+.locations { position: relative; display: flex; flex-direction: column; width: 100%; overflow: hidden; }
+@media (min-width: 1024px) { .locations { min-height: 100lvh; height: max(100lvh, var(--size-board-height)); } }
+@media (min-width: 1024px) and (max-width: 1279.98px) { .locations { height: var(--size-board-height); min-height: 0; } }
+.loc-content {
+  position: relative; z-index: 10; display: grid; grid-template-columns: 1fr 1fr; align-items: start; flex: 1; gap: 2.5rem 1.25rem;
+  padding: 5rem 1.25rem 3.5rem;
+}
+@media (min-width: 640px) { .loc-content { gap: 2.5rem; padding: 6rem 2.5rem 2.5rem; } }
+@media (min-width: 1024px) { .loc-content { display: block; padding: 0; } }
+@media (min-width: 1440px) { .loc-content { top: var(--size-board-drop); } }
+.loc-range, .loc-turn { pointer-events: none; position: absolute; left: 0; right: 0; }
+.loc-range { top: 0; bottom: 0; }
+.loc-turn { top: -20%; height: 100%; }
+.loc-dialbox { position: relative; margin: 0 auto; aspect-ratio: 1; width: 100%; max-width: 20rem; order: 3; grid-column: span 2; }
+@media (min-width: 640px) { .loc-dialbox { max-width: 34rem; } }
+@media (min-width: 1024px) { .loc-dialbox { display: contents; } }
+.loc-dial { pointer-events: none; position: absolute; inset: 0; opacity: 0; }
+@media (min-width: 1024px) { .loc-dial { inset: auto; left: 50%; top: var(--size-locations-dial-y); width: var(--size-locations-dial); height: var(--size-locations-dial); transform: translateX(-50%); } }
+.dial-par { display: block; width: 100%; height: 100%; will-change: transform; }
+.dial-svg { width: 100%; height: 100%; overflow: visible; }
+.dial-svg .tick { stroke: rgba(var(--fg-rgb),.35); }
+.dial-svg .tick.major { stroke: var(--fg); }
+.dial-svg .num { font-family: var(--font-mono); font-size: 13px; fill: var(--fg); letter-spacing: 0; }
+.dial-svg .arc-open { stroke: var(--fg); }
+.dial-svg .ring { fill: rgba(var(--bg-rgb), .28); stroke: rgba(var(--fg-rgb), .3); }
+.dial-svg .ring-in { stroke: rgba(var(--fg-rgb), .14); }
+.dial-svg .now { fill: var(--accent); stroke: var(--bg); }
+.dial-svg .arc-lbl { font-family: var(--font-mono); font-size: 10.5px; fill: rgba(var(--fg-rgb),.6); letter-spacing: 0.06em; }
+.loc-cup { pointer-events: none; position: absolute; left: 50%; top: 50%; width: 43%; aspect-ratio: 1; transform: translate(-50%, -50%); perspective: 900px; }
+@media (min-width: 1024px) {
+  .loc-cup { top: calc(var(--size-locations-dial-y) + var(--size-locations-dial) / 2 - var(--size-locations-cup) / 2); width: var(--size-locations-cup); height: var(--size-locations-cup); transform: translateX(-50%); }
+}
+.loc-cup-lean { width: 100%; height: 100%; transform-style: preserve-3d; will-change: transform; }
+.loc-cup-par, .loc-cup-turn { display: block; width: 100%; height: 100%; will-change: transform; }
+.loc-cup-turn { position: relative; }
+.loc-cup .dish { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; filter: drop-shadow(0 22px 30px rgba(0,0,0,.55)); }
+/* the clock: two rings of hours, each hour a dish; hands on top, always Moscow time */
+.dial-seg { fill: none; opacity: .5; cursor: pointer; pointer-events: visibleStroke; transition: opacity var(--duration-fast) var(--ease-entrance), stroke-width var(--duration-fast) var(--ease-entrance); }
+.dial-seg.is-now { opacity: .95; }
+.dial-seg.is-hot { opacity: 1; stroke-width: 24; }
+.loc-hands { pointer-events: none; position: absolute; inset: 0; z-index: 2; }
+@media (min-width: 1024px) { .loc-hands { inset: auto; left: 50%; top: var(--size-locations-dial-y); width: var(--size-locations-dial); height: var(--size-locations-dial); transform: translateX(-50%); } }
+.dial-hands { width: 100%; height: 100%; overflow: visible; }
+.dial-hands line { stroke-linecap: round; }
+.dial-hands .hh { stroke: var(--fg); stroke-width: 9; }
+.dial-hands .mh { stroke: var(--fg); stroke-width: 5; }
+.dial-hands .sh { stroke: var(--accent); stroke-width: 2; }
+.dial-hands .cap { fill: var(--fg); stroke: var(--accent); stroke-width: 3; }
+.dial-hands .hands-shadow { filter: drop-shadow(0 3px 6px rgba(0,0,0,.45)); }
+.dial-info { order: 4; grid-column: span 2; display: flex; flex-direction: column; gap: 0.4rem; font-family: var(--font-mono); font-size: var(--font-size-label); line-height: 1.3; letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+@media (min-width: 1024px) { .dial-info { position: absolute; right: 2.5rem; top: var(--size-locations-dial-y); width: 17rem; align-items: flex-end; text-align: right; } }
+.dial-now { display: flex; align-items: center; gap: 0.4rem; color: rgba(var(--fg-rgb), .6); }
+.dial-meal { margin-top: 0.6rem; color: rgba(var(--fg-rgb), .6); }
+.dial-dish { font-family: var(--font-geist); font-weight: 700; font-size: 1.5rem; line-height: 1; letter-spacing: var(--tracking-tight); }
+.dial-meta { color: rgba(var(--fg-rgb), .75); }
+.dial-legend { margin-top: 0.9rem; display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.6875rem; color: rgba(var(--fg-rgb), .55); }
+@media (min-width: 1024px) { .dial-legend { align-items: flex-end; } }
+.dial-legend li { display: flex; align-items: center; gap: 0.45rem; }
+.dial-legend i { display: inline-block; width: 0.7rem; height: 0.25rem; border-radius: 1px; background: var(--c); }
+.dial-hint { margin-top: 0.4rem; font-size: 0.6875rem; color: rgba(var(--fg-rgb), .45); }
+.loc-eyebrow { order: 1; grid-column: 1; display: flex; align-items: center; gap: 0.375rem; font-family: var(--font-mono); font-size: var(--font-size-label); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; clip-path: inset(0 100% 0 0); }
+@media (min-width: 640px) { .loc-eyebrow { font-size: var(--font-size-base); } }
+@media (min-width: 1024px) { .loc-eyebrow { position: absolute; left: 2.5rem; top: var(--size-locations-dial-y); } }
+.loc-list { order: 4; grid-column: span 2; display: grid; grid-template-columns: 1fr; gap: 1.25rem; font-family: var(--font-mono); font-size: var(--font-size-base); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+@media (min-width: 640px) { .loc-list { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .loc-list { position: absolute; left: 2.5rem; bottom: 2.4375rem; width: var(--size-locations-list); display: flex; flex-direction: column; gap: 1.5rem; } }
+@media (min-width: 1440px) { .loc-list { bottom: auto; top: var(--size-locations-list-y); } }
+.loc-list li { clip-path: inset(0 100% 0 0); }
+.loc-list .sub { display: block; color: rgba(var(--fg-rgb),.5); }
+.loc-list a { transition: opacity var(--duration-fast) var(--ease-entrance); }
+.loc-list a:hover { opacity: .6; }
+.loc-hours { order: 2; grid-column: 2; justify-self: end; text-align: right; font-family: var(--font-mono); font-size: var(--font-size-base); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; clip-path: inset(0 100% 0 0); }
+@media (min-width: 1024px) { .loc-hours { position: absolute; right: 2.5rem; bottom: 1.5rem; width: 12rem; } }
+@media (min-width: 1440px) { .loc-hours { bottom: auto; top: var(--size-locations-hours-y); } }
+.loc-hours .status { display: block; margin-top: 0.5rem; color: rgba(var(--fg-rgb),.55); font-size: var(--font-size-label); }
+.loc-cta { order: 5; grid-column: span 2; }
+@media (min-width: 1024px) { .loc-cta { position: absolute; right: 2.5rem; top: var(--size-menu-cta-y); } }
+
+/* ═══════════════ 5 — philosophy ═══════════════ */
+.story { position: relative; display: flex; flex-direction: column; width: 100%; overflow: hidden; background: rgba(var(--bg-rgb), var(--veil)); color: var(--foreground); }
+@media (min-width: 1024px) { .story { min-height: 100lvh; height: max(100lvh, var(--size-board-height)); } }
+@media (min-width: 1024px) and (max-width: 1279.98px) { .story { height: var(--size-board-height); min-height: 0; } }
+.story-scrim { pointer-events: none; position: absolute; inset: 0; z-index: 1; background-image: var(--philosophy-scrim); }
+.story-video { pointer-events: none; position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity .6s linear; }
+.story-video.is-on { opacity: 1; }
+.story-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.story-content {
+  position: relative; z-index: 10; display: flex; flex: 1; flex-direction: column; justify-content: center; gap: 1.25rem;
+  padding: 5rem 1.25rem 3.5rem;
+}
+@media (min-width: 640px) { .story-content { gap: 2.5rem; padding: 6rem 2.5rem 4rem; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .story-content { display: grid; grid-template-columns: 21rem 1fr; align-content: center; align-items: end; column-gap: 1.25rem; } }
+@media (min-width: 1024px) { .story-content { position: absolute; inset: 0; display: block; padding: 0; } }
+@media (min-width: 1440px) { .story-content { bottom: 0; top: var(--size-board-drop); } }
+.story-cup { pointer-events: none; order: 2; margin: 1.25rem auto -0.75rem; aspect-ratio: 2 / 3; width: 16rem; }
+@media (min-width: 640px) { .story-cup { width: 16rem; margin-bottom: 0; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .story-cup { grid-column: span 2; width: 22rem; } }
+@media (min-width: 1024px) {
+  .story-cup { position: absolute; order: 0; margin: 0; left: var(--size-philosophy-cup-x); top: var(--size-philosophy-cup-y); width: var(--size-philosophy-cup-width); height: var(--size-philosophy-cup-height); }
+}
+@media (min-width: 1280px) and (max-width: 1439.98px) {
+  .story-cup { top: auto; bottom: 0.3125rem; width: calc(var(--size-philosophy-cup-width) * 1.09); height: calc(var(--size-philosophy-cup-height) * 1.09); }
+}
+.story-h2-wrap { order: 1; width: 100%; }
+@media (min-width: 640px) and (max-width: 1023.98px) { .story-h2-wrap { grid-column: span 2; max-width: 38rem; } }
+@media (min-width: 1024px) { .story-h2-wrap { position: absolute; left: 2.5rem; top: var(--size-philosophy-headline-y); width: var(--size-philosophy-headline); } }
+/* the coffee: beans and the roast */
+.story-coffee { order: 2; display: flex; width: 100%; flex-direction: column; gap: 1.5rem; }
+@media (min-width: 640px) and (max-width: 1023.98px) { .story-coffee { grid-column: span 2; max-width: 36rem; } }
+@media (min-width: 1024px) { .story-coffee { position: absolute; left: 2.5rem; top: 18rem; width: 34rem; gap: 1.6rem; } }
+.roast { position: relative; padding: 1.5rem 0 3.4rem; }
+.roast-scale { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: var(--tracking-label); text-transform: uppercase; color: rgba(var(--fg-rgb), .5); }
+.roast-bar { position: relative; height: 0.625rem; overflow: hidden; background: rgba(var(--fg-rgb), .1); }
+.roast-fill { position: absolute; inset: 0; display: block; background: linear-gradient(to right, #dcb68b 0%, #b07a45 34%, #6e3e22 66%, #2a1a0f 100%); transform-origin: left center; }
+.roast-mark { position: absolute; left: var(--at); top: 1.15rem; display: flex; flex-direction: column; gap: 0.3rem; padding-top: 1.55rem; }
+.roast-mark::before { content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 1.3rem; background: var(--fg); }
+.roast-mark::after { content: ""; position: absolute; left: -3px; top: 0.3rem; width: 7px; height: 7px; border-radius: 9999px; background: var(--fg); box-shadow: 0 0 0 3px rgba(var(--bg-rgb), .6); }
+.roast-mark b { font-family: var(--font-geist); font-weight: 700; font-size: 0.9375rem; line-height: 1; letter-spacing: var(--tracking-tight); text-transform: uppercase; white-space: nowrap; }
+.roast-mark small { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(var(--fg-rgb), .62); white-space: nowrap; }
+.story-perks { display: grid; gap: 0.9rem; }
+.story-perks li { display: grid; grid-template-columns: 2.25rem 1fr; column-gap: 0.75rem; row-gap: 0.3rem; border-top: 1px solid rgba(var(--fg-rgb), .14); padding-top: 0.85rem; }
+.story-perks .n { grid-row: span 2; padding-top: 0.15rem; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: var(--tracking-label); color: rgba(var(--fg-rgb), .45); }
+.story-perks b { font-family: var(--font-geist); font-weight: 700; font-size: 1rem; line-height: 1.1; letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+.story-perks li > span:last-child { font-family: var(--font-sans); font-size: 0.9375rem; line-height: 1.45; color: rgba(var(--fg-rgb), .72); }
+.story-lede-wrap { order: 3; width: 100%; }
+@media (min-width: 1024px) { .story-lede-wrap { position: absolute; left: var(--size-philosophy-lede-x); bottom: 2.4375rem; width: var(--size-philosophy-lede); } }
+@media (min-width: 1280px) and (max-width: 1439.98px) { .story-lede-wrap { bottom: 2.5625rem; } }
+@media (min-width: 1440px) { .story-lede-wrap { bottom: auto; top: var(--size-philosophy-lede-y); } }
+.story-claims { order: 4; display: none; flex-direction: column; gap: 0.125rem; font-family: var(--font-mono); font-size: var(--font-size-label); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+@media (min-width: 640px) { .story-claims { display: flex; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .story-claims { justify-self: end; text-align: right; } }
+@media (min-width: 1024px) { .story-claims { position: absolute; right: 2.5rem; bottom: 2.5625rem; width: var(--size-philosophy-claims); text-align: right; } }
+@media (min-width: 1440px) { .story-claims { bottom: auto; top: var(--size-philosophy-claims-y); } }
+.story-claims li { clip-path: inset(0 100% 0 0); }
+.story-eyebrow { order: 0; }
+@media (min-width: 640px) and (max-width: 1023.98px) { .story-eyebrow { grid-column: span 2; } }
+@media (min-width: 1024px) { .story-eyebrow { position: absolute; left: 2.5rem; bottom: 1.875rem; } }
+@media (min-width: 1280px) and (max-width: 1439.98px) { .story-eyebrow { bottom: 2.5625rem; } }
+@media (min-width: 1440px) { .story-eyebrow { bottom: auto; top: var(--size-philosophy-eyebrow-y); } }
+
+/* ═══════════════ reviews ═══════════════ */
+.reviews { position: relative; width: 100%; overflow: hidden; }
+@media (min-width: 1024px) { .reviews { min-height: 100lvh; } }
+.rev-content { position: relative; z-index: 10; display: flex; flex-direction: column; gap: 2.5rem; padding: 5rem 0 3.5rem; }
+@media (min-width: 640px) { .rev-content { padding: 6rem 0 4rem; gap: 3rem; } }
+@media (min-width: 1024px) { .rev-content { display: grid; grid-template-columns: 1fr auto; column-gap: 2.5rem; row-gap: 3.25rem; padding: calc(6.625rem + var(--size-board-drop)) 0 2.5rem; } }
+.rev-intro { display: flex; flex-direction: column; gap: 1.25rem; padding: 0 1.25rem; }
+@media (min-width: 640px) { .rev-intro { padding: 0 2.5rem; } }
+@media (min-width: 1024px) { .rev-intro { padding: 0 0 0 2.5rem; max-width: 50rem; } }
+.rev-h2 { max-width: 44rem; }
+.rev-by { font-family: var(--font-mono); font-size: var(--font-size-label); letter-spacing: var(--tracking-tight); text-transform: uppercase; color: rgba(var(--fg-rgb),.5); }
+.rev-side { display: flex; align-items: center; gap: 1.5rem; padding: 0 1.25rem; }
+@media (min-width: 640px) { .rev-side { padding: 0 2.5rem; gap: 2.5rem; } }
+@media (min-width: 1024px) { .rev-side { padding: 0 2.5rem 0 0; align-self: start; } }
+.rev-score-num { display: flex; align-items: baseline; gap: 0.35rem; font-family: var(--font-geist); font-weight: 700; font-size: var(--font-size-count-phone); line-height: 0.8; letter-spacing: var(--tracking-tight); }
+@media (min-width: 640px) { .rev-score-num { font-size: 7rem; } }
+@media (min-width: 1024px) { .rev-score-num { font-size: 8.5rem; } }
+.rev-score-num .of { font-size: 0.26em; color: rgba(var(--fg-rgb),.4); }
+.rev-stars { margin-top: 0.9rem; display: flex; gap: 0.2rem; }
+.rev-stars svg { width: 1rem; height: 1rem; fill: var(--accent); }
+.rev-meta { margin-top: 0.6rem; font-family: var(--font-mono); font-size: var(--font-size-label); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; color: rgba(var(--fg-rgb),.55); }
+.rev-award { color: var(--foreground); }
+.rev-award .seal { width: 9.5rem; height: 9.5rem; }
+@media (max-width: 639.98px) { .rev-award .seal { width: 7.5rem; height: 7.5rem; } }
+.rev-aspects { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr; gap: 1rem; padding: 0 1.25rem; }
+@media (min-width: 640px) { .rev-aspects { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 2.5rem; } }
+@media (min-width: 1024px) { .rev-aspects { grid-template-columns: repeat(4, 1fr); gap: 2.5rem; } }
+.rev-aspect { display: flex; flex-direction: column; gap: 0.625rem; font-family: var(--font-mono); font-size: var(--font-size-label); letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+.rev-aspect .row { display: flex; justify-content: space-between; gap: 1rem; }
+.rev-aspect .bar { position: relative; height: 2px; background: rgba(var(--fg-rgb),.14); }
+.rev-aspect .bar span { position: absolute; left: 0; top: 0; bottom: 0; right: 0; background: var(--foreground); transform-origin: left center; transform: scaleX(0); }
+.rev-aspect.note { color: rgba(var(--fg-rgb),.5); justify-content: flex-end; }
+/* stagger testimonials (after 21st.dev · vaib215/stagger-testimonials) */
+.rev-slider { grid-column: 1 / -1; position: relative; }
+.st { --st: 18.125rem; position: relative; width: 100%; height: 33rem; overflow: hidden; outline: none; }
+@media (min-width: 640px) { .st { --st: 22.8125rem; height: 37.5rem; } }
+.st-card {
+  position: absolute; left: 50%; top: 50%; width: var(--st); height: var(--st); cursor: pointer;
+  display: flex; flex-direction: column; border: 1px solid rgba(var(--fg-rgb),.2); background: rgba(var(--card-rgb), .86); color: var(--fg);
+  padding: 1.5rem 1.5rem 4.25rem;
+  clip-path: polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0);
+  transition: transform 500ms ease-in-out, background-color 500ms ease-in-out, color 500ms ease-in-out, border-color 250ms ease-in-out;
+  will-change: transform;
+}
+@media (min-width: 640px) { .st-card { padding: 2rem 2rem 4.75rem; } }
+.st-card:hover { border-color: rgba(var(--fg-rgb),.55); }
+.st-card.is-center { z-index: 10; background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.st-card.no-anim { transition: none; }
+.st-fold { position: absolute; right: -1px; top: 49px; display: block; width: 70.7107px; height: 1px; background: rgba(var(--fg-rgb),.2); transform-origin: top right; transform: rotate(45deg); }
+.st-card.is-center .st-fold { background: rgba(var(--bg-rgb),.25); }
+.st-head { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1rem; }
+.st-mono { display: grid; width: 3rem; height: 3.5rem; flex: none; place-items: center; background: var(--fg); color: var(--bg); font-family: var(--font-geist); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; box-shadow: 3px 3px 0 rgba(var(--bg-rgb), .55); }
+.st-card.is-center .st-mono { background: var(--bg); color: var(--fg); box-shadow: 3px 3px 0 rgba(var(--bg-rgb), .3); }
+.st-stars { display: flex; gap: 0.15rem; }
+.st-stars svg { width: 0.75rem; height: 0.75rem; fill: var(--accent); }
+.st-date { margin-top: 0.4rem; font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .55; }
+.st-quote { font-family: var(--font-sans); font-weight: 400; font-size: 0.9375rem; line-height: 1.42; letter-spacing: -0.005em; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+@media (min-width: 640px) { .st-quote { font-size: 1rem; -webkit-line-clamp: 8; } }
+.st-by { position: absolute; left: 1.5rem; right: 1.5rem; bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.3; letter-spacing: var(--tracking-tight); text-transform: uppercase; }
+@media (min-width: 640px) { .st-by { left: 2rem; right: 2rem; bottom: 2rem; } }
+.st-by .lvl { display: block; opacity: .55; font-size: 0.6875rem; }
+.st-ctrls { position: absolute; left: 50%; bottom: 1rem; z-index: 20; display: flex; gap: 0.5rem; transform: translateX(-50%); }
+.st-btn { display: flex; width: 3.5rem; height: 3.5rem; align-items: center; justify-content: center; border: 1px solid rgba(var(--fg-rgb),.55); background: rgba(var(--bg-rgb),.6); color: var(--fg); transition: background var(--duration-fast) var(--ease-entrance), color var(--duration-fast) var(--ease-entrance); }
+.st-btn:hover { background: var(--fg); color: var(--bg); }
+.st-btn svg { width: 1.25rem; height: 1.25rem; }
+.rev-foot { display: flex; justify-content: center; padding: 1.5rem 1.25rem 0; }
+
+/* ═══════════════ 6 — order (the thermal printer) ═══════════════ */
+.order { position: relative; width: 100%; background: rgba(var(--bg-rgb), var(--veil)); color: var(--foreground); height: 100vh; }
+.order-sticky { position: sticky; top: 0; height: 100lvh; width: 100%; overflow: hidden; }
+@media (min-width: 1024px) and (max-width: 1279.98px) { .order-sticky { height: var(--size-order-frame); } }
+.order-glow { pointer-events: none; position: absolute; inset: 0; background: radial-gradient(ellipse 34% 60% at 50% 42%, rgba(var(--bg-rgb),.5) 0%, transparent 70%), linear-gradient(to right, rgba(var(--bg-rgb),.55), transparent 32%, transparent 68%, rgba(var(--bg-rgb),.55)); }
+.order-frame { position: absolute; left: 0; right: 0; top: 0; height: 100lvh; }
+@media (min-width: 1024px) and (max-width: 1279.98px) { .order-frame { height: var(--size-order-frame); } }
+.order-stage { position: absolute; left: 50%; top: 0; width: 1440px; height: 800px; transform-origin: top center; }
+.printer { position: absolute; left: 519px; top: 133px; width: 400px; height: 71.287px; z-index: 1; }
+.printer-body {
+  position: absolute; inset: 0; border-radius: 10px 10px 14px 14px;
+  background: linear-gradient(180deg, #3a3835 0%, #232220 38%, #171614 50.5%, #0b0b0a 51%, #1d1c1a 62%, #121110 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .14) inset, 0 -1px 0 rgba(0,0,0,.6) inset, 0 14px 30px rgba(0,0,0,.55);
+}
+.printer-slot { position: absolute; left: 30px; right: 30px; top: 35.5px; height: 8px; border-radius: 4px; background: linear-gradient(180deg, #000 0%, #050505 60%, #2a2927 100%); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
+.printer-led { position: absolute; right: 22px; top: 14px; width: 5px; height: 5px; border-radius: 9999px; background: var(--accent); box-shadow: 0 0 8px rgba(213,140,61,.9); }
+.printer-brand { position: absolute; left: 24px; top: 11px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.24em; color: rgba(255, 255, 255, .35); text-transform: uppercase; }
+.print-window { position: absolute; left: 553px; top: 176px; width: 328px; height: 624px; overflow: hidden; z-index: 2; }
+.paper { --p: 0; width: 328px; transform: translate3d(0, calc(-100% + var(--p) * 100%), 0); filter: drop-shadow(0 calc(var(--p) * 26px) calc(var(--p) * 20px) rgba(0,0,0,.42)); will-change: transform; }
+.rc { width: 328px; color: #111111; }
+.rc-body { background: #F2F0EA; padding: 30px 22px 10px; display: flex; flex-direction: column; gap: 9px; font-family: var(--font-mono); }
+.rc-title { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-align: center; }
+.rc-rule { height: 1px; background-image: repeating-linear-gradient(90deg, #111111 0 5px, transparent 5px 10px); }
+.rc-print { width: 170px; height: auto; margin: 0 auto; display: block; image-rendering: pixelated; }
+.rc-row { display: flex; justify-content: space-between; gap: 12px; font-size: 8px; letter-spacing: 0.07em; line-height: 1.85; text-transform: uppercase; }
+.rc-row .r { text-align: right; }
+.rc-items { font-size: 8px; letter-spacing: 0.06em; line-height: 1.9; text-transform: uppercase; }
+.rc-items p { display: flex; gap: 6px; }
+.rc-items .dots { flex: 1; border-bottom: 1px dotted rgba(17,17,17,.45); transform: translateY(-3px); }
+.rc-items .tot { font-weight: 700; }
+.rc-text { font-size: 8px; letter-spacing: 0.07em; line-height: 1.85; text-transform: uppercase; }
+.rc-cta { display: flex; gap: 12px; }
+.rc-cta-big { flex: 1; font-size: 16px; font-weight: 700; line-height: 1.25; text-transform: uppercase; }
+.rc-cta-side { width: 132px; padding-left: 12px; border-left: 1px solid rgba(17,17,17,.25); display: flex; flex-direction: column; gap: 8px; }
+.rc-cta-side p { font-size: 7px; letter-spacing: 0.07em; line-height: 1.6; color: #5b5b58; text-transform: uppercase; }
+.rc-cta-btn { background: #111111; color: #F2F0EA; font-size: 8px; font-weight: 700; letter-spacing: 0.09em; padding: 6px 9px; display: flex; justify-content: space-between; align-items: center; gap: 8px; text-transform: uppercase; pointer-events: auto; }
+.rc-barcode { display: flex; align-items: flex-end; gap: 1px; height: 42px; }
+.rc-barcode span { height: 100%; transform-origin: bottom center; }
+.rc-foot { font-size: 7px; letter-spacing: 0.16em; text-align: center; text-transform: uppercase; }
+.rc-edge { display: block; }
+.order-copy {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;
+  padding: 4.5rem 1.25rem 1.25rem; color: var(--foreground);
+}
+@media (min-width: 640px) { .order-copy { padding: 6rem 2.5rem 2.5rem; } }
+@media (min-width: 1024px) { .order-copy { display: block; padding: 0; text-align: left; } }
+.order-scrim-t, .order-scrim-b { pointer-events: none; position: absolute; left: 0; right: 0; }
+.order-scrim-t { top: 0; height: 16rem; background: linear-gradient(to bottom, rgba(var(--bg-rgb),.9), rgba(var(--bg-rgb),.55) 55%, transparent); }
+.order-scrim-b { bottom: 0; height: 18rem; background: linear-gradient(to top, rgba(var(--bg-rgb),.92), rgba(var(--bg-rgb),.6) 55%, transparent); }
+@media (min-width: 1024px) { .order-scrim-t, .order-scrim-b { display: none; } }
+.order-top { position: relative; display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+@media (min-width: 1024px) { .order-top { display: contents; } }
+.order-h2-wrap { max-width: 17rem; }
+@media (min-width: 640px) and (max-width: 1023.98px) { .order-h2-wrap { max-width: 26rem; } }
+@media (min-width: 1024px) { .order-h2-wrap { position: absolute; left: 2.5rem; top: var(--size-order-headline-y); width: var(--size-order-headline); max-width: none; } }
+.order-note { display: none; font-family: var(--font-mono); font-size: var(--font-size-base); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; clip-path: inset(0 100% 0 0); }
+@media (min-width: 1024px) { .order-note { display: block; position: absolute; left: 2.5rem; bottom: 2.5rem; width: var(--size-order-note); } }
+.order-aside { position: relative; display: flex; width: 100%; flex-direction: column; align-items: center; gap: 2.25rem; }
+@media (min-width: 640px) { .order-aside { width: 30rem; gap: 2.5rem; } }
+@media (min-width: 1024px) { .order-aside { position: absolute; right: 2.5rem; bottom: 2.5rem; width: var(--size-order-aside); align-items: flex-start; gap: var(--size-order-aside-gap); } }
+
+/* ═══════════════ 7 — footer ═══════════════ */
+.site-footer {
+  position: relative; display: flex; width: 100%; flex-direction: column; gap: 2rem; overflow: hidden; background: linear-gradient(to bottom, rgba(var(--bg-rgb),.72), rgba(var(--bg-rgb),.92));
+  padding: 3rem 1.25rem 2rem; font-family: var(--font-mono); font-size: var(--font-size-label); line-height: var(--leading-copy); letter-spacing: var(--tracking-tight); text-transform: uppercase; color: var(--foreground);
+}
+@media (min-width: 640px) { .site-footer { gap: 2.5rem; padding: 3rem 2.5rem; font-size: var(--font-size-base); } }
+@media (min-width: 1024px) { .site-footer { display: block; height: var(--size-footer-height); padding: 0; } }
+.footer-swirl { pointer-events: none; position: absolute; left: var(--size-swirl-x); top: var(--size-swirl-y); display: block; width: var(--size-swirl-width); height: var(--size-swirl-height); background: rgba(var(--fg-rgb), .045); -webkit-mask: var(--swirl-mask) center / 100% 100% no-repeat; mask: var(--swirl-mask) center / 100% 100% no-repeat; opacity: 0; }
+.footer-mark { display: block; height: var(--size-logo-height); width: var(--size-logo-width); clip-path: inset(0 100% 0 0); }
+.footer-mark a, .footer-mark svg { display: block; width: 100%; height: 100%; fill: currentColor; }
+@media (min-width: 1024px) { .footer-mark { position: absolute; left: 2.5rem; top: 2.5rem; } }
+.footer-tagline { display: none; font-size: var(--font-size-fine); color: rgba(var(--fg-rgb),.5); width: var(--size-footer-tagline); }
+@media (min-width: 1024px) { .footer-tagline { display: block; position: absolute; left: 2.5rem; top: var(--size-footer-tagline-y); } }
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+@media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; } }
+@media (min-width: 1024px) { .footer-grid { display: contents; } }
+.footer-cols { display: contents; }
+@media (min-width: 1024px) { .footer-cols { position: absolute; left: var(--size-footer-nav-x); top: 2.5rem; display: flex; gap: 3rem; } }
+.footer-col { display: flex; flex-direction: column; gap: 0.75rem; }
+@media (min-width: 1024px) { .footer-col { min-width: var(--size-footer-col); } }
+.footer-col ul { display: flex; flex-direction: column; gap: 0.375rem; color: rgba(var(--fg-rgb),.5); }
+.footer-col a { overflow-wrap: anywhere; transition: color var(--duration-fast) var(--ease-entrance); }
+.footer-col a:hover { color: var(--foreground); }
+@media (min-width: 1024px) { .footer-col a { white-space: nowrap; } }
+.footer-hr { display: none; height: 1px; background: rgba(var(--fg-rgb),.1); }
+@media (max-width: 639.98px) { .footer-hr { display: block; grid-column: span 2; } }
+@media (min-width: 640px) and (max-width: 1023.98px) { .footer-hr { display: block; grid-column: span 3; } }
+.footer-contact { display: flex; flex-direction: column; gap: 0.75rem; }
+@media (max-width: 639.98px) { .footer-contact { grid-column: span 2; } }
+@media (min-width: 1024px) { .footer-contact { position: absolute; left: var(--size-footer-contact-x); top: 2.5rem; } }
+.footer-contact ul { display: flex; flex-direction: column; gap: 0.375rem; color: rgba(var(--fg-rgb),.5); }
+.footer-contact a:hover { color: var(--foreground); }
+.footer-rule { display: block; height: 1px; width: 100%; background: rgba(var(--fg-rgb),.1); }
+@media (min-width: 1024px) { .footer-rule { position: absolute; left: 2.5rem; right: 2.5rem; width: auto; } .footer-rule.t { top: var(--size-footer-rule-top); } .footer-rule.b { top: var(--size-footer-rule-bottom); } }
+.footer-where { font-size: var(--font-size-fine); color: rgba(var(--fg-rgb),.5); }
+.footer-where > span { display: flex; align-items: center; gap: 0.375rem; }
+.footer-where .pulse-dot { width: var(--size-footer-dot); height: var(--size-footer-dot); }
+@media (min-width: 1024px) { .footer-where { position: absolute; left: 2.5rem; top: var(--size-footer-row-y); } }
+.footer-row { display: grid; gap: 1.5rem; }
+@media (min-width: 640px) { .footer-row { grid-template-columns: 1fr 1fr; gap: 1.5rem 2.5rem; } }
+@media (min-width: 1024px) { .footer-row { display: contents; } }
+@media (min-width: 1024px) {
+  .footer-addr-a { position: absolute; left: var(--size-footer-nav-x); top: var(--size-footer-row-y); width: var(--size-footer-address); }
+  .footer-addr-b { position: absolute; left: var(--size-footer-address-b); top: var(--size-footer-row-y); white-space: nowrap; }
+  .footer-addr-c { position: absolute; left: var(--size-footer-address-c); top: var(--size-footer-row-y); white-space: nowrap; }
+  .footer-hours { position: absolute; left: var(--size-footer-contact-x); top: var(--size-footer-row-y); white-space: nowrap; }
+}
+.footer-div { display: none; height: var(--size-hero-rule); width: 1px; background: rgba(var(--fg-rgb),.35); }
+@media (min-width: 1024px) { .footer-div { display: block; position: absolute; top: var(--size-footer-row-y); } .footer-div.a { left: var(--size-footer-divider-a); } .footer-div.b { left: var(--size-footer-divider-b); } }
+@media (max-width: 639.98px) { .footer-hours { margin-top: 1rem; border-top: 1px solid rgba(var(--fg-rgb),.1); padding-top: 1.5rem; } }
+.footer-legal { display: flex; flex-direction: column; gap: 0.75rem; }
+@media (min-width: 640px) { .footer-legal { flex-direction: row; align-items: baseline; justify-content: space-between; } }
+@media (min-width: 1024px) { .footer-legal { display: contents; } }
+.footer-legal .fine { white-space: nowrap; font-size: var(--font-size-fine); }
+.footer-legal .dim { color: rgba(var(--fg-rgb),.5); }
+@media (max-width: 639.98px) { .footer-copy { order: 9; margin-top: 0.75rem; border-top: 1px solid rgba(var(--fg-rgb),.1); padding-top: 1.5rem; } }
+@media (min-width: 1024px) {
+  .footer-copy { position: absolute; left: 2.5rem; top: var(--size-footer-legal-y); }
+  .footer-social { position: absolute; left: var(--size-footer-nav-x); top: var(--size-footer-legal-y); }
+  .footer-award { position: absolute; left: var(--size-footer-contact-x); top: var(--size-footer-legal-y); }
+}
+.footer-social a, .footer-award a { transition: color var(--duration-fast); }
+.footer-social .dim:hover { color: var(--foreground); }
+
+.rev-foot { grid-column: 1 / -1; }
+.order-lede { display: block; }
+@media (max-width: 1023.98px) {
+  .order-copy .te-vis { justify-content: center; }
+  .order-copy .te-vis.te-lines { align-items: center; }
+  .order-copy .headline { text-align: center; }
+}
+.te-measure { display: block !important; }
+.te-measure .te-w { display: inline; }
+.roll { font-variant-numeric: tabular-nums; }
+.roll.block { display: block; }
+
+/* start states, held until the engine takes over (no-JS keeps everything visible) */
+.js [data-rise-in], .js [data-hero-eyebrow], .js [data-hero-cta], .js [data-bar], .js [data-menu-cta], .js .card, .js .fs, .js .hero-media { opacity: 0; }
+.js [data-clip-in] { clip-path: inset(0 100% 0 0); }
+.js [data-text] .te-vis { visibility: visible; }
+.js [data-text]:not(.te-ready) { visibility: hidden; }
+
+/* the asset banner — a failed load is never silent */
+.asset-error { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 200; display: none; border: 1px solid rgba(213,140,61,.6); background: rgba(11, 11, 11, .94); color: #f1f1ef; padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; }
+.asset-error.is-on { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header { opacity: 1; }
+  .print-in, .loc-eyebrow, .loc-list li, .loc-hours, .story-claims li, .order-note, .card-name, .footer-mark { clip-path: none !important; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="wordmark" viewBox="39 -12 4195 724"><path d="M418 712Q337 712 267.5 685.5Q198 659 147.0 610.0Q96 561 67.5 495.0Q39 429 39 350Q39 271 67.5 205.0Q96 139 147.5 90.0Q199 41 268.0 14.5Q337 -12 419 -12Q510 -12 583.5 19.5Q657 51 707 112L603 208Q567 167 523.0 146.5Q479 126 427 126Q378 126 337.0 142.0Q296 158 266.0 188.0Q236 218 219.5 259.0Q203 300 203 350Q203 400 219.5 441.0Q236 482 266.0 512.0Q296 542 337.0 558.0Q378 574 427 574Q479 574 523.0 553.5Q567 533 603 491L707 587Q657 648 583.5 680.0Q510 712 418 712ZM833.0 700V0H967.0L1265.0 494H1194.0L1487.0 0H1621.0L1622.0 700H1470.0L1469.0 233H1498.0L1263.0 626H1191.0L951.0 233H985.0V700ZM1816.0 700V0H1977.0V230H2155.0Q2282.0 230 2351.0 286.5Q2420.0 343 2420.0 456Q2420.0 576 2343.5 638.0Q2267.0 700 2132.0 700ZM1977.0 580H2123.0Q2185.0 580 2221.0 549.0Q2257.0 518 2257.0 459Q2257.0 401 2221.5 375.5Q2186.0 350 2123.0 350H1977.0ZM2509.0 700V0H2670.0V700ZM3195.0 712Q3114.0 712 3044.5 685.5Q2975.0 659 2924.0 610.0Q2873.0 561 2844.5 495.0Q2816.0 429 2816.0 350Q2816.0 271 2844.5 205.0Q2873.0 139 2924.5 90.0Q2976.0 41 3045.0 14.5Q3114.0 -12 3196.0 -12Q3287.0 -12 3360.5 19.5Q3434.0 51 3484.0 112L3380.0 208Q3344.0 167 3300.0 146.5Q3256.0 126 3204.0 126Q3155.0 126 3114.0 142.0Q3073.0 158 3043.0 188.0Q3013.0 218 2996.5 259.0Q2980.0 300 2980.0 350Q2980.0 400 2996.5 441.0Q3013.0 482 3043.0 512.0Q3073.0 542 3114.0 558.0Q3155.0 574 3204.0 574Q3256.0 574 3300.0 553.5Q3344.0 533 3380.0 491L3484.0 587Q3434.0 648 3360.5 680.0Q3287.0 712 3195.0 712ZM3617.0 711Q3599.0 711 3579.5 708.0Q3560.0 705 3537.0 700L3547.0 563Q3561.0 567 3576.0 567Q3617.0 567 3640.0 533.5Q3663.0 500 3673.0 437.0Q3683.0 374 3686.0 284L3696.0 0H4234.0V700H4074.0V95L4111.0 132H3802.0L3835.0 93L3829.0 278Q3826.0 381 3815.0 461.0Q3804.0 541 3781.0 597.0Q3758.0 653 3718.0 682.0Q3678.0 711 3617.0 711Z"/></symbol>
+  <symbol id="arrow" viewBox="0 0 12.2137 13.2551"><path d="M11.9501 7.26396C12.3016 6.91249 12.3016 6.34264 11.9501 5.99117L6.22254 0.263604C5.87107 -0.0878682 5.30122 -0.0878682 4.94975 0.263604C4.59828 0.615076 4.59828 1.18492 4.94975 1.5364L10.0409 6.62756L4.94975 11.7187C4.59828 12.0702 4.59828 12.6401 4.94975 12.9915C5.30122 13.343 5.87107 13.343 6.22254 12.9915L11.9501 7.26396ZM0 6.62756V7.52756H11.3137V6.62756V5.72756H0V6.62756Z" fill="currentColor"/></symbol>
+  <symbol id="star" viewBox="0 0 20 20"><path d="M10 1.6l2.47 5.3 5.8.64-4.32 3.93 1.2 5.72L10 14.3l-5.15 2.89 1.2-5.72L1.73 7.54l5.8-.64z"/></symbol>
+  <symbol id="chev" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ═══════════ the background: the film, 36 frames a second, scrubbed by the scroll ═══════════ -->
+<div class="bg-seq" aria-hidden="true"><canvas data-seq></canvas></div>
+
+<!-- ═══════════ preloader ═══════════ -->
+<div class="preloader" aria-hidden="true" data-preloader>
+  <p class="eyebrow"><span class="slash">//</span><span class="slash-sp"> </span>Завариваем</p>
+  <p class="pre-count" data-pre-count>000</p>
+  <span class="pre-mark"><svg><use href="#wordmark"/></svg></span>
+  <svg class="pre-cup" viewBox="0 0 120 160" fill="none" aria-hidden="true">
+    <defs>
+      <clipPath id="preloader-cup"><path d="M20 26 L100 26 L88 150 Q88 158 80 158 L40 158 Q32 158 32 150 Z"/></clipPath>
+      <linearGradient id="preloader-coffee" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b07a45"/><stop offset="1" stop-color="#2a1a0f"/></linearGradient>
+    </defs>
+    <g clip-path="url(#preloader-cup)"><rect x="0" width="120" height="220" fill="url(#preloader-coffee)" y="156" data-pre-level/></g>
+    <path d="M20 26 L100 26 L88 150 Q88 158 80 158 L40 158 Q32 158 32 150 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M14 26 H106" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<!-- ═══════════ header ═══════════ -->
+<header class="site-header" data-header>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Открыть меню" data-burger><span class="l1"></span><span class="l2"></span></button>
+  <nav class="header-nav" aria-label="Основная навигация">
+    <ul class="print-in" data-print-in="220">
+      <li><a href="#menu" data-ul>Меню</a></li>
+      <li><a href="#gallery" data-ul>Фото</a></li>
+      <li><a href="#reviews" data-ul>Отзывы</a></li>
+      <li><a href="#locations" data-ul>Контакты</a></li>
+    </ul>
+  </nav>
+  <span class="header-mark print-in" data-print-in="260"><a href="#top" aria-label="Кофейня «Смысл» — наверх"><svg aria-hidden="true"><use href="#wordmark"/></svg></a></span>
+  <div class="header-right">
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Включить светлую тему" data-theme-toggle>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 2.75a9.25 9.25 0 0 1 0 18.5z" fill="currentColor"/></svg>
+      <span class="theme-toggle-label">Светлая</span>
+    </button>
+    <a class="header-call print-in" data-print-in="480" href="tel:+78314237487">Позвонить<span class="pulse-dot"></span></a>
+  </div>
+</header>
+
+<div id="site-menu" class="menu-panel" hidden data-menu-panel>
+  <p class="eyebrow"><span class="slash">//</span><span class="slash-sp"> </span>Навигация</p>
+  <nav class="menu-panel-nav" aria-label="Меню сайта">
+    <a href="#menu"><span class="idx">01</span>Меню</a>
+    <a href="#gallery"><span class="idx">02</span>Фото</a>
+    <a href="#reviews"><span class="idx">03</span>Отзывы</a>
+    <a href="#locations"><span class="idx">04</span>Контакты</a>
+    <a href="menu.html"><span class="idx">05</span>Всё меню</a>
+  </nav>
+  <a class="menu-panel-call" href="tel:+78314237487">Позвонить <span class="pulse-dot"></span></a>
+  <p class="menu-panel-phone">+7 (831) 423-74-87 · ежедневно 08:00–22:00</p>
+</div>
+
+<main>
+<!-- ═══════════ 1 — hero ═══════════ -->
+<section class="hero" id="top" aria-label="Кофейня «Смысл»" data-header-theme="dark">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <span class="hero-handle" data-piece="steam" aria-hidden="true"></span>
+  <span class="hero-handle" data-piece="cup" aria-hidden="true"></span>
+  <div class="hero-content">
+    <p class="sr-only">На фоне — чашка чёрного кофе на деревянном столе, над ней поднимается пар; кадры меняются при прокрутке.</p>
+    <div class="hero-mobile-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <div class="hero-title-grid">
+        <div class="hero-title-col">
+          <p class="eyebrow" data-hero-eyebrow><span class="slash">//</span><span class="slash-sp"> </span>Кофейня на Рождественской</p>
+          <h1 class="hero-h1" data-text="lines" data-clip data-gate="ready" data-script="смыслом" data-sr="Кофе и завтраки со смыслом">Кофе и завтраки со</h1>
+        </div>
+      </div>
+      <div class="hero-lede-wrap">
+        <p class="lede" data-text="words" data-gate="ready" data-delay="260" data-hero-words>Завтраки весь день, кофе от бариста и панорамные окна с видом на Кремль.</p>
+        <span class="block" data-hero-cta><a class="cta" href="#menu" data-cta>Смотреть меню</a></span>
+      </div>
+    </div>
+    <aside class="hero-bar" aria-label="Как нас найти">
+      <span class="hero-bar-scrim" aria-hidden="true"></span>
+      <p class="hero-hours" data-bar="620"><span class="block" data-roll="760" data-gate="ready">Ежедневно</span><span class="block" data-roll="760" data-gate="ready">08:00 – 22:00</span></p>
+      <span class="vrule rule-y" data-rule-y="700" data-gate="ready"></span>
+      <address class="hero-address" data-bar="760"><span class="block">Рождественская, 13</span><span class="block">Нижний Новгород</span></address>
+      <span class="vrule v2 rule-y" data-rule-y="840" data-gate="ready"></span>
+      <ul class="hero-social" data-bar="900">
+        <li><a href="https://t.me/coffeesmysl" target="_blank" rel="noopener" data-ul-rule>Telegram</a></li>
+        <li><a href="https://yandex.ru/maps/org/smysl/181148819938/" target="_blank" rel="noopener" data-ul-rule>Яндекс Карты</a></li>
+      </ul>
+    </aside>
+  </div>
+  <div class="hero-card" data-card="cup" aria-hidden="true">
+    <div class="hero-card-box">
+      <p class="eyebrow"><span class="slash">//</span><span class="slash-sp"> </span>в чашке</p>
+      <div class="hero-card-row"><p class="hero-card-title">Американо</p><p class="hero-card-price">200 ₽</p></div>
+      <ul class="hero-card-meta"><li>200 мл</li><li><span class="d"></span>эспрессо</li><li><span class="d"></span>с собой</li></ul>
+    </div>
+  </div>
+  <div class="hero-card" data-card="steam" aria-hidden="true">
+    <div class="hero-card-box">
+      <p class="eyebrow"><span class="slash">//</span><span class="slash-sp"> </span>над чашкой</p>
+      <div class="hero-card-row"><p class="hero-card-title">Аромат</p><p class="hero-card-price">0 ₽</p></div>
+      <ul class="hero-card-meta"><li>к каждой</li><li><span class="d"></span>бесплатно</li><li><span class="d"></span>всегда</li></ul>
+    </div>
+  </div>
+  <div class="hero-seal" data-hero-seal>
+    <div class="seal" data-seal role="img" aria-label="«Хорошее место 2026» — награда Яндекс Карт. Рейтинг 4,8">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="seal-p1" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text textLength="497" lengthAdjust="spacing"><textPath href="#seal-p1">ХОРОШЕЕ МЕСТО 2026 · ЯНДЕКС КАРТЫ ·</textPath></text></svg>
+      <span class="seal-center" aria-hidden="true"><b>4,8</b><small>★ Яндекс</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2 — menu ═══════════ -->
+<section class="menu frost" id="menu" aria-label="Меню" data-header-theme="dark">
+  <div class="swirl" data-swirl="ltr" aria-hidden="true"><div class="swirl-par"><span class="swirl-shape"><span class="swirl-fill"></span></span></div></div>
+  <div class="menu-content">
+    <div class="menu-intro">
+      <p class="eyebrow print-in" data-clip-in="0"><span class="slash">//</span><span class="slash-sp"> </span>Наше меню</p>
+      <h2 class="display menu-h2" data-text="lines" data-margin="-25%">Завтраки весь день</h2>
+      <div class="menu-lede-wrap"><p class="lede" data-text="words" data-delay="320" data-margin="-25%">Сырники, деруны и хлеб хоккайдо — готовим с утра до вечера.</p></div>
+    </div>
+    <span class="menu-receipt" aria-hidden="true" data-menu-receipt>
+      <span class="menu-receipt-rot">
+        <span class="mr-paper">
+          <svg class="mr-edge" viewBox="0 0 280 9" preserveAspectRatio="none" data-torn="up"></svg>
+          <span class="mr-body">
+            <span class="mr-title">КОФЕЙНЯ «СМЫСЛ»</span>
+            <span class="mr-sub">МЕНЮ · РОЖДЕСТВЕНСКАЯ, 13</span>
+            <span class="mr-rule"></span>
+            <span class="mr-cat">КОФЕ</span>
+            <span class="mr-line"><span>Эспрессо</span><span class="dots"></span><span>200</span></span>
+            <span class="mr-line"><span>Американо</span><span class="dots"></span><span>200</span></span>
+            <span class="mr-line"><span>Капучино</span><span class="dots"></span><span>280</span></span>
+            <span class="mr-line"><span>Флэт уайт</span><span class="dots"></span><span>290</span></span>
+            <span class="mr-line"><span>Латте</span><span class="dots"></span><span>320</span></span>
+            <span class="mr-line"><span>Раф лавандовый</span><span class="dots"></span><span>350</span></span>
+            <span class="mr-line"><span>Латте халва</span><span class="dots"></span><span>350</span></span>
+            <span class="mr-line"><span>Пуровер</span><span class="dots"></span><span>300</span></span>
+            <span class="mr-cat">ЗАВТРАКИ ВЕСЬ ДЕНЬ</span>
+            <span class="mr-line"><span>Сырники с вишней</span><span class="dots"></span><span>650</span></span>
+            <span class="mr-line"><span>Деруны с лососем</span><span class="dots"></span><span>760</span></span>
+            <span class="mr-line"><span>Хоккайдо с креветкой</span><span class="dots"></span><span>760</span></span>
+            <span class="mr-line"><span>Бельгийские вафли</span><span class="dots"></span><span>500</span></span>
+            <span class="mr-line"><span>Каша с тыквой</span><span class="dots"></span><span>550</span></span>
+            <span class="mr-line"><span>Блины</span><span class="dots"></span><span>450</span></span>
+            <span class="mr-cat">ДЕСЕРТЫ</span>
+            <span class="mr-line"><span>Морковный торт</span><span class="dots"></span><span>400</span></span>
+            <span class="mr-line"><span>Сан-Себастьян</span><span class="dots"></span><span>450</span></span>
+            <span class="mr-line"><span>Меренговый рулет</span><span class="dots"></span><span>370</span></span>
+            <span class="mr-line"><span>Чизкейк</span><span class="dots"></span><span>350</span></span>
+            <span class="mr-cat">ОБЕД И УЖИН</span>
+            <span class="mr-line"><span>Суп Том Ям</span><span class="dots"></span><span>650</span></span>
+            <span class="mr-line"><span>Паста карбонара</span><span class="dots"></span><span>650</span></span>
+            <span class="mr-line"><span>Боул с лососем</span><span class="dots"></span><span>740</span></span>
+            <span class="mr-rule"></span>
+            <span class="mr-total"><span>ИТОГО</span><span>СО СМЫСЛОМ</span></span>
+            <span class="mr-bars"></span>
+          </span>
+          <svg class="mr-edge" viewBox="0 0 280 9" preserveAspectRatio="none" data-torn="down"></svg>
+        </span>
+      </span>
+    </span>
+    <span class="menu-cta-wrap" data-menu-cta><a class="cta" href="menu.html" data-cta>Всё меню</a></span>
+    <ul class="menu-cards">
+      <li><div class="lean" data-lean><div class="lean-inner"><article class="card" data-card-i="0">
+        <p class="card-idx" data-roll="160">01</p>
+        <div class="card-media"><span class="card-still" data-still><img src="assets/img/m-cappuccino.webp" alt="Капучино с латте-артом на деревянном столе" width="800" height="1200" loading="lazy" decoding="async" style="object-position:50% 38%"></span></div>
+        <div class="card-row"><p class="card-name">Капучино</p><p class="card-price" data-roll="240">280 ₽</p></div>
+      </article></div></div></li>
+      <li><div class="lean" data-lean><div class="lean-inner"><article class="card" data-card-i="1">
+        <p class="card-idx" data-roll="250">02</p>
+        <div class="card-media"><span class="card-still" data-still><img src="assets/img/m-deruny.webp" alt="Картофельные деруны с лососем собственного посола и яйцом бенедикт" width="800" height="1200" loading="lazy" decoding="async" style="object-position:50% 52%"></span></div>
+        <div class="card-row"><p class="card-name">Деруны с лососем</p><p class="card-price" data-roll="330">760 ₽</p></div>
+      </article></div></div></li>
+      <li><div class="lean" data-lean><div class="lean-inner"><article class="card" data-card-i="2">
+        <p class="card-idx" data-roll="340">03</p>
+        <div class="card-media"><span class="card-still" data-still><img src="assets/img/m-syrniki.webp" alt="Сырники с творожным сыром и ягодами" width="900" height="1200" loading="lazy" decoding="async" style="object-position:50% 70%"></span></div>
+        <div class="card-row"><p class="card-name">Сырники с вишней</p><p class="card-price" data-roll="420">650 ₽</p></div>
+      </article></div></div></li>
+      <li><div class="lean" data-lean><div class="lean-inner"><article class="card" data-card-i="3">
+        <p class="card-idx" data-roll="430">04</p>
+        <div class="card-media"><span class="card-still" data-still><img src="assets/img/m-carrot.webp" alt="Кусок морковного торта на белой тарелке" width="900" height="1200" loading="lazy" decoding="async" style="object-position:50% 62%"></span></div>
+        <div class="card-row"><p class="card-name">Морковный торт</p><p class="card-price" data-roll="510">400 ₽</p></div>
+      </article></div></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ 3 — gallery: a 35 mm strip ═══════════ -->
+<section class="gallery" id="gallery" aria-label="Фото кофейни" data-header-theme="dark">
+  <div class="gallery-head">
+    <p class="eyebrow" data-rise-in="0"><span class="slash">//</span><span class="slash-sp"> </span>Фото</p>
+    <h2 class="headline" data-text="lines" data-margin="-15%">Двенадцать кадров. Одна плёнка.</h2>
+    <p class="gallery-sub" data-rise-in="260">Листайте плёнку — кадр в окне проявится. Нажмите на него, чтобы открыть отпечаток.</p>
+  </div>
+  <div class="fs" data-fs>
+    <div class="fs-strip">
+      <svg class="fs-perf t" aria-hidden="true" preserveAspectRatio="none"><defs><pattern id="fs-perf-t" width="22" height="16" patternUnits="userSpaceOnUse"><rect x="5" y="4" width="12" height="8" rx="2" class="fs-hole" stroke="#e8d9a6" stroke-opacity="0.28"/></pattern></defs><rect width="100%" height="100%" fill="url(#fs-perf-t)"/></svg>
+      <ul class="fs-track" role="list" aria-label="Кадры" tabindex="0" data-fs-track>
+        <li class="fs-frame" data-cap="Панорамные окна — Кремль через дорогу"><div class="fs-edge" aria-hidden="true"><span>01</span><span>СМЫСЛ 400 · 36 EXP</span><span>01A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-kremlin-window.webp" alt="Зал с панорамными окнами, за окном — Нижегородский кремль" width="384" height="256" decoding="async" draggable="false" style="object-position:50% 34%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Капучино с видом на Кремль"><div class="fs-edge" aria-hidden="true"><span>02</span><span></span><span>02A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-cappuccino-view.webp" alt="Капучино на деревянном подносе у окна с видом на Кремль" width="384" height="256" decoding="async" draggable="false" style="object-position:50% 30%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Пуровер — воронка V60 на весах"><div class="fs-edge" aria-hidden="true"><span>03</span><span></span><span>03A</span></div><button type="button" class="fs-btn"><img src="assets/img/f-pourover.webp" alt="Пуровер: красная воронка V60 и сервировочный чайник на весах" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 40%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Born to travel — карта мира из чеков гостей"><div class="fs-edge" aria-hidden="true"><span>04</span><span>СМЫСЛ 400 · 36 EXP</span><span>04A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-travel-map.webp" alt="Зелёная стена Born to travel: карта мира, собранная из чеков и записок гостей" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 45%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Деруны с лососем — наш хит"><div class="fs-edge" aria-hidden="true"><span>05</span><span></span><span>05A</span></div><button type="button" class="fs-btn"><img src="assets/img/m-deruny.webp" alt="Картофельные деруны с лососем и яйцом бенедикт" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 52%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Винил у окна"><div class="fs-edge" aria-hidden="true"><span>06</span><span></span><span>06A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-vinyl.webp" alt="Жёлтый проигрыватель винила у окна" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 55%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Бариста подаст и подскажет"><div class="fs-edge" aria-hidden="true"><span>07</span><span>СМЫСЛ 400 · 36 EXP</span><span>07A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-barista.webp" alt="Бариста ставит на стол чашку кофе" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 72%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Чай в большом чайнике — на долгий разговор"><div class="fs-edge" aria-hidden="true"><span>08</span><span></span><span>08A</span></div><button type="button" class="fs-btn"><img src="assets/img/f-teapot.webp" alt="Чай в большом стеклянном чайнике и белая чашка" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 78%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Зал: живые растения и тёплое дерево"><div class="fs-edge" aria-hidden="true"><span>09</span><span></span><span>09A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-hall.webp" alt="Зал кофейни: кожаные кресла, растения и стена Born to travel" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 58%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Сырники с вишней и творожным сыром"><div class="fs-edge" aria-hidden="true"><span>10</span><span>СМЫСЛ 400 · 36 EXP</span><span>10A</span></div><button type="button" class="fs-btn"><img src="assets/img/m-syrniki.webp" alt="Сырники с творожным сыром и ягодами на тарелке" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 70%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Вечером на Рождественской"><div class="fs-edge" aria-hidden="true"><span>11</span><span></span><span>11A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-facade-night.webp" alt="Вечерний фасад с подсвеченной вывеской «Кофейня»" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 42%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+        <li class="fs-frame" data-cap="Кофе · Смысл · Завтраки"><div class="fs-edge" aria-hidden="true"><span>12</span><span></span><span>12A</span></div><button type="button" class="fs-btn"><img src="assets/img/g-sign.webp" alt="Вывеска «Кофе Смысл Завтраки» над освещённой витриной" width="384" height="256" loading="lazy" decoding="async" draggable="false" style="object-position:50% 30%"><span class="fs-gate" aria-hidden="true"></span></button><div class="fs-tail" aria-hidden="true"></div></li>
+      </ul>
+      <svg class="fs-perf b" aria-hidden="true" preserveAspectRatio="none"><defs><pattern id="fs-perf-b" width="22" height="16" patternUnits="userSpaceOnUse"><rect x="5" y="4" width="12" height="8" rx="2" class="fs-hole" stroke="#e8d9a6" stroke-opacity="0.28"/></pattern></defs><rect width="100%" height="100%" fill="url(#fs-perf-b)"/></svg>
+      <span class="fs-mark t" aria-hidden="true"></span><span class="fs-mark b" aria-hidden="true"></span>
+    </div>
+    <span class="sr-only" aria-live="polite" data-fs-live></span>
+    <div class="fs-bar">
+      <p class="fs-caption"><span data-fs-cap>Панорамные окна — Кремль через дорогу</span><span class="n" data-fs-n>01 / 12</span></p>
+      <div class="fs-ctrls">
+        <button type="button" class="fs-ctrl" aria-label="Предыдущий кадр" data-fs-prev><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg></button>
+        <button type="button" class="fs-ctrl" aria-label="Следующий кадр" data-fs-next><svg aria-hidden="true"><use href="#chev"/></svg></button>
+      </div>
+    </div>
+    <dialog class="fs-print" aria-label="Отпечаток" data-fs-print>
+      <div class="fs-print-in">
+        <div class="fs-print-pic"><img alt="" data-fs-print-img><span class="fs-print-paper" aria-hidden="true" data-fs-paper></span></div>
+        <div class="fs-print-bar">
+          <p class="fs-caption"><span data-fs-print-cap></span><span class="n" data-fs-print-n></span></p>
+          <div class="fs-ctrls">
+            <button type="button" class="fs-ctrl" aria-label="Предыдущий отпечаток" data-fs-print-prev><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg></button>
+            <button type="button" class="fs-ctrl" aria-label="Следующий отпечаток" data-fs-print-next><svg aria-hidden="true"><use href="#chev"/></svg></button>
+            <button type="button" class="fs-ctrl" aria-label="Закрыть" style="margin-left:.5rem" data-fs-print-close><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </div>
+</section>
+
+<!-- ═══════════ 4 — locations: the clock face ═══════════ -->
+<section class="locations frost" id="locations" aria-label="Как нас найти" data-header-theme="dark">
+  <div class="swirl" data-swirl="rtl" data-fade-top aria-hidden="true"><div class="swirl-par"><span class="swirl-shape"><span class="swirl-fill"></span></span></div></div>
+  <div class="loc-content">
+    <div class="loc-range" aria-hidden="true" data-loc-range></div>
+    <div class="loc-turn" aria-hidden="true" data-loc-turn></div>
+    <div class="loc-dialbox">
+      <figure class="loc-dial" data-loc-dial><span class="dial-par" data-dial-par><svg class="dial-svg" viewBox="0 0 654 654" role="img" aria-label="Часы: наведите на час — покажем, что у нас в это время" data-dial></svg></span></figure>
+      <div class="loc-cup" aria-hidden="true" data-loc-cup><div class="loc-cup-lean" data-cup-lean><span class="loc-cup-par" data-cup-par><span class="loc-cup-turn"><img class="dish" src="assets/img/dial-latte.webp" alt="" width="840" height="840" decoding="async" data-dish-a><img class="dish" alt="" width="800" height="1200" decoding="async" data-dish-b></span></span></div></div>
+      <div class="loc-hands" aria-hidden="true"><span class="dial-par" data-hands-par><svg class="dial-hands" viewBox="0 0 654 654" data-hands></svg></span></div>
+    </div>
+    <div class="dial-info" data-dial-info>
+      <p class="dial-now"><span class="pulse-dot"></span><span data-dial-clock>--:--</span> по Москве</p>
+      <p class="dial-meal" data-dial-meal>&nbsp;</p>
+      <p class="dial-dish" data-dial-dish>&nbsp;</p>
+      <p class="dial-meta" data-dial-meta>&nbsp;</p>
+      <ul class="dial-legend" aria-label="Кольца часов">
+        <li><i style="--c:#e3c29a"></i>Утро 08–12 · внутреннее кольцо</li>
+        <li><i style="--c:#b07a45"></i>Обед 12–15</li>
+        <li><i style="--c:#8f5e36"></i>Полдник и десерты 15–18</li>
+        <li><i style="--c:#6e3e22"></i>Ужин 18–22</li>
+      </ul>
+      <p class="dial-hint">Наведите на час — покажем блюдо</p>
+    </div>
+    <p class="loc-eyebrow" data-clip-in="0"><span class="pulse-dot"></span>Как нас найти</p>
+    <ul class="loc-list">
+      <li data-clip-in="160"><address>Рождественская ул., 13<span class="sub">Нижний Новгород · 1 этаж</span></address></li>
+      <li data-clip-in="270">Остановка «Широкая улица»<span class="sub">73 м пешком</span></li>
+      <li data-clip-in="380"><a href="tel:+78314237487">+7 (831) 423-74-87</a><span class="sub"><a href="https://t.me/coffeesmysl" target="_blank" rel="noopener">t.me/coffeesmysl</a></span></li>
+    </ul>
+    <p class="loc-hours" data-clip-in="280"><span class="block">Ежедневно</span><span class="block" data-roll="360">08:00 – 22:00</span><span class="status" data-open-status>&nbsp;</span></p>
+    <span class="loc-cta" data-rise-in="420"><a class="cta" href="https://yandex.ru/maps/org/smysl/181148819938/" target="_blank" rel="noopener" data-cta>Построить маршрут</a></span>
+  </div>
+</section>
+
+<!-- ═══════════ 5 — philosophy ═══════════ -->
+<section class="story" id="story" aria-label="О кофейне" data-header-theme="dark">
+  <!-- a video slot: drop a file at assets/video/story.mp4 and it plays here, behind the copy -->
+  <div class="story-video" aria-hidden="true" data-story-video></div>
+  <div class="story-scrim" aria-hidden="true"></div>
+  <div class="story-content">
+    <div class="story-h2-wrap"><h2 class="headline" data-text="lines" data-margin="-25%">В чашке кофе больше смысла, чем кажется.</h2></div>
+    <div class="story-coffee" data-story-coffee>
+      <p class="eyebrow" data-rise-in="120"><span class="slash">//</span><span class="slash-sp"> </span>Зерно и обжарка</p>
+      <div class="roast" role="img" aria-label="Шкала обжарки: для фильтра — светлая, для эспрессо — средняя">
+        <div class="roast-scale" aria-hidden="true"><span>Светлая</span><span>Средняя</span><span>Тёмная</span></div>
+        <div class="roast-bar" aria-hidden="true"><span class="roast-fill" data-roast-fill></span></div>
+        <span class="roast-mark" style="--at: 21%" aria-hidden="true" data-roast-mark="0"><b>Фильтр</b><small>ягоды · фрукты</small></span>
+        <span class="roast-mark" style="--at: 53%" aria-hidden="true" data-roast-mark="1"><b>Эспрессо</b><small>орех · карамель</small></span>
+      </div>
+      <ol class="story-perks">
+        <li data-rise-in="260"><span class="n">01</span><b>Зерно класса specialty</b><span>Оценка от 80 баллов по шкале SCA, у каждой партии понятное происхождение.</span></li>
+        <li data-rise-in="340"><span class="n">02</span><b>Две обжарки</b><span>Средняя — для эспрессо и молочных напитков, светлая — для фильтра, пуровера и аэропресса.</span></li>
+        <li data-rise-in="420"><span class="n">03</span><b>Бариста с дескрипторами</b><span>Расскажут о зерне, предложат сезонную позицию и спросят, какие ноты вы услышали.</span></li>
+      </ol>
+    </div>
+    <div class="story-lede-wrap"><p class="lede" data-text="words" data-delay="220">Заходите на пять минут за кофе с собой или оставайтесь на завтрак у окна с видом на Кремль. Бариста подскажет зерно и нарисует на капучино сердце.</p></div>
+    <ul class="story-claims">
+      <li data-clip-in="340">Вид на Кремль.</li>
+      <li data-clip-in="430">Завтраки весь день.</li>
+      <li data-clip-in="520">Можно с собакой.</li>
+    </ul>
+    <p class="eyebrow story-eyebrow" data-rise-in="420"><span class="slash">//</span><span class="slash-sp"> </span>О нас</p>
+  </div>
+</section>
+
+<!-- ═══════════ 6 — reviews ═══════════ -->
+<section class="reviews frost" id="reviews" aria-label="Отзывы гостей" data-header-theme="dark">
+  <div class="swirl" data-swirl="ltr" data-fade-top aria-hidden="true"><div class="swirl-par"><span class="swirl-shape"><span class="swirl-fill"></span></span></div></div>
+  <div class="rev-content">
+    <div class="rev-intro">
+      <p class="eyebrow print-in" data-clip-in="0"><span class="slash">//</span><span class="slash-sp"> </span>Отзывы гостей</p>
+      <h2 class="headline rev-h2" data-text="lines" data-margin="-20%">Любовь с первого глотка</h2>
+      <p class="rev-by" data-rise-in="300">— Анастасия Р., отзыв на Яндекс Картах</p>
+    </div>
+    <div class="rev-side">
+      <div class="rev-score" data-rise-in="200">
+        <p class="rev-score-num"><span data-roll="200">4,8</span><span class="of">/ 5</span></p>
+        <p class="rev-stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></p>
+        <p class="rev-meta">768 оценок · 530 отзывов<br>Яндекс Карты</p>
+      </div>
+      <div class="rev-award" data-rise-in="380">
+        <div class="seal" data-seal role="img" aria-label="«Хорошее место 2026» — награда для любимых мест пользователей Яндекс Карт">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="seal-p2" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text textLength="497" lengthAdjust="spacing"><textPath href="#seal-p2">ХОРОШЕЕ МЕСТО 2026 · ЯНДЕКС КАРТЫ ·</textPath></text></svg>
+          <span class="seal-center" aria-hidden="true"><b>2026</b><small>награда</small></span>
+        </div>
+      </div>
+    </div>
+    <ul class="rev-aspects">
+      <li class="rev-aspect"><span class="row"><span>Расположение</span><span data-roll="200">98%</span></span><span class="bar"><span data-bar-to="0.98" data-bar-delay="200"></span></span></li>
+      <li class="rev-aspect"><span class="row"><span>Атмосфера</span><span data-roll="290">95%</span></span><span class="bar"><span data-bar-to="0.95" data-bar-delay="290"></span></span></li>
+      <li class="rev-aspect"><span class="row"><span>Интерьер</span><span data-roll="380">94%</span></span><span class="bar"><span data-bar-to="0.94" data-bar-delay="380"></span></span></li>
+      <li class="rev-aspect note">Доля положительных упоминаний в 530 отзывах на Яндекс Картах</li>
+    </ul>
+    <div class="rev-slider">
+      <div class="st" tabindex="0" role="region" aria-roledescription="карусель" aria-label="Отзывы гостей: стрелки влево и вправо листают" data-st>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">ИГ</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">11.09.2026</p></div></div><blockquote class="st-quote">«Первый раз в Нижнем на выходные. Для завтрака выбрал место ближайшее к отелю и попал в яблочко. Кофе невероятно вкусный и бодрящий, деруны с лососем — потрясающее сочетание. Всем рекомендую найти свой Смысл: кофе в центре города с видом на Кремль».</blockquote><figcaption class="st-by">— Иван Г.<span class="lvl">Знаток города · 5 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">АГ</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">24.06.2026</p></div></div><blockquote class="st-quote">«Приметили эту кафешку в 23-м году. Когда были в Нижнем, каждый день возвращались сюда за сырниками с творожным сыром и вишней — невероятный вкус! В 24-м были проездом в командировке, привела коллег за сырниками — до сих пор вспоминаем».</blockquote><figcaption class="st-by">— Анастасия Гусева<span class="lvl">Знаток города · 9 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">Р</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">20.06.2026</p></div></div><blockquote class="st-quote">«Возможность заказать завтрак в любое время дня — огромный плюс. Отдельный восторг вызвала подача чая в огромных чайниках — идеально для долгого чаепития. И конечно, из окна открывается шикарный вид на Кремль, которым можно любоваться бесконечно».</blockquote><figcaption class="st-by">— Раслан<span class="lvl">Знаток города · 8 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">Э</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">28.08.2026</p></div></div><blockquote class="st-quote">«Очень люблю эту кофейню. Всегда всё свежее и вкусное, подача быстрая, но качественная. Особенно рекомендую сырники с ягодной начинкой… Я не знаю, что за фея их делает, но я душу готова продать за них 😂 Оставайтесь всегда такими же обалденными!»</blockquote><figcaption class="st-by">— Элла<span class="lvl">Кофеман · 4 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">А</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">11.05.2026</p></div></div><blockquote class="st-quote">«Гулял по Рождественской и решил зайти — был приятно удивлён. Бариста Иван приготовил отличный капучино и сделал рисунок сверху: очень красиво, а главное вкусно. Официантка Алина помогла сориентироваться по десертам. Теперь эта кофейня у меня в любимых».</blockquote><figcaption class="st-by">— Артём<span class="lvl">Знаток города · 3 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">Ю</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">10.05.2026</p></div></div><blockquote class="st-quote">«Одно из любимых мест в Нижнем. Мои фавориты — зелёный салат с креветками и сырники, дочь всегда выбирает карбонару. Персонал всегда приветливый. Отдельное спасибо за отношение к животным: всегда приятна забота, когда забегаем с собакой за кофе».</blockquote><figcaption class="st-by">— Юлия<span class="lvl">Знаток города · 10 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">А</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">10.02.2026</p></div></div><blockquote class="st-quote">«Классная кофейня с уютной атмосферой. На входе висит доска с „приветами“ из разных городов — занятно почитать, кто приезжает в наш город. Советую зайти хоть разок, чтобы насладиться видом из окна на Кремль и выпить вкусный кофе».</blockquote><figcaption class="st-by">— Аська<span class="lvl">Знаток города · 4 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">АР</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">23.02.2026</p></div></div><blockquote class="st-quote">«Это любовь с первого глотка! Атмосфера — словно попадаешь в уютный европейский уголок: деревянные столики, мягкое освещение, живые растения. Здесь так хорошо, что совсем не хочется уходить. Теперь это моя любимая кофейня в городе ❤️»</blockquote><figcaption class="st-by">— Анастасия Рыбникова<span class="lvl">Знаток города · 4 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">D</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">24.05.2026</p></div></div><blockquote class="st-quote">«Зашла за прохладительным напитком, а вышла так, будто мне откапиталили душу по гарантии. Бариста посмотрела на меня с такой заботой, что у меня сама закрылась ипотека, наладились отношения с родственниками и перестал хрустеть позвоночник».</blockquote><figcaption class="st-by">— Darya.K<span class="lvl">Кофеман · 3 уровень</span></figcaption></figure>
+        <figure class="st-card" data-st-card><span class="st-fold"></span><div class="st-head"><span class="st-mono">ОТ</span><div><span class="st-stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><p class="st-date">29.07.2026</p></div></div><blockquote class="st-quote">«Очень классная кофейня. Приятный интерьер, улыбчивые и обходительные официанты. Есть десерты без сахара на основе топинамбура — обалденно вкусные! Что для меня, как для диабетика, очень важно».</blockquote><figcaption class="st-by">— Ольга Табешадзе<span class="lvl">Знаток города · 8 уровень</span></figcaption></figure>
+        <div class="st-ctrls">
+          <button type="button" class="st-btn" aria-label="Предыдущий отзыв" data-st-prev><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#chev"/></svg></button>
+          <button type="button" class="st-btn" aria-label="Следующий отзыв" data-st-next><svg aria-hidden="true"><use href="#chev"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="rev-foot" data-rise-in="120"><a class="cta" href="https://yandex.ru/maps/org/smysl/181148819938/reviews/" target="_blank" rel="noopener" data-cta>Все 530 отзывов</a></div>
+  </div>
+</section>
+
+<!-- ═══════════ 7 — order ahead: the thermal printer ═══════════ -->
+<section class="order" id="order" aria-label="Заказ заранее" data-header-theme="dark" data-order>
+  <div class="order-sticky">
+    <div class="order-glow" aria-hidden="true"></div>
+    <div class="order-frame">
+      <div class="order-stage" data-order-stage>
+        <div class="printer" aria-hidden="true"><span class="printer-body"></span><span class="printer-slot"></span><span class="printer-led"></span><span class="printer-brand">смысл · чек</span></div>
+        <div class="print-window">
+          <div class="paper" data-paper>
+            <div class="rc">
+              <div class="rc-body">
+                <p class="rc-title">КОФЕЙНЯ «СМЫСЛ»</p>
+                <div class="rc-rule"></div>
+                <img class="rc-print" src="assets/img/receipt-print.png" alt="Капучино с латте-артом — отпечаток на чековой ленте" width="320" height="243" loading="lazy">
+                <div class="rc-rule"></div>
+                <div class="rc-row"><div><p>Кофе со смыслом.</p><p>Завтраки весь день.</p></div><div class="r"><p>Заказ #00768</p><p data-rc-date>28.09.2026</p><p data-rc-time>08:00</p></div></div>
+                <div class="rc-items"><p><span>Капучино</span><span class="dots"></span><span>280</span></p><p><span>Сырники с вишней</span><span class="dots"></span><span>650</span></p><p class="tot"><span>Итого</span><span class="dots"></span><span>930 ₽</span></p></div>
+                <div class="rc-text"><p>Спасибо, что выбрали «Смысл».</p><p>До встречи на Рождественской!</p></div>
+                <div class="rc-rule"></div>
+                <div class="rc-cta"><p class="rc-cta-big"><span class="block">Закажите</span><span class="block">заранее.</span></p><div class="rc-cta-side"><p><span class="block">Позвоните — приготовим</span><span class="block">к вашему приходу.</span></p><a class="rc-cta-btn" href="tel:+78314237487">Позвонить<span aria-hidden="true">→</span></a></div></div>
+                <div class="rc-barcode" aria-hidden="true" data-barcode></div>
+                <p class="rc-foot">+7 (831) 423-74-87 · P.S. Оставьте чек на карте</p>
+              </div>
+              <svg class="rc-edge" aria-hidden="true" width="328" height="9" viewBox="0 0 328 9" preserveAspectRatio="none" data-torn-rc></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-copy">
+        <div class="order-scrim-t" aria-hidden="true"></div>
+        <div class="order-scrim-b" aria-hidden="true"></div>
+        <div class="order-top">
+          <div class="order-h2-wrap"><h2 class="headline te-center-lg" data-text="lines">Кофе к вашему приходу.</h2></div>
+          <p class="order-note" data-clip-in="180">Кофе — на нас. День — на вас.</p>
+        </div>
+        <span class="order-aside" data-order-aside>
+          <span class="lede order-lede" data-text="words" data-delay="320" data-margin="0px">Позвоните заранее — и заказ будет готов к вашему приходу. Заберите с собой или оставайтесь, а чек с приветом приколите на нашу карту мира у входа.</span>
+          <a class="cta" href="tel:+78314237487" data-cta>Позвонить</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ═══════════ 8 — footer ═══════════ -->
+<footer class="site-footer" data-header-theme="dark" data-footer>
+  <span class="footer-swirl" aria-hidden="true" data-footer-swirl></span>
+  <span class="footer-mark" data-clip-in="180"><a href="#top" aria-label="Кофейня «Смысл» — наверх"><svg aria-hidden="true"><use href="#wordmark"/></svg></a></span>
+  <p class="footer-tagline"><span class="rise" data-rise="260"><span class="rise-in">Кофе со смыслом. Завтраки весь день.</span></span></p>
+  <div class="footer-grid">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <p><span class="rise" data-rise="160"><span class="rise-in">Меню</span></span></p>
+        <ul>
+          <li><span class="rise" data-rise="230"><span class="rise-in"><a href="menu.html#breakfast" data-ul-rule>Завтраки</a></span></span></li>
+          <li><span class="rise" data-rise="300"><span class="rise-in"><a href="menu.html#coffee" data-ul-rule>Кофе</a></span></span></li>
+          <li><span class="rise" data-rise="370"><span class="rise-in"><a href="menu.html#desserts" data-ul-rule>Десерты</a></span></span></li>
+          <li><span class="rise" data-rise="440"><span class="rise-in"><a href="menu.html#lunch" data-ul-rule>Обед и ужин</a></span></span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p><span class="rise" data-rise="290"><span class="rise-in">О нас</span></span></p>
+        <ul>
+          <li><span class="rise" data-rise="360"><span class="rise-in"><a href="#story" data-ul-rule>Философия</a></span></span></li>
+          <li><span class="rise" data-rise="430"><span class="rise-in"><a href="#gallery" data-ul-rule>Фото</a></span></span></li>
+          <li><span class="rise" data-rise="500"><span class="rise-in"><a href="#reviews" data-ul-rule>Отзывы</a></span></span></li>
+          <li><span class="rise" data-rise="570"><span class="rise-in"><a href="#order" data-ul-rule>Карта из чеков</a></span></span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p><span class="rise" data-rise="420"><span class="rise-in">Гостям</span></span></p>
+        <ul>
+          <li><span class="rise" data-rise="490"><span class="rise-in"><a href="#order" data-ul-rule>Заказ заранее</a></span></span></li>
+          <li><span class="rise" data-rise="560"><span class="rise-in"><a href="https://yandex.ru/maps/org/smysl/181148819938/" target="_blank" rel="noopener" data-ul-rule>Маршрут</a></span></span></li>
+          <li><span class="rise" data-rise="630"><span class="rise-in"><a href="https://t.me/coffeesmysl" target="_blank" rel="noopener" data-ul-rule>Telegram</a></span></span></li>
+          <li><span class="rise" data-rise="700"><span class="rise-in"><a href="https://yandex.ru/maps/org/smysl/181148819938/reviews/" target="_blank" rel="noopener" data-ul-rule>Отзывы на Картах</a></span></span></li>
+        </ul>
+      </div>
+    </div>
+    <span class="footer-hr" aria-hidden="true"></span>
+    <div class="footer-contact">
+      <p><span class="rise" data-rise="550"><span class="rise-in">Контакты</span></span></p>
+      <ul>
+        <li><span class="rise" data-rise="620"><span class="rise-in"><a href="tel:+78314237487" data-ul-rule>+7 (831) 423-74-87</a></span></span></li>
+        <li><span class="rise" data-rise="690"><span class="rise-in"><a href="https://t.me/coffeesmysl" target="_blank" rel="noopener" data-ul-rule>t.me/coffeesmysl</a></span></span></li>
+      </ul>
+    </div>
+  </div>
+  <span class="footer-rule t rule-x" data-rule-x="120" aria-hidden="true"></span>
+  <p class="footer-where"><span class="rise" data-rise="300"><span class="rise-in" style="display:flex;align-items:center;gap:.375rem"><span class="pulse-dot"></span>Как нас найти</span></span></p>
+  <div class="footer-row">
+    <address class="footer-addr-a"><span class="rise" data-rise="340"><span class="rise-in">Рождественская ул., 13</span></span><span class="rise" data-rise="410"><span class="rise-in">Нижний Новгород</span></span></address>
+    <span class="footer-div a rule-y" data-rule-y="300" aria-hidden="true"></span>
+    <p class="footer-addr-b"><span class="rise" data-rise="400"><span class="rise-in">Остановка</span></span><span class="rise" data-rise="470"><span class="rise-in">«Широкая улица»</span></span></p>
+    <span class="footer-div b rule-y" data-rule-y="360" aria-hidden="true"></span>
+    <p class="footer-addr-c"><span class="rise" data-rise="460"><span class="rise-in">1 этаж</span></span><span class="rise" data-rise="530"><span class="rise-in">вид на Кремль</span></span></p>
+    <p class="footer-hours"><span class="rise" data-rise="500"><span class="rise-in">Ежедневно</span></span><span class="rise" data-rise="570"><span class="rise-in" data-roll="560">08:00 – 22:00</span></span></p>
+  </div>
+  <span class="footer-rule b rule-x" data-rule-x="220" aria-hidden="true"></span>
+  <div class="footer-legal">
+    <p class="fine dim footer-copy"><span class="rise" data-rise="560"><span class="rise-in">© 2026 Кофейня «Смысл»</span></span></p>
+    <span class="fine footer-social"><span class="rise" data-rise="600"><span class="rise-in"><a class="dim" href="https://t.me/coffeesmysl" target="_blank" rel="noopener" data-ul-rule>Telegram</a><span class="dim" style="white-space:pre"> &amp; </span><a class="dim" href="https://yandex.ru/maps/org/smysl/181148819938/" target="_blank" rel="noopener" data-ul-rule>Яндекс Карты</a></span></span></span>
+    <span class="fine footer-award"><span class="rise" data-rise="640"><span class="rise-in">Хорошее место 2026<span class="dim" style="white-space:pre"> / </span>4,8 ★</span></span></span>
+  </div>
+</footer>
+
+<div class="asset-error" role="alert" data-asset-error></div>
+<script type="module">
+/* ═══════════════════════════════════════════════════════════════════════════
+   СМЫСЛ — the page engine. Springs, one ticker, reveals, scrubs, text reveals,
+   digit rolls, leans, the preloader, Opalesce, the swirl fill, the filmstrip,
+   the dial, the stagger reviews, the printer feed. three.js and Lenis are the
+   only external code, both loaded lazily so the page stands without them.
+   ═══════════════════════════════════════════════════════════════════════════ */
+window.__smyslBooted = true;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+/* `?still` shows every block in its final state — the reduced-motion page, on demand. */
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches || new URLSearchParams(location.search).has("still");
+const hoverOK = () => innerWidth >= 768;
+const clamp = (v, lo, hi) => (v < lo ? lo : v > hi ? hi : v);
+const clamp1 = (v) => clamp(v, -1, 1);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const mk = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const pad2 = (n) => String(n).padStart(2, "0");
+
+/* ── a failed load is never silent ── */
+const errorBox = $("[data-asset-error]");
+const failures = new Set();
+function assetError(msg) {
+  if (failures.has(msg)) return;
+  failures.add(msg);
+  errorBox.innerHTML = [...failures].map(esc).join("<br>") + '<br><span style="opacity:.55">нажмите, чтобы скрыть</span>';
+  errorBox.classList.add("is-on");
+  console.error(msg);
+}
+errorBox.addEventListener("click", () => errorBox.classList.remove("is-on"));
+
+/* ── the root grows above the 1440 board, damped ── */
+const FONT_BASE = 16, BASE_WIDTH = 1440, COEF = 0.6666;
+const applyGrid = () => {
+  const w = innerWidth;
+  const size = FONT_BASE - (FONT_BASE * (((BASE_WIDTH - w) / BASE_WIDTH) * 100) * COEF) / 100;
+  if (size > FONT_BASE) document.documentElement.style.setProperty("font-size", `${size}px`);
+  else document.documentElement.style.removeProperty("font-size");
+};
+applyGrid();
+addEventListener("resize", applyGrid);
+
+/* ═══════════ the shared ticker — Lenis first, then every reader ═══════════ */
+let lenis = null;
+const Ticker = (() => {
+  const subs = new Set();
+  let raf = 0;
+  const loop = (t) => {
+    raf = requestAnimationFrame(loop);
+    if (lenis) lenis.raf(t);
+    for (const s of subs) {
+      if (s.gap && t - s.last <= s.gap) continue;
+      s.last = t;
+      s.fn(t);
+    }
+  };
+  return {
+    add(fn, gap = 0) {
+      const s = { fn, gap, last: -1e9 };
+      subs.add(s);
+      if (!raf) raf = requestAnimationFrame(loop);
+      return () => subs.delete(s);
+    },
+  };
+})();
+
+let wheelSideways = false;
+addEventListener("wheel", (e) => { wheelSideways = Math.abs(e.deltaX) > Math.abs(e.deltaY); }, { capture: true, passive: true });
+const stopScroll = () => { lenis?.stop(); document.documentElement.classList.add("is-stopped"); };
+const startScroll = () => { lenis?.start(); document.documentElement.classList.remove("is-stopped"); };
+if (!REDUCED) {
+  import("lenis").then(({ default: Lenis }) => {
+    lenis = new Lenis({ smoothWheel: true, prevent: (node) => !!(node?.closest && node.closest("[data-fs-track]") && wheelSideways) });
+    window.lenis = lenis;
+    if (document.documentElement.classList.contains("is-stopped")) lenis.stop();
+  }).catch(() => assetError("Lenis (cdn.jsdelivr.net/npm/lenis@1.3.26) не загрузился — прокрутка работает без сглаживания."));
+}
+
+/* ═══════════ the page-ready store ═══════════ */
+const page = {
+  revealing: false, ready: false,
+  subs: { revealing: new Set(), ready: new Set() },
+  set(k) { if (this[k]) return; this[k] = true; for (const f of this.subs[k]) f(); this.subs[k].clear(); },
+  on(k, f) { if (this[k]) queueMicrotask(f); else this.subs[k].add(f); },
+};
+const gateOpen = (g) => !g || page[g];
+
+/* ═══════════ springs — react-spring's own stepping, by hand ═══════════ */
+const CFG = (tension, friction) => ({ tension, friction });
+const C = {
+  std: CFG(90, 26), c80: CFG(80, 26), c60: CFG(60, 26), c58: CFG(58, 26), c46: CFG(46, 26), c45: CFG(45, 24), c42: CFG(42, 26),
+  c40: CFG(40, 26), c36: CFG(36, 26), c120: CFG(120, 26), c170: CFG(170, 26), c200: CFG(200, 28), c210: CFG(210, 26),
+  c220: CFG(220, 28), c260: CFG(260, 30), c55: CFG(55, 22), c90_22: CFG(90, 22), c70_34: CFG(70, 34), c90_18: CFG(90, 18),
+};
+const EASE = {
+  outCubic: (t) => 1 - Math.pow(1 - t, 3),
+  outQuart: (t) => 1 - Math.pow(1 - t, 4),
+  inOutSine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
+  develop: (t) => 1 - Math.pow(1 - t, 3.2),
+};
+const NUM = /-?\d*\.?\d+(?:e[-+]?\d+)?/gi;
+function parseVal(v) {
+  if (typeof v === "number") return { tpl: null, n: [v] };
+  const n = [];
+  const tpl = String(v).replace(NUM, (m) => { n.push(parseFloat(m)); return "\u0001"; });
+  return { tpl, n };
+}
+function fmtVal(tpl, n) {
+  if (tpl === null) return n[0];
+  let i = 0;
+  return tpl.replace(/\u0001/g, () => { const x = n[i++]; return Math.abs(x) < 1e-6 ? "0" : String(+x.toFixed(4)); });
+}
+class AnimValue {
+  constructor(v) { const p = parseVal(v); this.tpl = p.tpl; this.x = p.n.slice(); this.v = p.n.map(() => 0); this.from = p.n.slice(); this.to = p.n.slice(); this.on = false; }
+  get val() { return fmtVal(this.tpl, this.x); }
+  snap(v) { const p = parseVal(v); this.tpl = p.tpl; this.x = p.n.slice(); this.to = p.n.slice(); this.from = p.n.slice(); this.v = p.n.map(() => 0); this.on = false; }
+  start(v, cfg, delay, now) {
+    const p = parseVal(v);
+    if (p.n.length !== this.x.length) { this.snap(v); return; }
+    this.tpl = p.tpl;
+    this.from = this.x.slice();
+    this.to = p.n;
+    this.cfg = cfg;
+    this.t0 = now + (delay || 0);
+    this.on = true;
+    if (cfg.duration) this.v = this.x.map(() => 0);
+  }
+  step(now, dt) {
+    if (!this.on) return false;
+    if (now < this.t0) return true;
+    const c = this.cfg, n = this.x.length;
+    if (c.duration) {
+      const t = Math.min(1, (now - this.t0) / c.duration);
+      const e = (c.easing || ((k) => k))(t);
+      for (let i = 0; i < n; i++) this.x[i] = this.from[i] + (this.to[i] - this.from[i]) * e;
+      if (t >= 1) this.on = false;
+      return true;
+    }
+    const k = c.tension * 1e-6, f = c.friction * 1e-3;
+    const steps = Math.max(1, Math.min(64, Math.round(dt)));
+    let moving = false;
+    for (let i = 0; i < n; i++) {
+      let x = this.x[i], v = this.v[i];
+      const to = this.to[i];
+      const prec = Math.min(0.01, Math.max(1e-4, Math.abs(to - this.from[i]) * 1e-3));
+      for (let s = 0; s < steps; s++) {
+        v += -k * (x - to) - f * v;
+        x += v;
+        if (c.clamp && (x - to) * (this.from[i] - to) < 0) { x = to; v = 0; break; }
+      }
+      if (Math.abs(x - to) < prec && Math.abs(v) < prec * 0.1) { x = to; v = 0; } else moving = true;
+      this.x[i] = x;
+      this.v[i] = v;
+    }
+    if (!moving) this.on = false;
+    return true;
+  }
+}
+const unit = (v, u = "px") => (typeof v === "number" ? v + u : v);
+function renderStyle(el, m) {
+  const V = m.vals, s = el.style;
+  if (V.opacity) s.opacity = V.opacity.val;
+  if (V.clip) { s.clipPath = V.clip.val; s.webkitClipPath = V.clip.val; }
+  let t = "";
+  if (V.x) t += `translateX(${unit(V.x.val)}) `;
+  if (V.y) t += `translateY(${unit(V.y.val)}) `;
+  if (V.scale) t += `scale(${V.scale.val}) `;
+  if (V.sx) t += `scaleX(${V.sx.val}) `;
+  if (V.sy) t += `scaleY(${V.sy.val}) `;
+  if (V.rotateY) t += `rotateY(${V.rotateY.val}deg) `;
+  if (V.rotateX) t += `rotateX(${V.rotateX.val}deg) `;
+  if (V.rotate) t += `rotate(${unit(V.rotate.val, "deg")}) `;
+  if (V.transform) t += V.transform.val;
+  if (t) s.transform = t.trim();
+  if (V.fill) s.setProperty("--fill", V.fill.val);
+}
+const moving = new Set();
+let animOff = null, animLast = 0;
+function animFrame(t) {
+  const dt = animLast ? Math.min(64, t - animLast) : 16;
+  animLast = t;
+  for (const m of moving) {
+    let any = false;
+    for (const k in m.vals) if (m.vals[k].step(t, dt)) any = true;
+    m.render();
+    if (!any) {
+      moving.delete(m);
+      const cb = m.onRest;
+      m.onRest = null;
+      if (cb) cb();
+    }
+  }
+  if (!moving.size && animOff) { animOff(); animOff = null; animLast = 0; }
+}
+class Motion {
+  constructor(el, init, render) {
+    this.el = el;
+    this.vals = {};
+    for (const k in init) this.vals[k] = new AnimValue(init[k]);
+    this.renderFn = render || renderStyle;
+    this.onRest = null;
+    this.render();
+  }
+  get(k) { return this.vals[k]?.val; }
+  to(target, { config = C.std, delay = 0, immediate = false, onRest = null } = {}) {
+    const now = performance.now();
+    for (const k in target) {
+      if (!this.vals[k]) this.vals[k] = new AnimValue(target[k]);
+      if (immediate) this.vals[k].snap(target[k]);
+      else this.vals[k].start(target[k], config, delay, now);
+    }
+    if (immediate) { this.render(); if (onRest) onRest(); return this; }
+    this.onRest = onRest;
+    moving.add(this);
+    if (!animOff) animOff = Ticker.add(animFrame, 0);
+    return this;
+  }
+  render() { this.renderFn(this.el, this); }
+}
+
+/* ═══════════ primitives ═══════════ */
+const marginOf = (m) => (m ? `0px 0px ${m} 0px` : "0px");
+function onceVisible(el, fn, { margin, gate, trigger } = {}) {
+  let inside = false, done = false;
+  const fire = () => { if (done || !inside || !gateOpen(gate)) return; done = true; io.disconnect(); fn(); };
+  const io = new IntersectionObserver((es) => { for (const e of es) inside = e.isIntersecting; fire(); }, { rootMargin: marginOf(margin) });
+  io.observe(trigger || el);
+  if (gate) page.on(gate, fire);
+}
+/* Inview — springs from → to once the element (or its trigger) is on screen. */
+function inview(el, { from, to, config = C.std, delay = 0, margin, gate, trigger, render, onStart } = {}) {
+  const m = new Motion(el, from, render);
+  if (REDUCED) { m.to(to, { immediate: true }); return m; }
+  onceVisible(el, () => { m.to(to, { config, delay }); onStart?.(); }, { margin, gate, trigger });
+  return m;
+}
+/* Hover — off entirely below 768px. */
+function hover(el, { trigger, from, to, config = C.std, delay = 0, immediateOut = false, render } = {}) {
+  const m = new Motion(el, from, render);
+  const t = trigger || el;
+  const enter = () => { if (!hoverOK() || REDUCED) return; m.to(to, { config, delay }); };
+  const leave = () => { if (!hoverOK() || REDUCED) return; m.to(from, immediateOut ? { immediate: true } : { config }); };
+  t.addEventListener("mouseenter", enter);
+  t.addEventListener("mouseleave", leave);
+  t.addEventListener("focusin", enter);
+  t.addEventListener("focusout", leave);
+  return m;
+}
+/* SpringTrigger scrub — progress of a trigger's box between two positions. */
+function progressOf(el, start, end) {
+  const bb = el.getBoundingClientRect(), H = innerHeight;
+  const P = {
+    top_top: bb.top, center_top: bb.top + bb.height / 2, bottom_top: bb.bottom,
+    top_bottom: bb.top - H, center_bottom: bb.top + bb.height / 2 - H, bottom_bottom: bb.bottom - H,
+    top_center: bb.top - H / 2, center_center: bb.top + bb.height / 2 - H / 2, bottom_center: bb.bottom - H / 2,
+  };
+  const s = P[start.replace(" ", "_")], e = P[end.replace(" ", "_")];
+  const len = Math.abs(s - e) || 1;
+  return Math.min(Math.max(0, 1 - (s + len) / len), 1);
+}
+function interp(a, b, p) {
+  const r = {};
+  for (const k in a) {
+    const A = parseVal(a[k]), B = parseVal(b[k]);
+    r[k] = fmtVal(A.tpl ?? B.tpl, A.n.map((x, i) => x + ((B.n[i] ?? x) - x) * p));
+  }
+  return r;
+}
+function scrub(el, { trigger, start = "top bottom", end = "center center", from, to, config, render, reducedAt = 0 } = {}) {
+  const m = new Motion(el, from, render);
+  const trig = trigger || el;
+  if (REDUCED) { m.to(interp(from, to, reducedAt), { immediate: true }); return m; }
+  let vis = false, last = -1;
+  new IntersectionObserver(([e]) => { vis = e.isIntersecting; }, { rootMargin: "25% 0px" }).observe(trig);
+  Ticker.add(() => {
+    if (!vis) return;
+    const q = Math.round(progressOf(trig, start, end) * 2000) / 2000;
+    if (q === last) return;
+    last = q;
+    const vals = interp(from, to, q);
+    if (config) m.to(vals, { config }); else m.to(vals, { immediate: true });
+  }, 10);
+  return m;
+}
+
+/* TextEngine — lines for headlines, words for ledes. */
+const fontsSettled = (async () => {
+  const loads = ['700 100px "Geist"', '600 64px "Geist"', '90px "Great Vibes"', '16px "IBM Plex Mono"', '16px "Onest"'].map((f) => document.fonts.load(f, "Кофе со смыслом 0123").catch(() => []));
+  await Promise.race([Promise.all(loads), new Promise((r) => setTimeout(r, 3500))]);
+  await document.fonts.ready;
+})();
+function textEngine(el) {
+  const mode = el.dataset.text;
+  const text = el.textContent.replace(/\s+/g, " ").trim();
+  const words = text.split(" ");
+  const gate = el.dataset.gate;
+  const hero = !!el.closest(".hero");
+  const delay = +(el.dataset.delay || 0);
+  const margin = el.dataset.margin === "0px" ? undefined : el.dataset.margin;
+  el.textContent = "";
+  const sr = mk("span", "sr-only", el.dataset.sr || text);
+  const vis = mk("span", "te-vis");
+  vis.setAttribute("aria-hidden", "true");
+  el.append(sr, vis);
+  if (el.hasAttribute("data-clip")) el.classList.add("te-clip");
+  const FROM = mode === "lines" ? { y: "110%", opacity: 0 } : { y: hero ? 16 : 14, opacity: 0 };
+  const TO = mode === "lines" ? { y: "0%", opacity: 1 } : { y: 0, opacity: 1 };
+  const cfg = mode === "lines"
+    ? { duration: 900, easing: EASE.outCubic }
+    : { duration: hero ? 650 : 620, easing: EASE.outQuart };
+  const stagger = mode === "lines" ? 90 : hero ? 18 : 14;
+  /* an optional script word that closes the last line (the hero's "смыслом") */
+  const script = el.dataset.script || "";
+  const S_FROM = { clip: "inset(-20% 100% -40% -4%)" }, S_TO = { clip: "inset(-20% -8% -40% -4%)" };
+  let scriptM = null;
+  let revealed = REDUCED, motions = [], width = -1;
+  const build = () => {
+    if (mode === "words") {
+      vis.className = "te-vis te-words";
+      vis.innerHTML = "";
+      const units = words.map((w) => { const s = mk("span", "te-word", w); vis.append(s); return s; });
+      motions = units.map((u) => new Motion(u, revealed ? TO : FROM));
+    } else {
+      vis.className = "te-vis te-measure";
+      /* the last word and the script word wrap as one unit: "со смыслом" never splits */
+      const head = script ? words.slice(0, -1) : words;
+      const tail = script ? words[words.length - 1] : null;
+      vis.innerHTML = head.map((w) => `<span class="te-w">${esc(w)}</span>`).join(" ")
+        + (script ? `${head.length ? " " : ""}<span class="te-w" data-s style="white-space:nowrap">${esc(tail)} <span class="te-w-script">${esc(script)}</span></span>` : "");
+      const lines = [];
+      const tol = parseFloat(getComputedStyle(el).fontSize) * 0.5;
+      let top = null;
+      for (const w of vis.children) {
+        const t = w.offsetTop;
+        if (top === null || Math.abs(t - top) > tol) { lines.push([]); top = t; }
+        if (w.hasAttribute("data-s")) lines[lines.length - 1].push(tail, null);
+        else lines[lines.length - 1].push(w.textContent);
+      }
+      vis.className = "te-vis te-lines";
+      vis.innerHTML = lines.map((l) => {
+        const txt = l.filter((x) => x !== null).join(" ");
+        return `<span class="te-line"><span>${esc(txt)}</span>${l.includes(null) ? `<span class="te-script">${esc(script)}</span>` : ""}</span>`;
+      }).join("");
+      motions = [...vis.querySelectorAll(".te-line > span:first-child")].map((u) => new Motion(u, revealed ? TO : FROM));
+      const sEl = vis.querySelector(".te-script");
+      scriptM = sEl ? new Motion(sEl, revealed ? S_TO : S_FROM) : null;
+      if (sEl && revealed) el.classList.add("te-open");
+    }
+    el.classList.add("te-ready");
+  };
+  fontsSettled.then(() => {
+    build();
+    width = el.clientWidth;
+    new ResizeObserver(() => {
+      if (mode !== "lines" || el.clientWidth === width) return;
+      width = el.clientWidth;
+      build();
+    }).observe(el);
+    if (!REDUCED) onceVisible(el, () => {
+      revealed = true;
+      motions.forEach((m, i) => m.to(TO, { config: cfg, delay: delay + i * stagger }));
+      scriptM?.to(S_TO, { config: C.c36, delay: delay + 420, onRest: () => el.classList.add("te-open") });
+    }, { margin, gate });
+  });
+}
+
+/* DigitRoll — each digit a column that rolls to its value. */
+function digitRoll(el, delay = 0, gate) {
+  const str = el.textContent;
+  el.textContent = "";
+  el.classList.add("roll");
+  const ghost = mk("span", "roll-ghost", str);
+  const cells = mk("span", "roll-cells");
+  cells.setAttribute("aria-hidden", "true");
+  const cols = [];
+  let order = 0;
+  for (const ch of str) {
+    if (/\d/.test(ch)) {
+      const col = mk("span", "roll-col"), stack = mk("span", "roll-stack");
+      for (let d = 0; d < 10; d++) stack.append(mk("span", "", String(d)));
+      col.append(stack);
+      cells.append(col);
+      cols.push({ m: new Motion(stack, { y: "0%" }), d: +ch, o: order++ });
+    } else cells.append(mk("span", "roll-ch", ch));
+  }
+  el.append(ghost, cells);
+  const run = (immediate) => cols.forEach((c) => c.m.to({ y: `-${c.d * 10}%` }, immediate ? { immediate: true } : { config: C.std, delay: delay + c.o * 70 }));
+  if (REDUCED) run(true); else onceVisible(el, () => run(false), { gate });
+}
+
+/* UnderlineLink — the label rolls over, the hairline draws. */
+function underline(a, rule) {
+  const label = a.innerHTML;
+  a.innerHTML = `<span class="ul-wrap"><span class="ul-clip"><span class="ul-a">${label}</span><span class="ul-b" aria-hidden="true">${label}</span></span>${rule ? '<span class="ul-rule" aria-hidden="true"></span>' : ""}</span>`;
+  hover($(".ul-a", a), { trigger: a, from: { y: "0%" }, to: { y: "-100%" }, config: C.c260 });
+  hover($(".ul-b", a), { trigger: a, from: { y: "100%" }, to: { y: "0%" }, config: C.c260 });
+  if (rule) hover($(".ul-rule", a), { trigger: a, from: { sx: 0, opacity: 0 }, to: { sx: 1, opacity: 1 }, config: C.c220 });
+}
+/* CtaLink — the text CTA with its two arrows and two rules. */
+function ctaLink(a) {
+  const label = a.textContent.trim();
+  const arrow = '<span class="rot"><svg viewBox="0 0 12.2137 13.2551" aria-hidden="true"><use href="#arrow"/></svg></span>';
+  a.innerHTML = `<span class="cta-row"><span class="cta-label">${esc(label)}</span><span class="cta-arrows" aria-hidden="true"><span class="cta-arrow a">${arrow}</span><span class="cta-arrow b">${arrow}</span></span></span><span class="cta-rules" aria-hidden="true"><span class="cta-rule base"></span><span class="cta-rule over"></span></span>`;
+  hover($(".cta-arrow.a", a), { trigger: a, from: { x: "0%", opacity: 1 }, to: { x: "190%", opacity: 0 }, config: C.c200 });
+  hover($(".cta-arrow.b", a), { trigger: a, from: { x: "-190%", opacity: 0 }, to: { x: "0%", opacity: 1 }, config: C.c200, delay: 70 });
+  hover($(".cta-rule.base", a), { trigger: a, from: { sx: 1 }, to: { sx: 0 }, config: C.c260, immediateOut: true });
+  hover($(".cta-rule.over", a), { trigger: a, from: { sx: 0 }, to: { sx: 1 }, config: C.c170, delay: 140, immediateOut: true });
+}
+/* PointerLean — the card turns toward the pointer. */
+function pointerLean(outer) {
+  const inner = outer.firstElementChild;
+  const m = new Motion(inner, { rotateY: 0, rotateX: 0 });
+  outer.addEventListener("pointermove", (e) => {
+    if (!hoverOK() || REDUCED || e.pointerType === "touch") return;
+    const r = outer.getBoundingClientRect();
+    const dx = clamp1(((e.clientX - r.left) / r.width) * 2 - 1), dy = clamp1(((e.clientY - r.top) / r.height) * 2 - 1);
+    m.to({ rotateY: dx * 14, rotateX: -dy * 14 }, { config: C.c90_22 });
+  });
+  outer.addEventListener("pointerleave", () => m.to({ rotateY: 0, rotateX: 0 }, { config: C.c90_22 }));
+}
+/* PulseDot — 1 → 0.15 → 1, 700ms a half, eased in and out. */
+if (!REDUCED) {
+  const dots = $$(".pulse-dot");
+  Ticker.add((t) => {
+    const ph = (t % 1400) / 700;
+    const o = ph < 1 ? 1 - 0.85 * EASE.inOutSine(ph) : 0.15 + 0.85 * EASE.inOutSine(ph - 1);
+    for (const d of dots) d.style.opacity = o;
+  }, 16);
+}
+
+/* ═══════════ generic wiring ═══════════ */
+function wireCommon(root = document) {
+  $$("a[data-ul]", root).forEach((a) => underline(a, false));
+  $$("a[data-ul-rule]", root).forEach((a) => underline(a, true));
+  $$("a[data-cta]", root).forEach(ctaLink);
+  $$("[data-text]", root).forEach(textEngine);
+  $$("[data-roll]", root).forEach((el) => digitRoll(el, +el.dataset.roll || 0, el.dataset.gate));
+  $$("[data-lean]", root).forEach(pointerLean);
+  $$("[data-rise-in]", root).forEach((el) => inview(el, { from: { opacity: 0, y: 10 }, to: { opacity: 1, y: 0 }, delay: +el.dataset.riseIn || 0, gate: el.dataset.gate }));
+  $$("[data-clip-in]", root).forEach((el) => {
+    const listy = el.closest(".loc-list, .story-claims");
+    const config = el.classList.contains("footer-mark") ? C.c42 : listy ? C.c80 : C.c46;
+    inview(el, { from: { clip: "inset(0 100% 0 0)" }, to: { clip: "inset(0 0% 0 0)" }, config, delay: +el.dataset.clipIn || 0 });
+  });
+  $$("[data-rise]", root).forEach((el) => inview($(".rise-in", el), { trigger: el, from: { y: "150%" }, to: { y: "0%" }, config: C.c80, delay: +el.dataset.rise || 0 }));
+  $$("[data-rule-x]", root).forEach((el) => inview(el, { from: { sx: 0 }, to: { sx: 1 }, config: C.c55, delay: +el.dataset.ruleX || 0, gate: el.dataset.gate }));
+  $$("[data-rule-y]", root).forEach((el) => inview(el, { from: { sy: 0 }, to: { sy: 1 }, config: C.c55, delay: +el.dataset.ruleY || 0, gate: el.dataset.gate }));
+}
+
+/* ═══════════ header ═══════════ */
+let menuOpen = false;
+function header() {
+  const hdr = $("[data-header]");
+  inview(hdr, { from: { opacity: 0, y: -12 }, to: { opacity: 1, y: 0 }, delay: 120, gate: "ready" });
+  const cfgFor = (el) => (el.classList.contains("header-mark") ? C.c42 : C.c46);
+  $$("[data-print-in]", hdr).forEach((el) => inview(el, { from: { clip: "inset(0 100% 0 0)" }, to: { clip: "inset(0 0% 0 0)" }, config: cfgFor(el), delay: +el.dataset.printIn, gate: "ready" }));
+  const secs = $$("[data-header-theme]");
+  const footer = $("[data-footer]");
+  Ticker.add(() => {
+    let theme = "dark";
+    for (const s of secs) { const r = s.getBoundingClientRect(); if (r.top <= 35 && r.bottom > 35) { theme = s.dataset.headerTheme; break; } }
+    hdr.classList.toggle("is-light", theme === "light" && !menuOpen);
+    hdr.classList.toggle("is-hidden", innerWidth < 640 && footer.getBoundingClientRect().top <= 35 && !menuOpen);
+  }, 100);
+  const burger = $("[data-burger]"), panel = $("[data-menu-panel]");
+  const setOpen = (open) => {
+    menuOpen = open;
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+    panel.hidden = !open;
+    hdr.classList.toggle("is-open", open);
+    if (open) { hdr.classList.remove("is-light"); stopScroll(); } else startScroll();
+  };
+  burger.addEventListener("click", () => setOpen(!menuOpen));
+  addEventListener("keydown", (e) => { if (e.key === "Escape" && menuOpen) { setOpen(false); burger.focus(); } });
+  window.__closeMenu = () => { if (menuOpen) setOpen(false); };
+}
+
+/* smooth in-page anchors */
+document.addEventListener("click", (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute("href");
+  if (id.length < 2) return;
+  const t = document.querySelector(id);
+  if (!t) return;
+  e.preventDefault();
+  window.__closeMenu?.();
+  if (lenis) lenis.scrollTo(t, { duration: 1.4 });
+  else t.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" });
+  history.replaceState(null, "", id);
+});
+
+/* ═══════════ the theme switch — a visible half-moon at the top ═══════════ */
+function themeToggle() {
+  const root = document.documentElement;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  $$("[data-theme-toggle]").forEach((btn) => {
+    const icon = $("svg", btn), label = $(".theme-toggle-label", btn);
+    const turn = new Motion(icon, { rotate: root.dataset.theme === "light" ? 180 : 0 });
+    const sync = (animate) => {
+      const light = root.dataset.theme === "light";
+      btn.setAttribute("aria-pressed", String(light));
+      btn.setAttribute("aria-label", light ? "Включить тёмную тему" : "Включить светлую тему");
+      if (label) label.textContent = light ? "Тёмная" : "Светлая";
+      turn.to({ rotate: light ? 180 : 0 }, animate && !REDUCED ? { config: C.c170 } : { immediate: true });
+      if (meta) meta.content = light ? "#f3f2ef" : "#070707";
+    };
+    btn.addEventListener("click", () => {
+      const light = root.dataset.theme !== "light";
+      root.classList.add("theme-anim");
+      if (light) root.dataset.theme = "light"; else delete root.dataset.theme;
+      try { localStorage.setItem("smysl-theme", light ? "light" : "dark"); } catch {}
+      $$("[data-theme-toggle]").forEach((b) => b.dispatchEvent(new CustomEvent("theme:sync")));
+      setTimeout(() => root.classList.remove("theme-anim"), 520);
+    });
+    btn.addEventListener("theme:sync", () => sync(true));
+    sync(false);
+  });
+}
+
+/* ═══════════ the preloader — a cup filling, then pouring away ═══════════ */
+function preloader() {
+  const el = $("[data-preloader]");
+  if (REDUCED || !el) { el?.remove(); page.set("revealing"); page.set("ready"); return; }
+  stopScroll();
+  const count = $("[data-pre-count]"), level = $("[data-pre-level]");
+  const STEP = { mount: 0.1, fonts: 0.6, loaded: 1 }, MIN_VISIBLE = 620, MAX_WAIT = 5000, HOLD = 180;
+  const t0 = performance.now();
+  let finishing = false;
+  const m = new Motion(el, { level: 0, pour: 0 }, (e, mm) => {
+    const L = mm.vals.level.val, P = clamp(mm.vals.pour.val, 0, 1.2);
+    count.textContent = String(Math.round(clamp(L, 0, 1) * 100)).padStart(3, "0");
+    level.setAttribute("y", String(156 - L * (1 - P) * (156 - 30)));
+    e.style.clipPath = `inset(${Math.min(100, P * 100)}% 0 0 0)`;
+  });
+  const done = () => {
+    if (page.ready) return;
+    el.remove();
+    page.set("revealing");
+    page.set("ready");
+    startScroll();
+  };
+  m.to({ level: STEP.mount }, { config: C.c120 });
+  /* the level is the load: fonts, then the film's first frames */
+  let fontsDone = false, loadDone = document.readyState === "complete";
+  const nudge = () => {
+    if (finishing) return;
+    const film = seq.firstPassProgress();
+    m.to({ level: fontsDone ? STEP.fonts + (STEP.loaded - STEP.fonts) * film * 0.98 : STEP.mount }, { config: C.c120 });
+    if (fontsDone && loadDone && film >= 1) finish();
+  };
+  fontsSettled.then(() => { fontsDone = true; nudge(); });
+  seq.onProgress(nudge);
+  if (!loadDone) addEventListener("load", () => { loadDone = true; nudge(); }, { once: true });
+  const finish = () => {
+    if (finishing) return;
+    finishing = true;
+    m.to({ level: STEP.loaded }, {
+      config: C.c120,
+      onRest: () => setTimeout(() => {
+        page.set("revealing");
+        m.to({ pour: 1 }, { config: C.c90_18, onRest: done });
+      }, Math.max(0, MIN_VISIBLE - (performance.now() - t0)) + HOLD),
+    });
+  };
+  setTimeout(finish, MAX_WAIT);
+  setTimeout(done, MAX_WAIT + 2000);
+}
+
+/* ═══════════ the background — the film cut into frames (36 fps), scrubbed by the scroll ═══════════
+   The whole page's scroll maps onto the whole clip: the first frame at the top, the last at the
+   footer. Frames arrive coarse-to-fine (every 32nd, 16th, 8th … every one), so the scrub works from
+   the first second and sharpens while the visitor reads. The nearest frame that has arrived is drawn. */
+const SEQ = { count: 319, crop: 0.014, cup: { x0: 0.29, x1: 0.84, y0: 0.675, y1: 0.915 }, steam: { x0: 0.2, x1: 0.86, y0: 0.24, y1: 0.66 } };
+const seq = (() => {
+  const canvas = $("[data-seq]");
+  const ctx = canvas.getContext("2d", { alpha: false });
+  const small = innerWidth < 768;
+  const dir = small ? "m" : "d";
+  const SW = small ? 540 : 720, SH = small ? 960 : 1280;
+  const src = (i) => `assets/seq/${dir}/f_${String(i + 1).padStart(4, "0")}.webp`;
+  const N = SEQ.count;
+  const imgs = new Array(N), loaded = new Uint8Array(N);
+  const order = [], seen = new Uint8Array(N);
+  for (const step of [32, 16, 8, 4, 2, 1]) for (let i = 0; i < N; i += step) if (!seen[i]) { seen[i] = 1; order.push(i); }
+  if (!seen[N - 1]) order.push(N - 1);
+  const firstPass = order.filter((i) => i % 16 === 0);
+  let firstLeft = firstPass.length;
+  let cursor = 0, active = 0, broken = 0;
+  let want = REDUCED ? 150 : 0, drawn = -1, dpr = 1;
+  const rect = { x: 0, y: 0, w: 0, h: 0 };
+  const listeners = new Set();
+  const nearest = (i) => {
+    if (loaded[i]) return i;
+    for (let d = 1; d < N; d++) {
+      if (i - d >= 0 && loaded[i - d]) return i - d;
+      if (i + d < N && loaded[i + d]) return i + d;
+    }
+    return -1;
+  };
+  const layout = () => {
+    const W = innerWidth, H = innerHeight;
+    dpr = Math.min(devicePixelRatio || 1, 1.5);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    const cw = SW * (1 - 2 * SEQ.crop);
+    if (W < 768 || W / H < 0.9) {
+      /* a phone: the cup and the steam dancing over it stand in the middle of the screen */
+      const s = Math.max(W / cw, H / SH) * 1.08;
+      rect.w = cw * s; rect.h = SH * s;
+      rect.x = Math.min(0, Math.max(W - rect.w, W / 2 - rect.w * 0.565));
+      rect.y = H / 2 - rect.h * 0.58;
+    } else if (W < 1024) {
+      rect.h = H * 1.18; rect.w = rect.h * (cw / SH);
+      rect.x = W * 0.62 - rect.w / 2; rect.y = H * 1.04 - rect.h;
+    } else {
+      rect.h = H * 1.3; rect.w = rect.h * (cw / SH);
+      rect.x = W * 0.655 - rect.w / 2; rect.y = H * 1.075 - rect.h;
+    }
+    drawn = -1;
+    paint();
+  };
+  /* the page around the frame: espresso in the dark theme, paper in the light one —
+     the frame itself always keeps its own, natural colours */
+  const light = () => document.documentElement.dataset.theme === "light";
+  const ink = (a) => (light() ? `rgba(243, 242, 239, ${a})` : `rgba(7, 7, 7, ${a})`);
+  const feather = () => {
+    const x = rect.x * dpr, y = rect.y * dpr, w = rect.w * dpr, h = rect.h * dpr;
+    if (innerWidth < 768 || innerWidth / innerHeight < 0.9) {
+      let g = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.3);
+      g.addColorStop(0, ink(0.6)); g.addColorStop(1, ink(0));
+      ctx.fillStyle = g; ctx.fillRect(0, 0, canvas.width, canvas.height * 0.3);
+      /* the frame's own foot, softened into the page where it stops above the screen's edge */
+      const foot = y + h;
+      g = ctx.createLinearGradient(0, foot - h * 0.14, 0, foot);
+      g.addColorStop(0, ink(0)); g.addColorStop(1, ink(1));
+      ctx.fillStyle = g; ctx.fillRect(0, foot - h * 0.14, canvas.width, h * 0.14 + 2);
+      return;
+    }
+    const f = w * 0.34;
+    let g = ctx.createLinearGradient(x, 0, x + f, 0);
+    g.addColorStop(0, ink(1)); g.addColorStop(1, ink(0));
+    ctx.fillStyle = g; ctx.fillRect(x - 2, 0, f + 2, canvas.height);
+    g = ctx.createLinearGradient(x + w - f, 0, x + w, 0);
+    g.addColorStop(0, ink(0)); g.addColorStop(1, ink(1));
+    ctx.fillStyle = g; ctx.fillRect(x + w - f, 0, f + 2, canvas.height);
+    const top = Math.max(0, y);
+    g = ctx.createLinearGradient(0, top, 0, top + h * 0.22);
+    g.addColorStop(0, ink(1)); g.addColorStop(1, ink(0));
+    ctx.fillStyle = g; ctx.fillRect(0, top, canvas.width, h * 0.22);
+  };
+  new MutationObserver(() => { drawn = -1; paint(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  function paint() {
+    const i = nearest(want);
+    if (i < 0 || i === drawn) return;
+    drawn = i;
+    ctx.fillStyle = ink(1);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(imgs[i], SW * SEQ.crop, 0, SW * (1 - 2 * SEQ.crop), SH, rect.x * dpr, rect.y * dpr, rect.w * dpr, rect.h * dpr);
+    feather();
+  }
+  const pump = () => {
+    while (active < 6 && cursor < order.length) {
+      const i = order[cursor++];
+      active++;
+      const im = new Image();
+      im.decoding = "async";
+      im.onload = () => {
+        imgs[i] = im; loaded[i] = 1; active--;
+        if (i % 16 === 0) firstLeft--;
+        if (drawn !== want) paint();
+        listeners.forEach((f) => f());
+        pump();
+      };
+      im.onerror = () => {
+        active--; broken++;
+        if (i % 16 === 0) firstLeft--;
+        assetError(`Кадры фона не загрузились (например, ${src(i)}).`);
+        listeners.forEach((f) => f());
+        pump();
+      };
+      im.src = src(i);
+    }
+  };
+  addEventListener("resize", layout);
+  layout();
+  pump();
+  if (!REDUCED) Ticker.add(() => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
+    const i = Math.round(p * (N - 1));
+    if (i !== want) { want = i; paint(); }
+  }, 0);
+  return {
+    rect,
+    firstPassProgress: () => 1 - firstLeft / firstPass.length,
+    onProgress: (f) => listeners.add(f),
+    /** A region of the frame (fractions) on screen, in viewport px. */
+    region: (r) => ({ x: rect.x + rect.w * r.x0, y: rect.y + rect.h * r.y0, w: rect.w * (r.x1 - r.x0), h: rect.h * (r.y1 - r.y0) }),
+  };
+})();
+
+/* ═══════════ the swirl fill ═══════════ */
+const BLOBS = [{ x: 0, y: 78, delay: 0 }, { x: 30, y: 22, delay: 10 }, { x: 58, y: 88, delay: 22 }, { x: 92, y: 40, delay: 34 }];
+const REACH = 115, FEATHER = 14;
+const blobMask = (dir) => BLOBS.map(({ x, y, delay }) => {
+  const cx = dir === "ltr" ? x : 100 - x;
+  const rate = REACH / (100 - delay);
+  const radius = `calc((var(--fill) - ${delay}) * ${rate.toFixed(4)}%)`;
+  return `radial-gradient(circle at ${cx}% ${y}%, #000 calc(${radius} - ${FEATHER}%), transparent ${radius})`;
+}).join(", ");
+function swirlFill(host) {
+  const sec = host.closest("section");
+  const box = $(".swirl-par", host), fill = $(".swirl-fill", host);
+  const mask = blobMask(host.dataset.swirl);
+  fill.style.webkitMaskImage = mask;
+  fill.style.maskImage = mask;
+  const m = new Motion(fill, { fill: 0 });
+  if (REDUCED) { m.to({ fill: 100 }, { immediate: true }); return; }
+  let fired = false;
+  const tryFire = () => {
+    if (fired || !page.ready) return;
+    const r = sec.getBoundingClientRect();
+    const shown = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
+    if (shown / Math.max(1, r.height) < 0.12 && shown < innerHeight * 0.5) return;
+    fired = true;
+    m.to({ fill: 100 }, { config: { duration: 3400, easing: EASE.inOutSine }, delay: 100 });
+  };
+  new IntersectionObserver(() => tryFire(), { threshold: [0, 0.06, 0.12, 0.2, 0.35] }).observe(sec);
+  page.on("ready", tryFire);
+  scrub(box, { trigger: box, start: "top bottom", end: "bottom top", from: { y: -100 }, to: { y: 100 } });
+}
+
+/* ═══════════ 1 — the hero ═══════════ */
+function hero() {
+  inview($("[data-hero-eyebrow]"), { from: { opacity: 0, y: 10 }, to: { opacity: 1, y: 0 }, gate: "ready" });
+  inview($("[data-hero-cta]"), { from: { opacity: 0, y: 12 }, to: { opacity: 1, y: 0 }, delay: 520, gate: "ready" });
+  $$("[data-bar]").forEach((el) => inview(el, { from: { opacity: 0, y: 16 }, to: { opacity: 1, y: 0 }, delay: +el.dataset.bar, gate: "ready" }));
+  inview($("[data-hero-seal]"), { from: { opacity: 0, scale: 0.92 }, to: { opacity: 1, scale: 1 }, config: C.c60, delay: 1050, gate: "ready" });
+
+  /* the cards: one per piece of the film behind — the cup and the steam over it */
+  const section = $(".hero");
+  const cards = { cup: $('[data-card="cup"]'), steam: $('[data-card="steam"]') };
+  const cardM = { cup: new Motion(cards.cup, { opacity: 0, y: 18 }), steam: new Motion(cards.steam, { opacity: 0, y: 18 }) };
+  let hideTimer = 0;
+  const showCard = (piece) => {
+    clearTimeout(hideTimer);
+    for (const k in cardM) cardM[k].to(k === piece ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }, { config: C.c210 });
+  };
+  const hideCards = () => { hideTimer = setTimeout(() => { for (const k in cardM) cardM[k].to({ opacity: 0, y: 18 }, { config: C.c210 }); }, 220); };
+  const handles = $$(".hero-handle", section);
+  handles.forEach((h) => {
+    h.addEventListener("mouseenter", () => showCard(h.dataset.piece));
+    h.addEventListener("mouseleave", hideCards);
+  });
+  /* the film is fixed and the hero scrolls, so the handles are re-placed as it moves */
+  let heroOn = true;
+  new IntersectionObserver(([e]) => { heroOn = e.isIntersecting; }).observe(section);
+  Ticker.add(() => {
+    if (!heroOn || innerWidth < 1024) return;
+    const top = section.getBoundingClientRect().top;
+    for (const h of handles) {
+      const r = seq.region(SEQ[h.dataset.piece]);
+      h.style.cssText = `left:${r.x.toFixed(1)}px;top:${(r.y - top).toFixed(1)}px;width:${r.w.toFixed(1)}px;height:${r.h.toFixed(1)}px`;
+    }
+  }, 50);
+}
+
+/* the award seals turn, a little faster while the page is scrolled */
+function seals() {
+  const list = $$("[data-seal] svg").map((svg) => ({ svg, a: Math.random() * 360, on: false }));
+  list.forEach((s) => new IntersectionObserver(([e]) => { s.on = e.isIntersecting; }).observe(s.svg));
+  if (REDUCED) return;
+  let last = 0, lastY = scrollY;
+  Ticker.add((t) => {
+    const dt = last ? Math.min(64, t - last) : 16;
+    last = t;
+    const dy = Math.abs(scrollY - lastY);
+    lastY = scrollY;
+    for (const s of list) {
+      if (!s.on) continue;
+      s.a = (s.a + dt * 0.012 + dy * 0.08) % 360;
+      s.svg.style.transform = `rotate(${s.a.toFixed(2)}deg)`;
+    }
+  }, 0);
+}
+
+/* ═══════════ 2 — the menu ═══════════ */
+function tornEdge(w, up) {
+  let d = up ? `M 0 9 L ${w} 9` : `M 0 0 L ${w} 0`;
+  for (let x = w; x > 0; x -= 8) d += up ? ` L ${Math.max(0, x - 4)} 0 L ${Math.max(0, x - 8)} 9` : ` L ${Math.max(0, x - 4)} 9 L ${Math.max(0, x - 8)} 0`;
+  return d + " Z";
+}
+function menuBlock() {
+  $$("[data-torn]").forEach((svg) => { svg.innerHTML = `<path d="${tornEdge(280, svg.dataset.torn === "up")}" fill="#f7f5ef"/>`; });
+  const ctaWrap = $("[data-menu-cta]");
+  inview(ctaWrap, { from: { opacity: 0, y: 12 }, to: { opacity: 1, y: 0 }, delay: 420 });
+  const receipt = $("[data-menu-receipt]");
+  hover(receipt, { trigger: $("a", ctaWrap), from: { x: 150, y: 150, opacity: 0 }, to: { x: 0, y: 0, opacity: 1 }, config: C.c120 });
+  $$("[data-card-i]").forEach((card) => {
+    const i = +card.dataset.cardI;
+    inview(card, { from: { opacity: 0, y: 28 }, to: { opacity: 1, y: 0 }, config: C.c80, delay: i * 90 });
+    inview($(".card-name", card), { trigger: card, from: { clip: "inset(0 100% -30% 0)" }, to: { clip: "inset(0 0% -30% 0)" }, config: C.c58, delay: i * 90 + 300 });
+    scrub($("[data-still]", card), { trigger: card, start: "top bottom", end: "center center", from: { y: 11 }, to: { y: 0 }, reducedAt: 1 });
+  });
+}
+
+/* ═══════════ 3 — the filmstrip (after 21st.dev · n1m4mz/filmstrip-gallery) ═══════════ */
+function filmstrip(root) {
+  const track = $("[data-fs-track]", root);
+  const frames = [...track.children];
+  const count = frames.length, last = count - 1;
+  const capEl = $("[data-fs-cap]", root), nEl = $("[data-fs-n]", root), live = $("[data-fs-live]", root);
+  const prevB = $("[data-fs-prev]", root), nextB = $("[data-fs-next]", root);
+  const dialog = $("[data-fs-print]", root), pImg = $("[data-fs-print-img]", root), paper = $("[data-fs-paper]", root);
+  const pCap = $("[data-fs-print-cap]", root), pN = $("[data-fs-print-n]", root);
+  const look = (inv, sep, sat, hue, con, bri) => `invert(${inv}) sepia(${sep}) saturate(${sat}) hue-rotate(${hue}deg) contrast(${con}) brightness(${bri})`;
+  const MASK = 0.6;
+  const POSITIVE = look(0, 0, 1, 0, 1, 1);
+  const NEGATIVE = look(1, +(0.3 + 0.45 * MASK).toFixed(2), +(0.9 + 0.5 * MASK).toFixed(2), Math.round(-14 * MASK), 0.9, 0.94);
+  if (REDUCED) frames.forEach((li) => { $("img", li).style.transition = "none"; });
+  inview(root, { from: { opacity: 0, y: 28 }, to: { opacity: 1, y: 0 }, config: C.c80, delay: 120 });
+
+  let active = -1, travel = null, timer = 0;
+  const apply = () => frames.forEach((li, i) => {
+    const gate = i === active, img = $("img", li), btn = $("button", li);
+    li.classList.toggle("is-gate", gate);
+    img.style.filter = gate ? POSITIVE : NEGATIVE;
+    btn.setAttribute("aria-label", gate ? `${img.alt}. Открыть отпечаток` : `Показать кадр: ${img.alt}`);
+    if (gate) btn.setAttribute("aria-current", "true"); else btn.removeAttribute("aria-current");
+  });
+  const commit = (i) => {
+    const next = clamp(i, 0, last);
+    if (next === active) return;
+    active = next;
+    apply();
+    capEl.textContent = frames[active].dataset.cap;
+    nEl.textContent = `${pad2(active + 1)} / ${pad2(count)}`;
+    live.textContent = `${frames[active].dataset.cap}, ${active + 1} из ${count}`;
+    prevB.disabled = active === 0;
+    nextB.disabled = active === last;
+  };
+  const intent = () => (travel ? travel.target : Math.max(0, active));
+  const leftFor = (li) => li.offsetLeft - (track.clientWidth - li.offsetWidth) / 2;
+  const goTo = (i, behavior = REDUCED ? "auto" : "smooth") => {
+    const target = clamp(i, 0, last), li = frames[target];
+    const left = leftFor(li);
+    if (Math.abs(track.scrollLeft - left) < 1) { travel = null; commit(target); return; }
+    const until = performance.now() + 1500;
+    travel = { target, until };
+    track.scrollTo({ left, behavior });
+    setTimeout(() => { if (travel && travel.target === target && travel.until === until) settle(); }, 1550);
+  };
+  const nearest = () => {
+    const c = track.scrollLeft + track.clientWidth / 2;
+    let best = 0, bd = Infinity;
+    frames.forEach((li, i) => { const d = Math.abs(li.offsetLeft + li.offsetWidth / 2 - c); if (d < bd) { bd = d; best = i; } });
+    return best;
+  };
+  function settle() {
+    clearTimeout(timer);
+    timer = 0;
+    const here = nearest();
+    if (travel && here !== travel.target && performance.now() < travel.until) return;
+    travel = null;
+    commit(here);
+  }
+  track.addEventListener("scroll", () => { clearTimeout(timer); timer = setTimeout(settle, 140); }, { passive: true });
+  track.addEventListener("scrollend", settle);
+  ["pointerdown", "wheel", "touchstart"].forEach((ev) => track.addEventListener(ev, () => { travel = null; }, { passive: true }));
+
+  /* a mouse can drag the strip too; a drag is never a click */
+  let drag = null, dragged = false;
+  track.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    drag = { x: e.clientX, left: track.scrollLeft, id: e.pointerId };
+    dragged = false;
+  });
+  addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!dragged && Math.abs(dx) > 6) { dragged = true; track.classList.add("is-drag"); }
+    if (dragged) track.scrollLeft = drag.left - dx;
+  });
+  addEventListener("pointerup", () => {
+    if (!drag) return;
+    const was = dragged;
+    drag = null;
+    track.classList.remove("is-drag");
+    if (was) { goTo(nearest()); setTimeout(() => { dragged = false; }, 0); }
+  });
+
+  frames.forEach((li, i) => $("button", li).addEventListener("click", (e) => {
+    if (dragged) { e.preventDefault(); return; }
+    if (i === active) openPrint(i); else goTo(i);
+  }));
+  const step = (d) => { const t = clamp(intent() + d, 0, last); goTo(t); return t; };
+  track.addEventListener("keydown", (e) => {
+    let t = null;
+    if (e.key === "ArrowRight") t = step(1);
+    else if (e.key === "ArrowLeft") t = step(-1);
+    else if (e.key === "Home") t = step(-count);
+    else if (e.key === "End") t = step(count);
+    if (t === null) return;
+    e.preventDefault();
+    $("button", frames[t]).focus({ preventScroll: true });
+  });
+  prevB.addEventListener("click", () => step(-1));
+  nextB.addEventListener("click", () => step(1));
+
+  /* the print — a native dialog; it comes up from paper white */
+  let printIndex = 0;
+  const paperM = new Motion(paper, { opacity: 0 });
+  const showPrint = (i) => {
+    printIndex = clamp(i, 0, last);
+    const img = $("img", frames[printIndex]);
+    pImg.src = img.currentSrc || img.src;
+    pImg.alt = img.alt;
+    pCap.textContent = frames[printIndex].dataset.cap;
+    pN.textContent = `${pad2(printIndex + 1)} / ${pad2(count)}`;
+    dialog.setAttribute("aria-label", `${frames[printIndex].dataset.cap}, ${printIndex + 1} из ${count}`);
+    $("[data-fs-print-prev]", dialog).disabled = printIndex === 0;
+    $("[data-fs-print-next]", dialog).disabled = printIndex === last;
+    if (!REDUCED) { paperM.to({ opacity: 1 }, { immediate: true }); paperM.to({ opacity: 0 }, { config: { duration: 700, easing: EASE.develop } }); }
+  };
+  const openPrint = (i) => { showPrint(i); if (!dialog.open) { dialog.showModal(); stopScroll(); } };
+  dialog.addEventListener("close", () => { startScroll(); goTo(printIndex, "auto"); $("button", frames[printIndex]).focus({ preventScroll: true }); });
+  dialog.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });
+  dialog.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && printIndex < last) showPrint(printIndex + 1);
+    if (e.key === "ArrowLeft" && printIndex > 0) showPrint(printIndex - 1);
+  });
+  $("[data-fs-print-prev]", dialog).addEventListener("click", () => showPrint(printIndex - 1));
+  $("[data-fs-print-next]", dialog).addEventListener("click", () => showPrint(printIndex + 1));
+  $("[data-fs-print-close]", dialog).addEventListener("click", () => dialog.close());
+
+  commit(0);
+  requestAnimationFrame(() => goTo(0, "auto"));
+  new ResizeObserver(() => goTo(intent(), "auto")).observe(track);
+}
+
+/* ═══════════ 4 — the clock: real Moscow time, and every hour a dish ═══════════
+   A plain twelve-hour face, twelve at the top. Two rings of hours: the inner one is the morning
+   (08–12), the outer one the day and the evening (12–22). Each hour is a dish from the menu;
+   point at an hour and its plate turns up in the middle; leave, and the plate of the hour now
+   comes back. The hands are always the real time at Рождественская, 13 — Moscow time. */
+const SLOTS = [
+  { h: 8, meal: "Утро · кофе", dish: "Капучино", price: 280, img: "m-cappuccino.webp" },
+  { h: 9, meal: "Завтрак", dish: "Сырники с вишней", price: 650, img: "m-syrniki.webp" },
+  { h: 10, meal: "Завтрак", dish: "Деруны с лососем", price: 760, img: "m-deruny.webp" },
+  { h: 11, meal: "Завтрак", dish: "Каша с тыквой", price: 550, img: "f-porridge.webp" },
+  { h: 12, meal: "Обед", dish: "Суп Том Ям", price: 650, img: "f-tomyum.webp" },
+  { h: 13, meal: "Обед", dish: "Паста карбонара", price: 650, img: "f-carbonara.webp" },
+  { h: 14, meal: "Обед", dish: "Хоккайдо с креветкой", price: 760, img: "f-hokkaido.webp" },
+  { h: 15, meal: "Полдник", dish: "Круассан", price: 200, img: "f-croissant.webp" },
+  { h: 16, meal: "Десерт", dish: "Морковный торт", price: 400, img: "m-carrot.webp" },
+  { h: 17, meal: "Десерт", dish: "Сан-Себастьян", price: 450, img: "f-sansebastian.webp" },
+  { h: 18, meal: "Ужин", dish: "Паста Том Ям", price: 730, img: "f-pasta-shrimp.webp" },
+  { h: 19, meal: "Ужин", dish: "Хоккайдо с лососем", price: 760, img: "f-benedict.webp" },
+  { h: 20, meal: "Вечер", dish: "Облепиховый чай", price: 280, img: "f-seabuckthorn.webp" },
+  { h: 21, meal: "Вечер", dish: "Чай в чайнике", price: 220, img: "f-teapot.webp" },
+];
+const mealColour = (h) => (h < 12 ? "#e3c29a" : h < 15 ? "#b07a45" : h < 18 ? "#8f5e36" : "#6e3e22");
+function mskNow() {
+  const d = new Date();
+  const utc = d.getTime() + d.getTimezoneOffset() * 60000;
+  return new Date(utc + 3 * 3600000);
+}
+function dial() {
+  const svg = $("[data-dial]"), hands = $("[data-hands]");
+  const C0 = 327, TAU = Math.PI * 2;
+  const ang = (h) => ((h % 12) / 12) * TAU - Math.PI / 2;
+  const pt = (a, r) => [C0 + Math.cos(a) * r, C0 + Math.sin(a) * r];
+  const f2 = (n) => n.toFixed(2);
+  const arc = (h, r) => {
+    const a0 = ang(h) + 0.035, a1 = ang(h) + TAU / 12 - 0.035;
+    const [x0, y0] = pt(a0, r), [x1, y1] = pt(a1, r);
+    return `M ${f2(x0)} ${f2(y0)} A ${r} ${r} 0 0 1 ${f2(x1)} ${f2(y1)}`;
+  };
+  let out = `<circle class="ring" cx="${C0}" cy="${C0}" r="318" stroke-width="1"/>`;
+  out += `<circle class="ring-in" cx="${C0}" cy="${C0}" r="160" fill="none" stroke-width="1"/>`;
+  for (let m = 0; m < 60; m++) {
+    const a = (m / 60) * TAU - Math.PI / 2, major = m % 5 === 0;
+    const [x0, y0] = pt(a, 318), [x1, y1] = pt(a, major ? 296 : 309);
+    out += `<line class="tick${major ? " major" : ""}" x1="${f2(x0)}" y1="${f2(y0)}" x2="${f2(x1)}" y2="${f2(y1)}" stroke-width="${major ? 2 : 1}"/>`;
+  }
+  for (let h = 1; h <= 12; h++) {
+    const [x, y] = pt(ang(h), 277);
+    out += `<text class="num" x="${f2(x)}" y="${f2(y)}" text-anchor="middle" dominant-baseline="central">${h}</text>`;
+  }
+  SLOTS.forEach((s, i) => {
+    out += `<path class="dial-seg" data-slot="${i}" d="${arc(s.h, s.h < 12 ? 206 : 240)}" stroke="${mealColour(s.h)}" stroke-width="17"><title>${pad2(s.h)}:00–${pad2(s.h + 1)}:00 · ${esc(s.dish)}</title></path>`;
+  });
+  svg.innerHTML = out;
+  hands.innerHTML = `<g class="hands-shadow">
+    <line class="hh" data-hh x1="${C0}" y1="${C0 + 22}" x2="${C0}" y2="${C0 - 118}"/>
+    <line class="mh" data-mh x1="${C0}" y1="${C0 + 28}" x2="${C0}" y2="${C0 - 188}"/>
+    <line class="sh" data-sh x1="${C0}" y1="${C0 + 40}" x2="${C0}" y2="${C0 - 214}"/>
+    <circle class="cap" cx="${C0}" cy="${C0}" r="9"/></g>`;
+  const hh = $("[data-hh]", hands), mh = $("[data-mh]", hands), sh = $("[data-sh]", hands);
+  const segs = $$(".dial-seg", svg);
+
+  /* the plate in the middle: two images, one fading over the other */
+  const A = $("[data-dish-a]"), B = $("[data-dish-b]");
+  const mA = new Motion(A, { opacity: 1 }), mB = new Motion(B, { opacity: 0 });
+  let front = A;
+  const setDish = (src) => {
+    if (front.getAttribute("src") === src) return;
+    const back = front === A ? B : A, bm = back === A ? mA : mB, fm = front === A ? mA : mB;
+    const how = REDUCED ? { immediate: true } : { config: C.c120 };
+    const swap = () => { bm.to({ opacity: 1 }, how); fm.to({ opacity: 0 }, how); front = back; };
+    back.onload = null;
+    if (back.getAttribute("src") === src && back.complete) swap();
+    else { back.onload = swap; back.src = src; }
+  };
+
+  const clock = $("[data-dial-clock]"), meal = $("[data-dial-meal]"), dish = $("[data-dial-dish]"), meta = $("[data-dial-meta]"), status = $("[data-open-status]");
+  let hot = null, nowSlot = -1;
+  const show = (i) => {
+    segs.forEach((s, k) => s.classList.toggle("is-hot", k === i && hot !== null));
+    if (i < 0) {
+      meal.textContent = "Сейчас закрыто";
+      dish.textContent = "Откроемся в 08:00";
+      meta.textContent = "Первый капучино — 280 ₽";
+      setDish("assets/img/dial-latte.webp");
+      return;
+    }
+    const s = SLOTS[i];
+    meal.textContent = `${s.meal} · ${pad2(s.h)}:00–${pad2(s.h + 1)}:00`;
+    dish.textContent = s.dish;
+    meta.textContent = `${s.price} ₽`;
+    setDish(`assets/img/${s.img}`);
+  };
+  const tick = () => {
+    const d = mskNow();
+    const h = d.getHours(), m = d.getMinutes(), sec = d.getSeconds();
+    hh.setAttribute("transform", `rotate(${f2(((h % 12) + m / 60) * 30)} ${C0} ${C0})`);
+    mh.setAttribute("transform", `rotate(${f2((m + sec / 60) * 6)} ${C0} ${C0})`);
+    sh.setAttribute("transform", `rotate(${sec * 6} ${C0} ${C0})`);
+    clock.textContent = `${pad2(h)}:${pad2(m)}`;
+    const open = h >= 8 && h < 22;
+    status.textContent = open ? "Сейчас открыто · до 22:00" : "Сейчас закрыто · откроемся в 08:00";
+    const idx = SLOTS.findIndex((s) => s.h === h);
+    if (idx !== nowSlot) {
+      nowSlot = idx;
+      segs.forEach((s, k) => s.classList.toggle("is-now", k === idx));
+      if (hot === null) show(idx);
+    }
+  };
+  tick();
+  setInterval(tick, 1000);
+  segs.forEach((seg, i) => {
+    const on = () => { hot = i; show(i); };
+    seg.addEventListener("pointerenter", on);
+    seg.addEventListener("click", on);
+    seg.addEventListener("pointerleave", () => { hot = null; show(nowSlot); segs.forEach((s) => s.classList.remove("is-hot")); });
+  });
+  SLOTS.forEach((s) => { const im = new Image(); im.src = `assets/img/${s.img}`; });
+
+  const range = $("[data-loc-range]");
+  inview($("[data-loc-dial]"), { from: { opacity: 0 }, to: { opacity: 1 }, config: C.c60 });
+  scrub($("[data-dial-par]"), { trigger: range, start: "top bottom", end: "center center", from: { y: 26 }, to: { y: 0 }, reducedAt: 1 });
+  scrub($("[data-hands-par]"), { trigger: range, start: "top bottom", end: "center center", from: { y: 26 }, to: { y: 0 }, reducedAt: 1 });
+  scrub($("[data-cup-par]"), { trigger: range, start: "top bottom", end: "center center", from: { y: 80 }, to: { y: 0 }, reducedAt: 1 });
+  const leanEl = $("[data-cup-lean]"), sec = leanEl.closest("section");
+  const m = new Motion(leanEl, { rotateY: 0, rotateX: 0 });
+  sec.addEventListener("pointermove", (e) => {
+    if (!hoverOK() || REDUCED || e.pointerType === "touch") return;
+    const r = sec.getBoundingClientRect();
+    m.to({ rotateY: clamp1(((e.clientX - r.left) / r.width) * 2 - 1) * 10, rotateX: -clamp1(((e.clientY - r.top) / r.height) * 2 - 1) * 10 }, { config: C.c90_22 });
+  });
+  sec.addEventListener("pointerleave", () => m.to({ rotateY: 0, rotateX: 0 }, { config: C.c90_22 }));
+  inview($("[data-dial-info]"), { from: { opacity: 0, y: 12 }, to: { opacity: 1, y: 0 }, delay: 240 });
+}
+
+/* ═══════════ 6 — reviews: stagger (after 21st.dev · vaib215/stagger-testimonials) ═══════════ */
+function staggerReviews(root) {
+  const cards = $$("[data-st-card]", root);
+  const n = cards.length;
+  const half = Math.floor(n / 2);
+  let order = cards.map((_, i) => i);
+  order = order.slice(n - half).concat(order.slice(0, n - half));
+  let size = cards[0].offsetWidth;
+  const posOf = (k) => (n % 2 ? k - (n + 1) / 2 : k - n / 2);
+  const place = () => {
+    order.forEach((ci, k) => {
+      const pos = posOf(k), c = cards[ci], center = pos === 0;
+      c.classList.toggle("is-center", center);
+      c.style.zIndex = center ? "10" : String(Math.max(0, 6 - Math.abs(pos)));
+      c.style.transform = `translate(-50%, -50%) translateX(${((size / 1.5) * pos).toFixed(2)}px) translateY(${center ? -65 : pos % 2 ? 15 : -15}px) rotate(${center ? 0 : pos % 2 ? 2.5 : -2.5}deg)`;
+      c.dataset.pos = String(pos);
+      c.setAttribute("aria-hidden", center ? "false" : "true");
+    });
+  };
+  const move = (steps) => {
+    if (!steps) return;
+    const before = new Map(order.map((ci, k) => [ci, k]));
+    if (steps > 0) for (let i = 0; i < steps; i++) order.push(order.shift());
+    else for (let i = 0; i < -steps; i++) order.unshift(order.pop());
+    order.forEach((ci, k) => { if (Math.abs(k - before.get(ci)) > Math.abs(steps)) cards[ci].classList.add("no-anim"); });
+    place();
+    root.offsetWidth;
+    requestAnimationFrame(() => requestAnimationFrame(() => cards.forEach((c) => c.classList.remove("no-anim"))));
+  };
+  cards.forEach((c) => c.addEventListener("click", () => { const p = +c.dataset.pos; if (p) move(p); }));
+  $("[data-st-prev]", root).addEventListener("click", (e) => { e.stopPropagation(); move(-1); });
+  $("[data-st-next]", root).addEventListener("click", (e) => { e.stopPropagation(); move(1); });
+  root.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); move(1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
+  });
+  let sx = null;
+  root.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") sx = e.clientX; }, { passive: true });
+  root.addEventListener("pointerup", (e) => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) move(dx < 0 ? 1 : -1); }, { passive: true });
+  cards.forEach((c) => c.classList.add("no-anim"));
+  place();
+  requestAnimationFrame(() => cards.forEach((c) => c.classList.remove("no-anim")));
+  new ResizeObserver(() => { const s = cards[0].offsetWidth; if (s !== size) { size = s; cards.forEach((c) => c.classList.add("no-anim")); place(); requestAnimationFrame(() => cards.forEach((c) => c.classList.remove("no-anim"))); } }).observe(root);
+  inview(root, { from: { opacity: 0, y: 28 }, to: { opacity: 1, y: 0 }, config: C.c80, delay: 150 });
+}
+function reviewsBlock() {
+  $$("[data-bar-to]").forEach((el) => inview(el, { trigger: el.parentElement, from: { sx: 0 }, to: { sx: +el.dataset.barTo }, config: C.c55, delay: +el.dataset.barDelay || 0 }));
+  staggerReviews($("[data-st]"));
+}
+
+/* ═══════════ 7 — the order block: the thermal printer ═══════════ */
+function orderBlock() {
+  const sec = $("[data-order]"), stage = $("[data-order-stage]"), paper = $("[data-paper]");
+  const RECEIPT = { width: 328, paddingX: 22, barcode: { height: 42, gap: 1, thin: 1, thick: 2.5, seed: 20250521 } };
+  const SETTLE = { floor: 0.42, ceiling: 0.94, span: 0.55, seed: 90210 };
+  const STEPS = 46, BARCODE_FED = 0.88, START_VH = -0.85, END_VH = 0, EASE_POWER = 1.6;
+  const PRINTER = { left: 519, top: 133, width: 400 };
+  const NARROW = { maxWidth: 1024, top: PRINTER.top, paperBottom: 748, bandTop: 0.217, bandBottom: 0.22, phoneWidth: 640, phoneBandTop: 0.223, phoneBandBottom: 0.277 };
+  const BOARD_WIDTH = 1440, TIGHT_WIDTH = 1280, GROW = 0.085, HEADLINE_TOP = 126, NARROW_GROW = 1.096, NARROW_NUDGE_X = 20;
+
+  /* the torn edge and the date on the slip */
+  $("[data-torn-rc]").innerHTML = `<path d="${tornEdge(328, false)}" fill="#F2F0EA"/>`;
+  const d = new Date();
+  $("[data-rc-date]").textContent = `${pad2(d.getDate())}.${pad2(d.getMonth() + 1)}.${d.getFullYear()}`;
+  $("[data-rc-time]").textContent = `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+
+  /* the barcode: widths from a fixed seed, heights settling left to right once fed */
+  const span = RECEIPT.width - RECEIPT.paddingX * 2;
+  let s = RECEIPT.barcode.seed >>> 0;
+  const next = () => { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  const bars = [];
+  let left = span;
+  while (left > 0) {
+    const width = next() < 0.55 ? RECEIPT.barcode.thin : RECEIPT.barcode.thick;
+    const on = next() > 0.22;
+    if (left <= width + RECEIPT.barcode.gap) { bars.push({ width: left, on: true }); break; }
+    bars.push({ width, on });
+    left -= width + RECEIPT.barcode.gap;
+  }
+  let hs = SETTLE.seed >>> 0;
+  const from = bars.map(() => { hs = (Math.imul(hs, 1664525) + 1013904223) >>> 0; return SETTLE.floor + (hs / 4294967296) * (SETTLE.ceiling - SETTLE.floor); });
+  const row = $("[data-barcode]");
+  const barEls = bars.map((b) => { const e = mk("span"); e.style.width = `${b.width}px`; e.style.background = b.on ? "#111111" : "transparent"; row.append(e); return e; });
+  const scaleAt = (v, i, count, f) => { const t0 = (i / count) * (1 - SETTLE.span); const local = clamp((v - t0) / SETTLE.span, 0, 1); const eased = 1 - Math.pow(1 - local, 3); return f + (1 - f) * eased; };
+  const sweep = new Motion(row, { sweep: REDUCED ? 1 : 0 }, (e, m) => { const v = m.vals.sweep.val; barEls.forEach((b, i) => { b.style.transform = `scaleY(${scaleAt(v, i, barEls.length, from[i]).toFixed(4)})`; }); });
+
+  /* stage fit: the board rides the root size on desktop, fits a band on phones */
+  const fit = () => {
+    const vw = innerWidth, vh = innerHeight;
+    let scale = 1, shift = 0, nudgeX = 0;
+    if (vw >= NARROW.maxWidth) {
+      const base = (parseFloat(getComputedStyle(document.documentElement).fontSize) || 16) / 16;
+      if (vw >= BOARD_WIDTH) { scale = base; shift = 0; }
+      else if (vw >= TIGHT_WIDTH) { const t = clamp((BOARD_WIDTH - vw) / (BOARD_WIDTH - TIGHT_WIDTH), 0, 1); const grown = base * (1 + GROW * t); scale = grown; shift = PRINTER.top * (base - grown); }
+      else { const grown = base * NARROW_GROW; scale = grown; shift = HEADLINE_TOP * base - PRINTER.top * grown; nudgeX = NARROW_NUDGE_X * base; }
+    } else {
+      const paperBottom = 176 + (paper.offsetHeight || 572);
+      const height = paperBottom - NARROW.top;
+      const phone = vw < NARROW.phoneWidth;
+      const bandTop = phone ? NARROW.phoneBandTop : NARROW.bandTop, bandBottom = phone ? NARROW.phoneBandBottom : NARROW.bandBottom;
+      const band = vh * (1 - bandTop - bandBottom);
+      scale = Math.min(band / height, (vw * 0.94) / PRINTER.width);
+      const machineTop = vh * bandTop + (band - height * scale) / 2;
+      shift = machineTop - NARROW.top * scale;
+    }
+    stage.style.transform = `translateX(-50%) translate(${nudgeX}px, ${shift}px) scale(${scale})`;
+  };
+  fit();
+  addEventListener("resize", fit);
+
+  /* the feed — 46 jerks while the block rises, written only when it changes */
+  let progress = -1, fed = false, vis = false;
+  const write = (p) => {
+    if (p === progress) return;
+    progress = p;
+    paper.style.setProperty("--p", String(p));
+    const now = p >= BARCODE_FED;
+    if (now !== fed) { fed = now; sweep.to({ sweep: fed ? 1 : 0 }, { config: C.c70_34 }); }
+  };
+  if (REDUCED) { write(1); sec.style.height = "100lvh"; }
+  else {
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; }, { rootMargin: "10% 0px" }).observe(sec);
+    Ticker.add(() => {
+      if (!vis) return;
+      const scrolled = -sec.getBoundingClientRect().top;
+      const from0 = START_VH * innerHeight, to0 = END_VH * innerHeight;
+      let p = clamp((scrolled - from0) / (to0 - from0), 0, 1);
+      p = 1 - Math.pow(1 - p, EASE_POWER);
+      write(Math.round(p * STEPS) / STEPS);
+    }, 0);
+  }
+  inview($("[data-order-aside]"), { from: { opacity: 0, y: 16 }, to: { opacity: 1, y: 0 }, config: C.c80, delay: 280 });
+}
+
+/* ═══════════ 5 — the coffee: the roast bar draws, the two marks drop onto it ═══════════ */
+function storyCoffee() {
+  const fill = $("[data-roast-fill]");
+  if (!fill) return;
+  inview(fill, { trigger: fill.parentElement, from: { sx: 0 }, to: { sx: 1 }, config: C.c55, delay: 200 });
+  $$("[data-roast-mark]").forEach((m) => inview(m, { from: { opacity: 0, y: -10 }, to: { opacity: 1, y: 0 }, config: C.c80, delay: 560 + +m.dataset.roastMark * 170 }));
+}
+
+/* ═══════════ 8 — the footer ═══════════ */
+function footerBlock() {
+  inview($("[data-footer-swirl]"), { from: { opacity: 0, scale: 1.05 }, to: { opacity: 1, scale: 1 }, config: C.c40 });
+}
+
+/* ═══════════ 5 — the philosophy block: a slot for a video ═══════════
+   Drop a clip at assets/video/story.mp4 and it plays behind the copy. Until then the film that
+   runs behind the whole page shows through, so the block never stands empty. */
+function storyVideo() {
+  const slot = $("[data-story-video]");
+  if (!slot || !/^https?:$/.test(location.protocol)) return;
+  const src = "assets/video/story.mp4";
+  fetch(src, { method: "HEAD" }).then((r) => {
+    if (!r.ok) return;
+    const v = document.createElement("video");
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.setAttribute("playsinline", "");
+    v.preload = "metadata";
+    v.src = src;
+    v.addEventListener("error", () => assetError(`Видео блока «О нас» не загрузилось: ${src}`));
+    slot.append(v);
+    slot.classList.add("is-on");
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !REDUCED) v.play().catch(() => {});
+      else v.pause();
+    }).observe(slot);
+  }).catch(() => {});
+}
+
+/* ═══════════ fonts: a missing face is named, not swallowed ═══════════ */
+fontsSettled.then(() => {
+  const need = [['700 16px "Geist"', "Geist"], ['16px "IBM Plex Mono"', "IBM Plex Mono"], ['16px "Great Vibes"', "Great Vibes"], ['16px "Onest"', "Onest"]];
+  const missing = need.filter(([f]) => !document.fonts.check(f, "Кофе")).map(([, n]) => n);
+  if (missing.length) assetError(`Шрифты не загрузились с fonts.googleapis.com: ${missing.join(", ")}. Показаны системные.`);
+});
+
+/* ═══════════ boot ═══════════ */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+const startHash = location.hash && document.querySelector(location.hash) ? location.hash : null;
+if (!startHash) scrollTo(0, 0);
+preloader();
+header();
+wireCommon();
+hero();
+seals();
+$$("[data-swirl]").forEach(swirlFill);
+menuBlock();
+filmstrip($("[data-fs]"));
+dial();
+reviewsBlock();
+orderBlock();
+footerBlock();
+storyCoffee();
+storyVideo();
+themeToggle();
+if (startHash) page.on("ready", () => { const t = document.querySelector(startHash); if (lenis) lenis.scrollTo(t, { immediate: true }); else t.scrollIntoView(); });
+</script>
+</body>
+</html>
