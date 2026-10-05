@@ -2,6 +2,13 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>
+  /* GitHub Pages cannot send headers: the same protections, from the page itself */
+  if (location.protocol === "http:" && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") location.replace("https:" + location.href.slice(5));
+  if (window.top !== window.self) { try { window.top.location = window.self.location.href; } catch (e) { document.documentElement.style.display = "none"; } }
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Меню — кофейня «Смысл», Рождественская, 13</title>
 <meta name="description" content="Полное меню кофейни «Смысл» в Нижнем Новгороде: завтраки весь день, кофе и альтернатива, десерты, боулы, супы, паста и сэндвичи. Цены в рублях.">
@@ -10,16 +17,14 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Меню кофейни «Смысл»">
 <meta property="og:image" content="assets/img/og.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700&family=Great+Vibes&family=IBM+Plex+Mono:wght@400;500;700&family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<link href="assets/fonts/fonts.css" rel="stylesheet" data-fonts>
 <script>
   document.documentElement.classList.add("js");
   try { if (localStorage.getItem("smysl-theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}
   window.setTimeout(function () { if (!window.__smyslBooted) document.documentElement.classList.remove("js"); }, 7000);
 </script>
 <script type="importmap">
-{ "imports": { "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs" } }
+{ "imports": { "lenis": "./assets/vendor/lenis.mjs" } }
 </script>
 <style>
 :root {
@@ -456,6 +461,9 @@ main, .site-footer { position: relative; z-index: 1; }
 @media (min-width: 1024px) { .footer-legal { display: contents; } }
 .footer-legal .fine { white-space: nowrap; font-size: var(--font-size-fine); }
 .footer-legal .dim { color: rgba(var(--fg-rgb),.5); }
+.footer-owner { display: flex; flex-direction: column; gap: 0.25rem; font-size: var(--font-size-fine); text-transform: none; color: rgba(var(--fg-rgb),.5); border-top: 1px solid rgba(var(--fg-rgb),.1); padding-top: 1.25rem; }
+.footer-owner a:hover { color: var(--foreground); }
+@media (min-width: 1024px) { .site-footer { height: auto; } .footer-owner { margin: var(--size-footer-height) 2.5rem 0; padding: 1.25rem 0 2.5rem; } }
 @media (max-width: 639.98px) { .footer-copy { order: 9; margin-top: 0.75rem; border-top: 1px solid rgba(var(--fg-rgb),.1); padding-top: 1.5rem; } }
 @media (min-width: 1024px) {
   .footer-copy { position: absolute; left: 2.5rem; top: var(--size-footer-legal-y); }
@@ -837,6 +845,11 @@ main, .site-footer { position: relative; z-index: 1; }
     <span class="fine footer-social"><span class="rise" data-rise="600"><span class="rise-in"><a class="dim" href="https://t.me/coffeesmysl" target="_blank" rel="noopener" data-ul-rule>Telegram</a><span class="dim" style="white-space:pre"> &amp; </span><a class="dim" href="https://yandex.ru/maps/org/smysl/181148819938/" target="_blank" rel="noopener" data-ul-rule>Яндекс Карты</a></span></span></span>
     <span class="fine footer-award"><span class="rise" data-rise="640"><span class="rise-in">Хорошее место 2026<span class="dim" style="white-space:pre"> / </span>4,8 ★</span></span></span>
   </div>
+  <div class="footer-owner fine dim" data-owner>
+    <p>Владелец сайта: <span data-owner-name>ИП Фамилия Имя Отчество</span>, ИНН <span data-owner-inn>000000000000</span>, ОГРНИП <span data-owner-ogrn>000000000000000</span></p>
+    <p>Адрес: 603001, г. Нижний Новгород, Рождественская ул., д. 13</p>
+    <p>Email для обращений: <a class="dim" href="mailto:info@example.ru" data-ul-rule>info@example.ru</a></p>
+  </div>
 </footer>
 
 <div class="hl-preview" aria-hidden="true" data-hl-preview><img alt="" src="assets/img/m-deruny.webp"></div>
@@ -911,7 +924,7 @@ if (!REDUCED) {
     lenis = new Lenis({ smoothWheel: true, prevent: (node) => !!(node?.closest && node.closest("[data-fs-track]") && wheelSideways) });
     window.lenis = lenis;
     if (document.documentElement.classList.contains("is-stopped")) lenis.stop();
-  }).catch(() => assetError("Lenis (cdn.jsdelivr.net/npm/lenis@1.3.26) не загрузился — прокрутка работает без сглаживания."));
+  }).catch(() => assetError("Lenis (assets/vendor/lenis.mjs) не загрузился — прокрутка работает без сглаживания."));
 }
 
 /* ═══════════ the page-ready store ═══════════ */
